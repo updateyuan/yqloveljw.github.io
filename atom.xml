@@ -6,7 +6,7 @@
   <link href="http://yqloveljw.xyz/atom.xml" rel="self"/>
   
   <link href="http://yqloveljw.xyz/"/>
-  <updated>2022-03-31T11:33:25.416Z</updated>
+  <updated>2022-06-27T09:29:00.483Z</updated>
   <id>http://yqloveljw.xyz/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>文章</title>
+    <link href="http://yqloveljw.xyz/2022/06/27/%E6%96%87%E7%AB%A0/"/>
+    <id>http://yqloveljw.xyz/2022/06/27/%E6%96%87%E7%AB%A0/</id>
+    <published>2022-06-27T09:29:00.000Z</published>
+    <updated>2022-06-27T09:29:00.483Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>hexo添加徽标</title>
@@ -527,34 +540,6 @@
       
       
     <summary type="html">&lt;h1 id=&quot;动态网页内容&quot;&gt;&lt;a href=&quot;#动态网页内容&quot; class=&quot;headerlink&quot; title=&quot;动态网页内容&quot;&gt;&lt;/a&gt;动态网页内容&lt;/h1&gt;&lt;h2 id=&quot;静态网页&quot;&gt;&lt;a href=&quot;#静态网页&quot; class=&quot;headerlink&quot; title=&quot;静</summary>
-      
-    
-    
-    
-    <category term="python爬虫技术" scheme="http://yqloveljw.xyz/categories/python%E7%88%AC%E8%99%AB%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="python" scheme="http://yqloveljw.xyz/tags/python/"/>
-    
-    <category term="爬虫" scheme="http://yqloveljw.xyz/tags/%E7%88%AC%E8%99%AB/"/>
-    
-    <category term="Anaconda" scheme="http://yqloveljw.xyz/tags/Anaconda/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>存储过程与触发器</title>
-    <link href="http://yqloveljw.xyz/2022/02/17/Python/Python%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB7/"/>
-    <id>http://yqloveljw.xyz/2022/02/17/Python/Python%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB7/</id>
-    <published>2022-02-17T01:15:19.000Z</published>
-    <updated>2022-03-31T11:33:25.491Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="并发下载"><a href="#并发下载" class="headerlink" title="并发下载"></a>并发下载</h1><h2 id="多线程爬虫流程"><a href="#多线程爬虫流程" class="headerlink" title="多线程爬虫流程"></a>多线程爬虫流程</h2><p>由于外部网终不稳定，在使用单线程爬取网页数据时，如果有一个网页响应速度慢或者卡住，整个程序都要等待下去，这显然是无效率的.因此，可以使用多线程、多进程、协程技术实现并发下载网页</p><p>那么，在Python中多线程、多进程和协程应该如何选择呢？<br>一般来说，多进程适用于cpu密集型的代码，例如各种循环处理大量的密集并行计算等。多线程适用于I/0密集型的代码，例如文件处理、网络交互等。协程无须通过操作系统调度，没有进程、线程之间的切换和创建等开销，适用于大量不需要CPU的操作，例如网络I/0等。<br>实际上，限制爬虫程序发展的瓶颈就在于网络I/0，原因是网络10的速度赶不上CPU的处理速度.结合多线程、多进程和协程的特点和用途，我们一般采用多线程和协程技术来实现爬虫程序</p><p>多线程爬虫将多线程技术运用在采集网页信息和解析网页内容上。</p><p>多线程爬虫流程如下：</p><ol><li>首先有一个网址列表，是要爬取数据的网页列表。</li><li>同时启动多个线程抓取网页内容，一般启动固定数量的线程。</li><li>将抓取到的网页源码存储在一个列表里。</li><li>同时使用多个线程对网页源码表里的网页内容进行解析。</li><li>将解析之后的数据存储起来。</li></ol><h1 id="Queue（列队）模块简介"><a href="#Queue（列队）模块简介" class="headerlink" title="Queue（列队）模块简介"></a>Queue（列队）模块简介</h1><h2 id="使用queue模块实现多线程爬虫"><a href="#使用queue模块实现多线程爬虫" class="headerlink" title="使用queue模块实现多线程爬虫"></a>使用queue模块实现多线程爬虫</h2><p>queue模块是Python内置的标准模块，可以直接通过importqueue引用，在Queue模块中提供了三种同步的、线程安全的队列。</p><p><code>Queue</code>  <code>LifoQueue</code>  <code>PriorityQueue</code></p><p>共中，ifoQueue和priorityQueue都是Queue的子类。这些队列的唯一区别是元素取出的顺序不同</p><p>Queue类表示一个基本的FIFO（FirstInFirstOut）队列，即先进先出。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queue.Queue(maxsizc=0）</span><br></pre></td></tr></table></figure><p>其中，maxsize参数是个整数，它规定了队列的长度。一旦达到上限，再添加数据会导致阻塞，直到队列中的数据被消费掉。如果maxsize小于或者等于0，表示队列大小没有限制。maxsize的默认值为0。</p><p>LifoQueue类表示<code>后进先出</code>队列（LastinFirstOut），与楼类似都是后进入的元素先出来。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qucue.LifoQueue（maxsize=0）</span><br></pre></td></tr></table></figure><p>其中，maxsize参数的含义与Queue类相同。</p><p>PriorityQueue类表示优先级队列，按级别顺序取出元素，级别最低的最先取出。优先级队列中的元素一般采取元组（优先级别，数据）的形式来存储。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qucue.PriorityQueue (maxsize=0）</span><br></pre></td></tr></table></figure><p>其中，maxsize参数的含义与前两个类相同</p><p>除此之外，在Queue模块中还定义了2个异常类。</p><ol><li>Empty：当从空队列中取数据时，可抛出此异常</li><li>Full：当向一个满队列中存数据时，可抛出此异常。</li></ol><h1 id="Queue类概述"><a href="#Queue类概述" class="headerlink" title="Queue类概述"></a>Queue类概述</h1><p>Queue类是Python标准库中的线程安全的队列实现，它提供了一个适用于多线程编程的先进先出的数据结构一队列，用于生产者和消费者线程之间的信息传递。</p><p>List，Dict等数据存储类型都是非线程安全的。在多线程中，为了防止共享资源的数据不同步问题，对资源加锁是个重要的环节。Queue类中实现了所有的锁逻辑，能够满足多线程的需求，所以在满足使用条件的情况下，建议使用队列。</p><p>Queue类提供了数据存储和管理的常用方法。<br>queue.Queue（maxsize）<br>用于创建队列，maxsize规定了队列的长度。一旦达到上限，再添加数据会导致阻塞，直到队列中的数据被消耗掉。如果maxsize小于或者等于0，表示队列大小没有限制。maxsize的默认值为0。</p><p>Queue类提供了数据存储和管理的常用方法。</p><table><thead><tr><th>方法</th><th>说明</th></tr></thead><tbody><tr><td>empty()</td><td>如果队列为空，返回True，否则返回False</td></tr><tr><td>full()</td><td>如果队列已满则返回True，否则返回False</td></tr><tr><td>get()</td><td>从队头获取并删除第一个元素</td></tr><tr><td>put()</td><td>在队尾添加一个元素</td></tr><tr><td>get_nowait()</td><td>立即取出一个元素，不等待，相当于get(False)</td></tr><tr><td>put_nowait()</td><td>立即放入一个元素，不等待，相当于put(item,False)</td></tr><tr><td>join()</td><td>阻塞当前线程，直到队列里的所有元素都已被处理</td></tr></tbody></table><h2 id="Queue类提供了数据存储和管理的常用方法"><a href="#Queue类提供了数据存储和管理的常用方法" class="headerlink" title="Queue类提供了数据存储和管理的常用方法"></a>Queue类提供了数据存储和管理的常用方法</h2><p>get（block=Ture.timeout=None）<br>从队头获取并删除第一个元素。它有两个可选元素。<br>（1）block：默认值为Ture</p><p>当前线程：当值为False时，即当前线程：当值为假时，即当队列为空时，阻塞当前线程；当值为False时，即当队列为空时，不阻塞线程，而是抛出Empty异常。</p><p>（2）timeount设置阻塞的最大时长，默认为None。</p><p>当block值为True时，tmeout为None，则表示无限期阻塞线程，直到队列中有一个可用元素；timeout为正数，表示阻塞的最大等待时长，如果超出时长队列中还没有元素，则抛出Empty异常</p><p>put (time,block=True.timeout=None）<br>在队列添加一个元素Put有3个参数，依次介绍如<br>item必需的参数，表示添加元素的值。</p><p>block：可选参数，默认值为True，表示当队列已满阻塞当前线程。如果取值为False，则当队列已满时抛出Ful异常。</p><p>timeout：可选参数，默认为None。</p><p>当blodk参数值为True时，timeout表示阻塞的时长：当timeout为None时，表示无限期阻塞线程，直到队列中空出一个数据单元：如果timeout为正数，则表示阻塞的最大等待时长，如果超出最大时长还没有可用数据单元出现，则引发Full异常。</p><h1 id="协程爬虫的流程分析"><a href="#协程爬虫的流程分析" class="headerlink" title="协程爬虫的流程分析"></a>协程爬虫的流程分析</h1><p>所谓协程，就是同时开启多个任务，但一次只顺序执行一个。等到所执行的任务遭遇阻塞，就切换到下一个任务继续执行，以期节省下阻塞所占用的时间。</p><p>单进程下，协程和多线程区别并没有很大，相较之下，协程更节省资源、效率更高、并且更安全。</p><p>多进程下，多线程可以利用多核资源，这是单进程的协程模型做不到的。</p><p>由于协程的切换不像多线程调度那样耗费资源，所以不用严格限制协程的数量</p><p>协程爬虫流程如下：</p><ol><li>首先将要爬取的网址存储在一个列表中。</li><li>为每个网址创建一个协程并启动该协程。</li><li>将抓取到的目标数据存储在一个列表里。</li><li>遍历数据列表，将数据存储在本地文件中。</li></ol><h2 id="第三方库gevent"><a href="#第三方库gevent" class="headerlink" title="第三方库gevent"></a>第三方库gevent</h2><p>gevent是一个基于协程的Python网络库，是一个第三方库，可使用以下方法对它进行安装；</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install gevent</span><br></pre></td></tr></table></figure><p>Gevent库使用以下方式进行引用；</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import gevent</span><br></pre></td></tr></table></figure><p>gevent库的常用方法如下：</p><p>gevent.spawn()  方法：创建并启动协程。<br>gevent.joinall()   方法：等待所有协程执行完毕。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;并发下载&quot;&gt;&lt;a href=&quot;#并发下载&quot; class=&quot;headerlink&quot; title=&quot;并发下载&quot;&gt;&lt;/a&gt;并发下载&lt;/h1&gt;&lt;h2 id=&quot;多线程爬虫流程&quot;&gt;&lt;a href=&quot;#多线程爬虫流程&quot; class=&quot;headerlink&quot; title=&quot;多线程</summary>
       
     
     
