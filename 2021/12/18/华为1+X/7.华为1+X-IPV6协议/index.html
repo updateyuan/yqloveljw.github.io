@@ -1,0 +1,431 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>7.华为1+X-IPV6协议 | 沅浅</title><meta name="keywords" content="基础教程,华为1+X"><meta name="author" content="沅浅"><meta name="copyright" content="沅浅"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="华为1+X-IPV6协议 IPV6协议概述IPV4与IPV61、IPv4的局限性IPv4是目前广泛部署的互联网协议，它经过了多年的发展，己经非常成熟，易于实现，得到了所有厂商和设备的支持，但也有一些不足之处。（1）能够提供的地址空间不足且分配不均（2）互联网骨干路由器的路由表非常庞大  tip： （1）能够提供的地址空间不足且分配不均互联网起源于20世纪60年代的美国国防部，每台连上网的设备都需要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7.华为1+X-IPV6协议">
+<meta property="og:url" content="http://yqloveljw.xyz/2021/12/18/%E5%8D%8E%E4%B8%BA1+X/7.%E5%8D%8E%E4%B8%BA1+X-IPV6%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:site_name" content="沅浅">
+<meta property="og:description" content="华为1+X-IPV6协议 IPV6协议概述IPV4与IPV61、IPv4的局限性IPv4是目前广泛部署的互联网协议，它经过了多年的发展，己经非常成熟，易于实现，得到了所有厂商和设备的支持，但也有一些不足之处。（1）能够提供的地址空间不足且分配不均（2）互联网骨干路由器的路由表非常庞大  tip： （1）能够提供的地址空间不足且分配不均互联网起源于20世纪60年代的美国国防部，每台连上网的设备都需要">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg">
+<meta property="article:published_time" content="2021-12-18T07:34:19.000Z">
+<meta property="article:modified_time" content="2022-03-31T11:33:25.437Z">
+<meta property="article:author" content="沅浅">
+<meta property="article:tag" content="基础教程">
+<meta property="article:tag" content="华为1+X">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg"><link rel="shortcut icon" href="/img/yq.jpg"><link rel="canonical" href="http://yqloveljw.xyz/2021/12/18/%E5%8D%8E%E4%B8%BA1+X/7.%E5%8D%8E%E4%B8%BA1+X-IPV6%E5%8D%8F%E8%AE%AE/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '7.华为1+X-IPV6协议',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-31 19:33:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="沅浅" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s4.ax1x.com/2021/12/23/TGe4nf.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">沅浅</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">7.华为1+X-IPV6协议</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-18T07:34:19.000Z" title="发表于 2021-12-18 15:34:19">2021-12-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-31T11:33:25.437Z" title="更新于 2022-03-31 19:33:25">2022-03-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8D%8E%E4%B8%BA1-X/">华为1+X</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="7.华为1+X-IPV6协议"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>华为1+X-IPV6协议</p>
+<h1 id="IPV6协议概述"><a href="#IPV6协议概述" class="headerlink" title="IPV6协议概述"></a>IPV6协议概述</h1><h2 id="IPV4与IPV6"><a href="#IPV4与IPV6" class="headerlink" title="IPV4与IPV6"></a>IPV4与IPV6</h2><p>1、IPv4的局限性<br>IPv4是目前广泛部署的互联网协议，它经过了多年的发展，己经非常成熟，易于实现，得到了所有厂商和设备的支持，但也有一些不足之处。<br>（1）能够提供的地址空间不足且分配不均<br>（2）互联网骨干路由器的路由表非常庞大</p>
+<hr>
+<p><strong>tip：</strong></p>
+<p>（1）能够提供的地址空间不足且分配不均<br>互联网起源于20世纪60年代的美国国防部，每台连上网的设备都需要一个IP地址，初期只有上千台设备联网，使得采用32位长度的IP地址看来几乎不可能被耗尽。但随着互联网的发展，用户数量大量增加，尤其是随着互联网的商业化后，用户呈现几何倍数的增长，IPv4地址资源即将耗尽，IPv4可以提供的232个地址，由于协议设计初的规划问题，部分地址不能被分配使用，如D类地址（组播地址）和E类地址（实验保留），造成整个地址空间进一步缩小。<br>另外，在初期看来是不可能被耗尽的IP地址，在具体数量的分配上也是非常不均匀的，美国占了一半以上的IP地址数量，特别是一些大型公司比如IBM，申请并获得了1000万个以上的IP地址，但实际上往往用不了，造成非常大的浪费。另一方面，亚洲人口众多，但获得的地址却非常有限，互联网发展起步较晚，地址不足这个问题显得更加突出，进一步地限制了互联网的发展和壮大。<br>（2）互联网骨干路由器的路由表非常庞大<br>由于IPv4发展初期缺乏合理的地址规划，造成地址分配的不连续，导致当今互联网骨干设备的BGP路由表非常庞大，已经达到数十万条的规模，并且还在持续增长中。由于缺乏合理的规划，也导致无法实现进一步的路由汇总，这样对骨干设备的处理能力和内存空间带来较大压力，影响了数据包的转发效率。</p>
+<hr>
+<p>2、IPv6的优势<br>IPv6采用128位地址长度，其地址数量总数可达2128个，它使得地球上的每一粒沙子都可以拥有一个IP地址。这不但解决了网络地址资源数量的问题，同时也为万物互联所限制的IP地址数量扫清了障碍。因此，相比IPv4，IPv6具有诸多优点：<br>（1）地址空间巨大<br>（2）层次化的路由设计<br>（3）效率高，扩展灵活<br>（4）支持即插即用<br>（5）更好的安全性保障<br>（6）引入了流标签的概念</p>
+<hr>
+<p><strong>tip：</strong></p>
+<p>（1）地址空间巨大<br>相比IPv4的地址空间而言，IPv6可以提供2128个地址空间，几乎不会被耗尽，可以满足未来网络的任何应用，比如物联网等新应用。<br>（2）层次化的路由设计<br>IPv6地址规划设计时，吸取了IPv4地址分配不连续带来的问题，采用了层次化的设计方法，前3位固定，第4<del>16位是顶级聚合，理论上，互联网骨干设备上的IPv6路由表只有213=8192条路由信息。<br>（3）效率高，扩展灵活<br>相对于IPv4报头大小的可变成20</del>60Byte，IPv6报头采用定长设计，大小固定为40Byte。相对IPv4报头中数量多达12个的选项，IPv6把报头分为基本报头和扩展报头，基本报头中只包含选路所需要的8个基本选项，很多其他的功能都设计为扩展报头，这样有利于路由器的转发效率，同时可以根据新的需求设计出新的扩展报头，具有良好的扩展性。<br>（4）支持即插即用<br>设备连接到网络中，可以通过自动配置的方式获取网络前缀和参数，并自动结合设备自身的链路地址生成IP地址，简化了网络管理。<br>（5）更好的安全性保障<br>由于IPv6协议通过扩展报头的形式支持IPSec协议，无需借助其他安全加密设备，可以直接为上层数据提供加密和身份验证，保障数据传输的安全。<br>（6）引入了流标签的概念<br>使用IPv6新增加的Flow Label字段，加上相同的源地址和目的地址，可以标记数据包同属于某个相同的流量，业务可以根据不同的数据流进行更细的分类，实现优先级控制，比如基于流的QOS等应用，适合于对连接的服务质量有特殊要求的通信，诸如音频或视频等实时数据传输。</p>
+<hr>
+<h2 id="IPV6的数据包封装"><a href="#IPV6的数据包封装" class="headerlink" title="IPV6的数据包封装"></a>IPV6的数据包封装</h2><p>1、IPv6的数据报封装</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Ti7emj"><img src="https://s4.ax1x.com/2021/12/17/Ti7emj.png" alt="Ti7emj.png"></a></p>
+<p>由于IPv4中的报头功能字段过多，路由器查找选路的时候需要读取每一个字段，但往往很多字段都是空的，这样会导致转发效率低下，所以在IPv6中把报文的报头分为基本报头和扩展报头2部分，基本报头中只包含基本的必要属性比如源IP地址、目的IP地址等，扩展功能用扩展报头添加在基本报头的后面。</p>
+<p>2、IPv6基本报头<br>不同于IPv4报头的长度为20~60Byte，IPv6基本报头是定长40Byte，其中包含8个字段。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Ti7YnJ"><img src="https://s4.ax1x.com/2021/12/17/Ti7YnJ.png" alt="Ti7YnJ.png"></a></p>
+<p>3、IPv6基本报头字段解释<br>Version:4bit，指定IPv6，数值=6。<br>Traffic Class:8bit，用来区分不同类型或优先级的IPv6数据包。<br>Flow Label:20bit，用作标识同一个数据流，此字段为IPv6新增字段。<br>Payload Length:16bit，数据包的有效载荷。<br>Next Header:8bit，指明跟在基本报头后面是哪种扩展报头或者上层协议中的协议类型。<br>Source Address:128bit，数据包的源IPv6地址，必须是单播地址。<br>Destination Address:128bit，数据包的目标IPv6地址，可以是单播或组播地址。</p>
+<hr>
+<p><strong>tip：</strong></p>
+<p>Version:4bit，指定IPv6，数值=6。<br>Traffic Class:8bit，流量类别字段的功能跟IPv4中的TOS字段类似，用来区分不同类型或优先级的IPv6数据包，该字段根据RFC2647中定义的差分服务技术，使用了6bit作为DSCP，可以表示的DSCP值的范围为0~63。<br>Flow Label:20bit，用作标识同一个数据流，此字段为IPv6新增字段。由于可以标记一个流中的所有数据包，所以路由器可以利用该字段来辨别一个流，而不用处理流中每个数据包头，提高了处理效率。目前该字段的使用还在试用阶段。<br>Payload Length:16bit，数据包的有效载荷，指报头后的数据内容长度，单位是Byte，最大数值为65535，指IPv6基本报头后面的长度，包含扩展报头部分。该字段和IPv4报文头部中的总长度字段不同点在于，IPv4报头中总长度字段是指报头和数据两部分的长度，而IPv6的有效载荷字段只是指数据部分的长度，不包括IPv6基本报头。<br>Next Header:8bit，指明跟在基本报头后面是哪种扩展报头或者上层协议中的协议类型。如果只有基本报头而无扩展报头，那么该字段的值指示的是数据部分所承载的协议类型，这一点类似于IPv4报头中的协议宇段，而且与IPv4的协议字段使用相同的协议值，比如UDP为6，TCP为17。表7-1列出了常用的上层协议及对应的Next Header值。<br>Hop Limit:8bit，功能类似于IPv4中的TTL字段，最大值为255，报文每经过一跳，该字段值会减1，减到0后数据包被丢弃。对于IPv6来说，此时会发送一条ICMPv6超时消息，以通知数据包的源端数据已经被丢弃。<br>Source Address:128bit，数据包的源IPv6地址，必须是单播地址。<br>Destination Address:128bit，数据包的目标IPv6地址，可以是单播或组播地址。</p>
+<hr>
+<p>4、常见的上层协议及对应的Next Header值</p>
+<table>
+<thead>
+<tr>
+<th>Next Header值</th>
+<th>对应的扩展报头或高层协议类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>逐跳选项扩展报头</td>
+</tr>
+<tr>
+<td>6</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>17</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>43</td>
+<td>路由选择扩展报头</td>
+</tr>
+<tr>
+<td>44</td>
+<td>分段扩展报头</td>
+</tr>
+<tr>
+<td>50</td>
+<td>ESP扩展报头</td>
+</tr>
+<tr>
+<td>51</td>
+<td>AH扩展报头</td>
+</tr>
+<tr>
+<td>58</td>
+<td>ICMPv6</td>
+</tr>
+<tr>
+<td>60</td>
+<td>目的选项扩展报头</td>
+</tr>
+<tr>
+<td>89</td>
+<td>OSPFv3</td>
+</tr>
+</tbody></table>
+<p>5、IPv6扩展报头<br>IPv6的扩展报头被当作IPv6静载荷的一部分，计算在IPv6基本报头的Payload Length字段内。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Ti7X40"><img src="https://s4.ax1x.com/2021/12/17/Ti7X40.png" alt="Ti7X40.png"></a></p>
+<p>IPv6扩展报头是可选报头，跟在IPv6基本报头后，其作用是取代IPv4报头中的选项宇段，这样可以使得IPv6的基本报头采用定长设计（40Byte），并把IPv4中的部分字段如分段字段独立出来，设计为IPv6分段扩展报头，这样做的好处是大大提高了中间节点对IPv6数据包的转发效率。每个IPv6数据包都可以有0个或者多个扩展报头，每个扩展报头长度都是8Byte的整数倍。IPv6基本报头和扩展报头的Next Header字段表明了紧跟在本报头后面的是什么内容，可能是另一个扩展报头或者是高层协议。<br>目前，RFC2460中定义了6个IPv6扩展报头:逐跳选项报头、目的选项报头、路由报头、分段报头、认证报头、封装安全净载报头。</p>
+<p>6、IPv6扩展报头<br>逐跳选项扩展报头和目的选项扩展报头的数据部分都采用类型-长度-值（TLV）的选项设计。</p>
+<table>
+<thead>
+<tr>
+<th>选项类型Option Type</th>
+<th>选项数据长度Option Data Len</th>
+<th>选项数据Option Data</th>
+</tr>
+</thead>
+</table>
+<p>7、IPv6扩展报头字段解释<br>Option Type:8bit，<br>标识类型，最高2位表示当设备部识别此扩展报头时的处理方法。<br>Opt Data Len:8bit，<br>标识Option Data部分的长度，最大为255，单位是Byte，不包含Option Type和Opt Data Len部分的长度。<br>Option Data:长度可变，最大为255Byte，<br>包含选项的具体数据内容。</p>
+<hr>
+<p><strong>tip：</strong></p>
+<p>Option Type:8bit，标识类型，最高2位表示当设备部识别此扩展报头时的处理方法。<br>00:跳过这个选项。<br>01:丢弃数据包，不通知发送方。<br>10:丢弃数据包，不论目的地址是否为组播，向发送方发1个ICMPv6的错误信息报文。<br>11:丢弃数据包，当目的地址不是组播时，向发送方发1个ICMPv6的错误信息报文。<br>第3位表示在选路过程中，Data部分是否可以被改变。<br>0:表示Option不能被改变。<br>1:表示Option可以被改变。<br>值得注意的是:如果存在认证扩展报头，在计算数据包的校验值时，可变化Data部分需要被当成8bit的全0处理。<br>Opt Data Len:8bit，标识Option Data部分的长度，最大为255，单位是Byte，不包含Option Type和Opt Data Len部分的长度。<br>Option Data:长度可变，最大为255Byte，包含选项的具体数据内容。</p>
+<hr>
+<h2 id="地址的表示方式"><a href="#地址的表示方式" class="headerlink" title="地址的表示方式"></a>地址的表示方式</h2><p>1、IPv6地址的表示方式<br>对于IPv6来说，我们将16位分成1块，一共分为8块，每块用”:”相隔。下面就是一个IPv6地址的完整表达:</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TiHGPP"><img src="https://s4.ax1x.com/2021/12/17/TiHGPP.png" alt="TiHGPP.png"></a></p>
+<p>对于IPv4的32位地址，我们习惯分成4块，每块有8位，中间用”.”号相隔，为了方便书写和记忆，一般换算成十进制表示，比如11000000.10101000.00000001.00000001，可以表示为192.168.1.1。这种表达方法可以称为点分十进制。</p>
+<p>2、IPv6地址的表示方式的简化规则1<br>每一个地址块的起始部分的0可以省略掉。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TiHqMD"><img src="https://s4.ax1x.com/2021/12/17/TiHqMD.png" alt="TiHqMD.png"></a></p>
+<p>3、IPv6地址的表示方式的简化规则2<br>有1个或连续多个0组成的地址块可以用”::”取代。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TibJoR"><img src="https://s4.ax1x.com/2021/12/17/TibJoR.png" alt="TibJoR.png"></a></p>
+<p>4、IPv6地址表示方式注意事项<br>在整个地址中，只能出现一次”::”。比如以下完整的IPv6地址:<br>【2001:0000:0000:0001:0000:0000:0000:0001】</p>
+<p>错误的简化表达：<br>【2001::1::1】</p>
+<p>可以正确表示为以下2种表达方式。<br>表达方式1：【2001::1:0:0:0:1】<br>表达方式2：【2001:0:0:1::1】</p>
+<p>由于上述表达方式中出现了2次”::”将导致无法判断具体哪几块地址被省略，会引起歧义</p>
+<p>5、IPv6地址网络位和主机位<br>IPv6地址也分为2部分:网络位和主机位，为了区分这两部分，在IPv6地址后面加上”/数字（十进制）”的组合，数字用来确定从头开始的几位是网络位。<br>例【2001::1/64】</p>
+<h2 id="地址的配置"><a href="#地址的配置" class="headerlink" title="地址的配置"></a>地址的配置</h2><p>案例7-1IPv6的基本配置</p>
+<p>构建如下图所示的实训拓扑，按如下要求完成实训内容：<br>（1）启用路由器的IPv6功能；<br>（2）配置路由器接口的IPv6地址；<br>（3）测试两台路由器的连通性。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TibgYt"><img src="https://s4.ax1x.com/2021/12/17/TibgYt.png" alt="TibgYt.png"></a></p>
+<p>案例7-1配置步骤1<br>在路由器R1启用IPv6功能，在G0/0/1接口上配置IPv6地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Huawei&gt;system-view </span><br><span class="line">[Huawei]sysname R1</span><br><span class="line">[R1]ipv6</span><br><span class="line">[R1]interface GigabitEthernet 0/0/1</span><br><span class="line">[R1-GigabitEthernet0/0/1]ipv6 enable </span><br><span class="line">[R1-GigabitEthernet0/0/1]ipv6 address 2001::1/64</span><br></pre></td></tr></table></figure>
+
+<p>在路由器R2启用IPv6功能，在G0/0/1接口上配置IPv6地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Huawei&gt;system-view </span><br><span class="line">[Huawei]sysname R2</span><br><span class="line">[R2]ipv6</span><br><span class="line">[R2]interface GigabitEthernet 0/0/1</span><br><span class="line">[R2-GigabitEthernet0/0/1]ipv6 enable </span><br><span class="line">[R2-GigabitEthernet0/0/1]ipv6 address 2001::2/64</span><br></pre></td></tr></table></figure>
+
+<p>案例7-1验证1<br>在路由器上通过【display ipv6 interface brief】命令查看路由器接口的IPv6地址信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[R1]display ipv6 interface brief</span><br><span class="line">*down: administratively down</span><br><span class="line">(l): loopback</span><br><span class="line">(s): spoofing</span><br><span class="line">Interface                    Physical              Protocol   </span><br><span class="line">GigabitEthernet0/0/1         up                    up         </span><br><span class="line">[IPv6 Address] 2001::1</span><br></pre></td></tr></table></figure>
+
+<p>案例7-1验证2<br>在路由器上通过【ping】命令测试两台路由器IPv6地址的连通性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[R1]ping ipv6 2001::2</span><br><span class="line">  PING 2001::2 : 56  data bytes, press CTRL_C to break</span><br><span class="line">    Reply from 2001::2 </span><br><span class="line">    bytes=56 Sequence=1 hop limit=64  time = 90 ms</span><br><span class="line">    Reply from 2001::2 </span><br><span class="line">    bytes=56 Sequence=2 hop limit=64  time = 30 ms</span><br><span class="line"> </span><br><span class="line">  --- 2001::2 ping statistics ---</span><br><span class="line">    5 packet(s) transmitted</span><br><span class="line">    5 packet(s) received</span><br><span class="line">    0.00% packet loss</span><br><span class="line">    round-trip min/avg/max = 10/34/90 ms</span><br></pre></td></tr></table></figure>
+
+<h1 id="IPV6地址分类"><a href="#IPV6地址分类" class="headerlink" title="IPV6地址分类"></a>IPV6地址分类</h1><h2 id="IPV6地址结构"><a href="#IPV6地址结构" class="headerlink" title="IPV6地址结构"></a>IPV6地址结构</h2><p>1、IPv6地址结构<br>IPv6的地址的结构为：网络前缀+接口ID，网络前缀:相当于IPv4中的网络位，接口ID:相当于IPv4中的主机位。<br>IPv6中较常用的网络大小是64位前缀长度的网络。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Tiqm0H"><img src="https://s4.ax1x.com/2021/12/17/Tiqm0H.png" alt="Tiqm0H.png"></a></p>
+<h2 id="IPV6单播地址"><a href="#IPV6单播地址" class="headerlink" title="IPV6单播地址"></a>IPV6单播地址</h2><p>2、IPv6单播地址<br>IPv6单播地址表示唯一标识一个接口，类似于IPv4的单播地址。发送到单播地址的数据包将被传输到此地址所标识的唯一接口，一个单播地址只能标识一个接口，但一个接口可以有多个单播地址。<br>单播地址可细分为以下几类：<br>链路本地地址<br>唯一本地地址<br>全球单播地址<br>嵌入IPv4地址的IPv6地址</p>
+<p>3、链路本地地址<br>链路本地地址（Link-local）只在同一链路上的节点之间有效，在IPv6启动后就自动生成，使用了特定的前缀FE80::/10，接口ID使用EUI-64自动生成，也可以使用手动配置。<br>例：使用EUI-64将MAC地址为A1-B2-C3-D4-E5-F6的主机的IPv6地址生成过程如下：<br>（1）先将MAC地址拆分为2部分：【A1B2C3】、【D4E5F6】；<br>（2）在MAC地址的中间加上FFFE变成：【A1B2C3FFFED4E5F6】；<br>（3）将第7位求反：【A3B2C3FFFED4E5F6】；<br>（4）EUI-64计算得出的接口ID为：【A3B2:C3FF:FED4:E5F6】。</p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>链路本地地址的引入是IPv6地址的一个非常方便的地方，它可以在节点未配置全球单播地址的前提下，仍然互相通信。<br>链路本地地址只在同一链路上的节点之间有效，在IPv6启动后就自动生成，使用了特定的前缀FE80::/10，接口ID使用EUI-64自动生成，也可以使用手动配置。链路本地地址用于实现无状态自动配置、邻居发现等应用。同时，OSPFv3、RIPng等协议都工作在该地址上。eBGP邻居也可以使用该地址来建立邻居关系。路由表中路由的下一跳或主机的默认网关都是链路本地地址。</p>
+<hr>
+<p>4、唯一本地地址<br>唯一本地地址是IPv6网络中可以自己随意使用的私有网络地址，使用特定的前缀FD00/8。<br>固定前缀：8bit，FD00/8。<br>Global ID：40bit，全球唯一前缀；通过伪随机方式产生。<br>Subnet ID：16bit，工程师根据网络规划自定义的子网ID。<br>Interface ID：64bit，相当于IPv4中的主机位。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TiqrcT"><img src="https://s4.ax1x.com/2021/12/17/TiqrcT.png" alt="TiqrcT.png"></a></p>
+<p>唯一本地地址的设计使私有网络地址具备唯一性，既使任两个使用私有地址的Site互联也不用担心地址会冲突。</p>
+<p>5、全球单播地址<br>全球单播地址相当于IPv4中的公网地址，日前已经分配出去的前3位固定是001，所以已分配的地址范围是2000::/3。<br>001：3bit，目前已分配的固定前缀为001。<br>TLA（Top Level Aggregation）顶级聚合：13bit。<br>RES:8bit，保留使用，为未来扩充TLA或者NLA预留。<br>NLA（Next Level Aggregation）次级聚合：24bit。<br>SLA（Site Level Aggregation）站点级聚合：16bit。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TiOqfI"><img src="https://s4.ax1x.com/2021/12/17/TiOqfI.png" alt="TiOqfI.png"></a></p>
+<p>001：3bit，目前已分配的固定前缀为001。<br>TLA（Top Level Aggregation）顶级聚合：13bit，IPv6的管理机构根据TLA分配不同的地址给某些骨干网的ISP，最大可以得到8192个顶级路由。<br>RES:8bit，保留使用，为未来扩充TLA或者NLA预留。<br>NLA（Next Level Aggregation）次级聚合：24bit，骨干网ISP根据NLA为各个中小ISP分配不同的地址段，中小ISP也可以针对NLA进一步分割不同地址段，分配给不同用户。<br>SLA（Site Level Aggregation）站点级聚合：16bit，公司或企业内部根据SLA把同一大块地址分成不同的网段，分配给各站点使用，一般用作公司内部网络规划，最大可以有65536个子网。</p>
+<p>6、嵌入IPv4地址的IPv6地址-兼容IPv4的IPv6地址<br>这种IPv6地址的低32位携带一个IPv4的单播地址，一般主要使用于IPv4兼容IPv6自动隧道，但由于每个主机都需要一个单播IPv4地址，扩展性差，基本已经被6to4隧道取代。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TiXCkj"><img src="https://s4.ax1x.com/2021/12/17/TiXCkj.png" alt="TiXCkj.png"></a></p>
+<p>7、嵌入IPv4地址的IPv6地址-映射IPv4的IPv6地址<br>这种地址的最前80bit全为0，后面16bit全为1，最后32bit是IPv4地址。这种地址是把IPv4地址用IPv6表示。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TiXA10"><img src="https://s4.ax1x.com/2021/12/17/TiXA10.png" alt="TiXA10.png"></a></p>
+<p>8、嵌入IPv4地址的IPv6地址- 6to4地址<br>6to4地址用在6to4隧道中，它使用IANA指定的2002::/16为前缀，其后是32位的IPv4地址，6to4地址中后80位由用户自己定义，可对其中前16位划分，定义多个IPv6子网。不同的6to4网络使用不同的48位前缀，彼此之间使用其中内嵌的32位IPv4地址的自动隧道来连接。</p>
+<table>
+<thead>
+<tr>
+<th>地址类型</th>
+<th>高位二进制</th>
+<th>十六进制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>链路本地地址</td>
+<td>1111111010</td>
+<td>FE80::/10</td>
+</tr>
+<tr>
+<td>唯一本地地址</td>
+<td>11111101</td>
+<td>FD00:8</td>
+</tr>
+<tr>
+<td>全球单播地址（已分配）</td>
+<td>001</td>
+<td>2……/4或者3……/4</td>
+</tr>
+<tr>
+<td>全丢单播地址（未分配）</td>
+<td>其余所有地址</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="IPV6组播地址"><a href="#IPV6组播地址" class="headerlink" title="IPV6组播地址"></a>IPV6组播地址</h2><p>1、IPv6组播地址<br>在IPv6中不存在广播报文，要通过组播来实现，广播本身就是组播的一种应用。组播地址标识一组接口，目的地址是组播地址的数据包会被属于该组的所有接口所接收。<br>FF：8bit，IPv6组播地址前8位都是FF/8，以FF::/8开头。<br>Left time：4bit，第1位都是0，格式|0|r|p|t|。<br>Scope：4bit，标识传播范围。<br>Group ID：112bit，组播组标识号。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TiXenU"><img src="https://s4.ax1x.com/2021/12/17/TiXenU.png" alt="TiXenU.png"></a></p>
+<p>FF：8bit,IPv6组播地址前8位都是FF/8，以FF::/8开头。<br>Left time：4bit，第1位都是0，格式|0|r|p|t|。<br>r位：取0表示非内嵌RP，取1表示内嵌RP。<br>p位：取0表示非基于单播前缀的组播地址，取1表示基于单播前缀的组播地址，p位取1，则t位必须为1。<br>t位：取0表示永久分配组播地址，取1表示临时分配组播地址。<br>Scope：4bit，标识传播范围。<br>0001    node（节点）<br>0010    link（链路）<br>0101    Site（站点）<br>1000    organization（组织）<br>1110    global（全球）<br>Group ID：112bit，组播组标识号。</p>
+<p>2、IPv6固定的组播地址</p>
+<table>
+<thead>
+<tr>
+<th>固定组播地址</th>
+<th>IPv6组播地址</th>
+<th>相当于IPv4的哪些地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>所有节点的组播地址</td>
+<td>FF02::1</td>
+<td>广播地址</td>
+</tr>
+<tr>
+<td>所有路由器的组播地址</td>
+<td>FF02::2</td>
+<td>224.0.0.2</td>
+</tr>
+<tr>
+<td>所有OSPFv3路由器地址</td>
+<td>FF02::5</td>
+<td>224.0.0.5</td>
+</tr>
+<tr>
+<td>所有OSPFv3DR和BDR</td>
+<td>FF02::6</td>
+<td>224.0.0.6</td>
+</tr>
+<tr>
+<td>所有RP路由器</td>
+<td>FF02::9</td>
+<td>224.0.0.9</td>
+</tr>
+<tr>
+<td>所有PIM路由器</td>
+<td>FF02::D</td>
+<td>224.0.0.13</td>
+</tr>
+</tbody></table>
+<p>3、特殊地址<br>0:0:0:0:0:0:0:0（简化为::）未指定地址:<br>它不能分配给任何节点，表示当前状态下没有地址，如当设备刚接入网络后，本身没有地址，则发送数据包的源地址使用该地址，比如发送RA消息，DAD（重复地址检测）。该地址不能用作目的地址。<br>0:0:0:0:0:0:0:1（简化为::1）环回地址:<br>节点用它作为发送后返回给自己的IPv6报文，不能分配给任何物理接口。</p>
+<h2 id="IPV6任播地址"><a href="#IPV6任播地址" class="headerlink" title="IPV6任播地址"></a>IPV6任播地址</h2><p>1、IPv6任播地址<br>任播的概念最初是在RFC1546（Host Anycasting Service）中提出并定义的，主要为DNS和HTTP提供服务。<br>IPv6中没有为任播规定单独的地址空间，任播地址和单播地址使用相同的地址空间。<br>IPv6任播地址可以同时被分配给多个设备，也就是说多台设备可以有相同的任播地址，以任播地址为目标的数据包会通过路由器的路由表被路由到离源设备最近的拥有该目标地址的设备。</p>
+<p>任播的概念最初是在RFC1546（Host Anycasting Service）中提出并定义的，主要为DNS和HTTP提供服务。IPv6中没有为任播规定单独的地址空间，任播地址和单播地址使用相同的地址空间。IPv6任播地址可以同时被分配给多个设备，也就是说多台设备可以有相同的任播地址，以任播地址为目标的数据包会通过路由器的路由表被路由到离源设备最近的拥有该目标地址的设备。</p>
+<p>2、任播地址示意图</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TiXB9I"><img src="https://s4.ax1x.com/2021/12/17/TiXB9I.png" alt="TiXB9I.png"></a></p>
+<p>任播技术的优势在于源节点不需要了解为其提供服务的具体节点，而可以接收特定服务，当一个节点无法工作时，带有任播地址的数据包又被发往其他两个主机节点，从任播成员中选择合适的目的地节点取决于路由协议重新收敛后的路由表情况。<br>任播可以分为基于网络层的任播和基于应用层的任播。两者主要的区别是网络层的任播仅仅依靠网络本身（比如路由表）来选择目标服务器节点，而应用层任播是基于一定的探测手段和算法来选择性能最好的目标服务器节点。RFC2491和RFC2526定义了一些保留的任播地址格式，如子网路由器任播地址，用来满足不同的任播应用访问需求。</p>
+<h1 id="IPV6路由"><a href="#IPV6路由" class="headerlink" title="IPV6路由"></a>IPV6路由</h1><h2 id="IPV6静态路由的配置"><a href="#IPV6静态路由的配置" class="headerlink" title="IPV6静态路由的配置"></a>IPV6静态路由的配置</h2><p>案例7-2：IPv6静态路由的配置<br>在IPv6网络中，跨网段的IPv6主机通信同样需要有路由表进行转发。<br>（1）路由器启用IPv6功能。<br>（2）配置IPv6地址。<br>（3）配置IPv6静态路由。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TiX6u8"><img src="https://s4.ax1x.com/2021/12/17/TiX6u8.png" alt="TiX6u8.png"></a></p>
+<p>案例7-2配置步骤1<br>在路由器R1的接口上启用IPv6功能，并配置IPv6地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;Huawei&gt;system-view </span><br><span class="line">[Huawei]sysname R1</span><br><span class="line">[R1]ipv6</span><br><span class="line">[R1]interface GigabitEthernet 0/0/1</span><br><span class="line">[R1-GigabitEthernet0/0/1]ipv6 enable </span><br><span class="line">[R1-GigabitEthernet0/0/1]ipv6 address 2001::1/64</span><br><span class="line">[R1]interface GigabitEthernet 0/0/2</span><br><span class="line">[R1-GigabitEthernet0/0/2]ipv6 enable </span><br><span class="line">[R1-GigabitEthernet0/0/2]ipv6 address 2002::1/64</span><br></pre></td></tr></table></figure>
+
+<p>案例7-2配置步骤2<br>路由器R2的接口上启用IPv6功能，并配置IPv6地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;Huawei&gt;system-view </span><br><span class="line">[Huawei]sysname R2</span><br><span class="line">[R2]ipv6</span><br><span class="line">[R2]interface GigabitEthernet 0/0/1</span><br><span class="line">[R2-GigabitEthernet0/0/1]ipv6 enable </span><br><span class="line">[R2-GigabitEthernet0/0/1]ipv6 address 2001::2/64</span><br><span class="line">[R2]interface GigabitEthernet 0/0/2</span><br><span class="line">[R2-GigabitEthernet0/0/2]ipv6 enable </span><br><span class="line">[R2-GigabitEthernet0/0/2]ipv6 address 2003::1/64</span><br></pre></td></tr></table></figure>
+
+<p>案例7-2配置步骤3<br>在路由器R1上配置去往2003::/64的静态路由，下一跳指向2001::2。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[R1]ipv6 route-static 2003:: 64 2001::2</span><br></pre></td></tr></table></figure>
+
+<p>在路由器R2上配置去往2002::/64的静态路由，下一跳指向2001::1。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[R2]ipv6 route-static 2002:: 64 2001::1</span><br></pre></td></tr></table></figure>
+
+<p>案例7-2案例验证1<br>配置PC1的IPv6地址，使用【ipconfig】命令查看地址配置状态。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PC&gt;ipconfig</span><br><span class="line"> </span><br><span class="line">Link local IPv6 address...........: fe80::5689:98ff:fec2:7ef2</span><br><span class="line">IPv6 address......................: 2002::2 / 64</span><br><span class="line">IPv6 gateway......................: 2002::1</span><br><span class="line">IPv4 address......................: 0.0.0.0</span><br><span class="line">Subnet mask.......................: 0.0.0.0</span><br><span class="line">Gateway...........................: 0.0.0.0</span><br><span class="line">Physical address..................: 54-89-98-C2-7E-F2</span><br><span class="line">DNS server........................:</span><br></pre></td></tr></table></figure>
+
+<p>案例7-2案例验证2<br>配置PC2的IPv6地址，使用【ipconfig】命令查看地址配置状态。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PC&gt;ipconfig</span><br><span class="line"> </span><br><span class="line">Link local IPv6 address...........: fe80::5689:98ff:fea9:6dc3</span><br><span class="line">IPv6 address......................: 2003::2 / 64</span><br><span class="line">IPv6 gateway......................: 2003::1</span><br><span class="line">IPv4 address......................: 0.0.0.0</span><br><span class="line">Subnet mask.......................: 0.0.0.0</span><br><span class="line">Gateway...........................: 0.0.0.0</span><br><span class="line">Physical address..................: 54-89-98-A9-6D-C3</span><br><span class="line">DNS server........................:</span><br></pre></td></tr></table></figure>
+
+<p>案例7-2案例验证3<br>在PC1上【ping】PC2的IPv6地址，测试网络的连通性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PC&gt;ping 2003::2</span><br><span class="line">Ping 2003::2: 32 data bytes, Press Ctrl_C to break</span><br><span class="line">From 2003::2: bytes=32 seq=1 hop limit=253 time=32 ms</span><br><span class="line">From 2003::2: bytes=32 seq=2 hop limit=253 time=15 ms</span><br><span class="line">From 2003::2: bytes=32 seq=3 hop limit=253 time=32 ms</span><br><span class="line">From 2003::2: bytes=32 seq=4 hop limit=253 time=15 ms</span><br><span class="line">From 2003::2: bytes=32 seq=5 hop limit=253 time=16 ms</span><br><span class="line">--- 2003::2 ping statistics ---</span><br><span class="line">  5 packet(s) transmitted</span><br><span class="line">  5 packet(s) received</span><br><span class="line">  0.00% packet loss</span><br><span class="line">  round-trip min/avg/max = 15/22/32 ms</span><br></pre></td></tr></table></figure>
+
+<h2 id="默认路由的配置"><a href="#默认路由的配置" class="headerlink" title="默认路由的配置"></a>默认路由的配置</h2><p>案例7-3：IPv6默认路由的配置<br>在IPv6网络中，当路由器的出口仅有一个接口时，可以使用IPv6默认路由代替静态路由。<br>（1）路由器启用IPv6功能。<br>（2）配置IPv6地址。<br>（3）配置IPv6路由。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TijHzt"><img src="https://s4.ax1x.com/2021/12/17/TijHzt.png" alt="TijHzt.png"></a></p>
+<p>案例7-3配置步骤1<br>在路由器R1的接口上启用IPv6功能，并配置IPv6地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;Huawei&gt;system-view </span><br><span class="line">[Huawei]sysname R1</span><br><span class="line">[R1]ipv6</span><br><span class="line">[R1]interface GigabitEthernet 0/0/1</span><br><span class="line">[R1-GigabitEthernet0/0/1]ipv6 enable </span><br><span class="line">[R1-GigabitEthernet0/0/1]ipv6 address 2001::1/64</span><br><span class="line">[R1]interface GigabitEthernet 0/0/2</span><br><span class="line">[R1-GigabitEthernet0/0/2]ipv6 enable </span><br><span class="line">[R1-GigabitEthernet0/0/2]ipv6 address 2003::1/64</span><br></pre></td></tr></table></figure>
+
+<p>案例7-3配置步骤2<br>路由器R2的接口上启用IPv6功能，并配置IPv6地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;Huawei&gt;system-view </span><br><span class="line">[Huawei]sysname R2</span><br><span class="line">[R2]ipv6</span><br><span class="line">[R2]interface GigabitEthernet 0/0/1</span><br><span class="line">[R2-GigabitEthernet0/0/1]ipv6 enable </span><br><span class="line">[R2-GigabitEthernet0/0/1]ipv6 address 2002::1/64</span><br><span class="line">[R2]interface GigabitEthernet 0/0/2</span><br><span class="line">[R2-GigabitEthernet0/0/2]ipv6 enable </span><br><span class="line">[R2-GigabitEthernet0/0/2]ipv6 address 2004::1/64</span><br></pre></td></tr></table></figure>
+
+<p>案例7-3配置步骤3<br>路由器R3的接口上启用IPv6功能，并配置IPv6地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;Huawei&gt;system-view </span><br><span class="line">[Huawei]sysname R3</span><br><span class="line">[R3]ipv6</span><br><span class="line">[R3]interface GigabitEthernet 0/0/1</span><br><span class="line">[R3-GigabitEthernet0/0/1]ipv6 enable </span><br><span class="line">[R3-GigabitEthernet0/0/1]ipv6 address 2001::2/64</span><br><span class="line">[R3]interface GigabitEthernet 0/0/2</span><br><span class="line">[R3-GigabitEthernet0/0/2]ipv6 enable </span><br><span class="line">[R3-GigabitEthernet0/0/2]ipv6 address 2002::2/64</span><br></pre></td></tr></table></figure>
+
+<p>案例7-3配置步骤4<br>在路由器R1上配置默认路由，下一跳指向2001::2。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[R1] ipv6 route-static :: 0 2001::2</span><br></pre></td></tr></table></figure>
+
+<p>在路由器R2上配置默认路由，下一跳指向2002::2。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[R2] ipv6 route-static :: 0 2002::2</span><br></pre></td></tr></table></figure>
+
+<p>在路由器R3上配置两条静态路由。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[R3]ipv6 route-static 2003:: 64 2001::1</span><br><span class="line">[R3]ipv6 route-static 2004:: 64 2002::1</span><br></pre></td></tr></table></figure>
+
+<p>案例7-3案例验证1<br>配置PC1的IPv6地址，使用【ipconfig】命令查看地址配置状态。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PC&gt;ipconfig</span><br><span class="line"> </span><br><span class="line">Link local IPv6 address...........: fe80::5689:98ff:fe6f:58c1</span><br><span class="line">IPv6 address......................: 2003::2 / 64</span><br><span class="line">IPv6 gateway......................: 2003::1</span><br><span class="line">IPv4 address......................: 0.0.0.0</span><br><span class="line">Subnet mask.......................: 0.0.0.0</span><br><span class="line">Gateway...........................: 0.0.0.0</span><br><span class="line">Physical address..................: 54-89-98-6F-58-C1</span><br><span class="line">DNS server........................:</span><br></pre></td></tr></table></figure>
+
+<p>案例7-3案例验证2<br>配置PC2的IPv6地址，使用【ipconfig】命令查看地址配置状态。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PC&gt;ipconfig</span><br><span class="line"> </span><br><span class="line">Link local IPv6 address...........: fe80::5689:98ff:fe58:3198</span><br><span class="line">IPv6 address......................: 2004::2 / 64</span><br><span class="line">IPv6 gateway......................: 2004::1</span><br><span class="line">IPv4 address......................: 0.0.0.0</span><br><span class="line">Subnet mask.......................: 0.0.0.0</span><br><span class="line">Gateway...........................: 0.0.0.0</span><br><span class="line">Physical address..................: 54-89-98-58-31-98</span><br><span class="line">DNS server........................:</span><br></pre></td></tr></table></figure>
+
+<p>案例7-3案例验证3<br>在PC1上【ping】PC2的IPv6地址，测试网络的连通性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PC&gt;ping 2004::2</span><br><span class="line"> </span><br><span class="line">Ping 2004::2: 32 data bytes, Press Ctrl_C to break</span><br><span class="line">From 2004::2: bytes=32 seq=1 hop limit=252 time=32 ms</span><br><span class="line">From 2004::2: bytes=32 seq=2 hop limit=252 time=15 ms</span><br><span class="line">From 2004::2: bytes=32 seq=3 hop limit=252 time=32 ms</span><br><span class="line"></span><br><span class="line">--- 2004::2 ping statistics ---</span><br><span class="line">  5 packet(s) transmitted</span><br><span class="line">  5 packet(s) received</span><br><span class="line">  0.00% packet loss</span><br><span class="line">  round-trip min/avg/max = 15/25/32 ms</span><br></pre></td></tr></table></figure>
+
+<h2 id="汇总路由的配置"><a href="#汇总路由的配置" class="headerlink" title="汇总路由的配置"></a>汇总路由的配置</h2><p>案例7-4：IPv6汇总路由的配置<br>在IPv6网络中，当多条路由的下一跳地址相同，且存在相同的前缀时，可以将路由进行汇总。<br>（1）创建VLAN并将接口加入VLAN。<br>（2）所有设备启用IPv6功能。<br>（3）并配置IPv6地址。<br>（4）配置IPv6路由。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TivMS1"><img src="https://s4.ax1x.com/2021/12/17/TivMS1.png" alt="TivMS1.png"></a></p>
+<p>案例7-4配置步骤1<br>在交换机S1上创建VLAN10\20\30\100，并将接口分别加入到VLAN10\20\30\100</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;Huawei&gt;system-view </span><br><span class="line">[Huawei]sysname R1</span><br><span class="line">[R1]ipv6</span><br><span class="line">[R1]interface GigabitEthernet 0/0/1</span><br><span class="line">[R1-GigabitEthernet0/0/1]ipv6 enable </span><br><span class="line">[R1-GigabitEthernet0/0/1]ipv6 address 2001::1/64</span><br><span class="line">[R1]interface GigabitEthernet 0/0/2</span><br><span class="line">[R1-GigabitEthernet0/0/2]ipv6 enable </span><br><span class="line">[R1-GigabitEthernet0/0/2]ipv6 address 2003::1/64</span><br></pre></td></tr></table></figure>
+
+<p>案例7-4配置步骤2<br>在交换机S1的接口上启用IPv6功能，并配置IPv6地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[S1]ipv6</span><br><span class="line">[S1]int Vlanif 10</span><br><span class="line">[S1-Vlanif10]ipv6 enable </span><br><span class="line">[S1-Vlanif10]ipv6 address 2001:0:10::1/64</span><br><span class="line">[S1-Vlanif10]quit</span><br><span class="line">[S1]interface vlan 20</span><br><span class="line">[S1-Vlanif20]ipv6 enable </span><br><span class="line">[S1-Vlanif20]ipv6 address 2001:0:20::1/64</span><br><span class="line">[S1-Vlanif20]quit</span><br><span class="line">[S1]interface Vlanif 30</span><br><span class="line">[S1-Vlanif30]ipv6 enable </span><br><span class="line">[S1-Vlanif30]ipv6 address 2001:0:30::1/64</span><br><span class="line">[S1-Vlanif30]quit</span><br><span class="line">[S1]int Vlanif 100</span><br><span class="line">[S1-Vlanif100]ipv6 enable </span><br><span class="line">[S1-Vlanif100]ipv6 address 2001::1/64	</span><br><span class="line">[S1-Vlanif100]quit</span><br></pre></td></tr></table></figure>
+
+<p>案例7-4配置步骤3<br>在路由器R1的接口上启用IPv6功能，并配置IPv6地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Huawei&gt;system-view </span><br><span class="line">[Huawei]sysname R1</span><br><span class="line">[R1]ipv6</span><br><span class="line">[R1]interface GigabitEthernet 0/0/1</span><br><span class="line">[R1-GigabitEthernet0/0/1]ipv6 enable </span><br><span class="line">[R1-GigabitEthernet0/0/1]ipv6 address 2001::2/64</span><br></pre></td></tr></table></figure>
+
+<p>案例7-4配置步骤4<br>（4）在交换机S1上配置默认路由，下一跳指向2001::2。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[S1] ipv6 route-static :: 0 2001::2</span><br></pre></td></tr></table></figure>
+
+<p>（5）在路由器R1上配置汇总后的静态路由，下一跳指向2002::1。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[R1] ipv6 route-static 2001:: 32 2001::1</span><br></pre></td></tr></table></figure>
+
+<p>案例7-4案例验证1<br>配置完成后，可以在R1上使用【display ipv6 routing-table】命令查看IPv6路由表信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[R1]display ipv6 routing-table </span><br><span class="line">Routing Table : Public</span><br><span class="line">	Destinations : 5	Routes : 5</span><br><span class="line"> </span><br><span class="line"> Destination	: 2001::				PrefixLength	: 32</span><br><span class="line"> NextHop	: 2001::1				Preference	: 60</span><br><span class="line"> Cost		: 0				Protocol	: Static</span><br><span class="line"> RelayNextHop	: ::				TunnelID	: 0x0</span><br><span class="line"> Interface	: GigabitEthernet0/0/1	Flags		: RD</span><br><span class="line"> </span><br><span class="line"> Destination	: 2001::				PrefixLength	: 64</span><br><span class="line"> NextHop	: 2001::2				Preference	: 0</span><br><span class="line"> Cost		: 0				Protocol	: Direct</span><br><span class="line"> RelayNextHop	: ::				TunnelID	: 0x0</span><br><span class="line"> Interface	: GigabitEthernet0/0/1	Flags		: D</span><br><span class="line"> </span><br><span class="line"> Destination	: 2001::2				PrefixLength	: 128</span><br><span class="line"> NextHop	: ::1				Preference	: 0</span><br><span class="line"> Cost		: 0				Protocol	: Direct</span><br><span class="line"> RelayNextHop	: ::				TunnelID	: 0x0</span><br><span class="line"> Interface	: GigabitEthernet0/0/1	Flags		: D</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://yqloveljw.xyz">沅浅</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yqloveljw.xyz/2021/12/18/%E5%8D%8E%E4%B8%BA1+X/7.%E5%8D%8E%E4%B8%BA1+X-IPV6%E5%8D%8F%E8%AE%AE/">http://yqloveljw.xyz/2021/12/18/%E5%8D%8E%E4%B8%BA1+X/7.%E5%8D%8E%E4%B8%BA1+X-IPV6%E5%8D%8F%E8%AE%AE/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yqloveljw.xyz" target="_blank">沅浅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">基础教程</a><a class="post-meta__tags" href="/tags/%E5%8D%8E%E4%B8%BA1-X/">华为1+X</a></div><div class="post_share"><div class="social-share" data-image="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/19/%E5%8D%8E%E4%B8%BA1+X/8.%E5%8D%8E%E4%B8%BA1+X-WLAN%E6%8A%80%E6%9C%AF/"><img class="prev-cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">8.华为1+X-WLAN技术</div></div></a></div><div class="next-post pull-right"><a href="/2021/12/17/%E5%8D%8E%E4%B8%BA1+X/6.%E5%8D%8E%E4%B8%BA1+X-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/"><img class="next-cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">6.华为1+X-网络安全技术</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/12/11/%E5%8D%8E%E4%B8%BA1+X/1.%E5%8D%8E%E4%B8%BA1+X-TCP&IP/" title="1.华为1+X&#x2F;TCP&amp;IP"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-11</div><div class="title">1.华为1+X&#x2F;TCP&amp;IP</div></div></a></div><div><a href="/2021/12/13/%E5%8D%8E%E4%B8%BA1+X/2.%E5%8D%8E%E4%B8%BA1+X-%E7%BD%91%E7%BB%9C%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/" title="2.华为1+X&#x2F;网络交换技术"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-13</div><div class="title">2.华为1+X&#x2F;网络交换技术</div></div></a></div><div><a href="/2021/12/14/%E5%8D%8E%E4%B8%BA1+X/3.%E5%8D%8E%E4%B8%BA1+X-%E8%B7%AF%E7%94%B1%E6%8A%80%E6%9C%AF/" title="3.华为1+X-路由技术"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-14</div><div class="title">3.华为1+X-路由技术</div></div></a></div><div><a href="/2021/12/15/%E5%8D%8E%E4%B8%BA1+X/4.%E5%8D%8E%E4%B8%BA1+X-%E7%BD%91%E7%BB%9C%E5%8F%AF%E9%9D%A0%E6%80%A7/" title="4.华为1+X-网络可靠性"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-15</div><div class="title">4.华为1+X-网络可靠性</div></div></a></div><div><a href="/2021/12/16/%E5%8D%8E%E4%B8%BA1+X/5.%E5%8D%8E%E4%B8%BA1+X-%E5%B9%BF%E5%9F%9F%E7%BD%91%E6%8A%80%E6%9C%AF/" title="5.华为1+X-广域网技术"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-16</div><div class="title">5.华为1+X-广域网技术</div></div></a></div><div><a href="/2021/12/17/%E5%8D%8E%E4%B8%BA1+X/6.%E5%8D%8E%E4%B8%BA1+X-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/" title="6.华为1+X-网络安全技术"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-17</div><div class="title">6.华为1+X-网络安全技术</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">沅浅</div><div class="author-info__description">我想记下来很多东西，我太怕我会忘记</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IPV6%E5%8D%8F%E8%AE%AE%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">IPV6协议概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IPV4%E4%B8%8EIPV6"><span class="toc-number">1.1.</span> <span class="toc-text">IPV4与IPV6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPV6%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8C%85%E5%B0%81%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">IPV6的数据包封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text">地址的表示方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.</span> <span class="toc-text">地址的配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IPV6%E5%9C%B0%E5%9D%80%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">IPV6地址分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IPV6%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">IPV6地址结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPV6%E5%8D%95%E6%92%AD%E5%9C%B0%E5%9D%80"><span class="toc-number">2.2.</span> <span class="toc-text">IPV6单播地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPV6%E7%BB%84%E6%92%AD%E5%9C%B0%E5%9D%80"><span class="toc-number">2.3.</span> <span class="toc-text">IPV6组播地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPV6%E4%BB%BB%E6%92%AD%E5%9C%B0%E5%9D%80"><span class="toc-number">2.4.</span> <span class="toc-text">IPV6任播地址</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IPV6%E8%B7%AF%E7%94%B1"><span class="toc-number">3.</span> <span class="toc-text">IPV6路由</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IPV6%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">3.1.</span> <span class="toc-text">IPV6静态路由的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">3.2.</span> <span class="toc-text">默认路由的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%87%E6%80%BB%E8%B7%AF%E7%94%B1%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">3.3.</span> <span class="toc-text">汇总路由的配置</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/13/hexo%E7%BE%8E%E5%8C%96/hexo%E6%B7%BB%E5%8A%A0%E5%BE%BD%E6%A0%87/" title="hexo添加徽标"><img src="https://s4.ax1x.com/2022/01/02/Toe4Qx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo添加徽标"/></a><div class="content"><a class="title" href="/2022/03/13/hexo%E7%BE%8E%E5%8C%96/hexo%E6%B7%BB%E5%8A%A0%E5%BE%BD%E6%A0%87/" title="hexo添加徽标">hexo添加徽标</a><time datetime="2022-03-13T08:58:50.000Z" title="发表于 2022-03-13 16:58:50">2022-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/08/%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E5%B1%B1%E9%B8%A1/R-studio%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="R-studio数据恢复软件使用教程"><img src="https://s1.ax1x.com/2022/03/08/bcnVfg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="R-studio数据恢复软件使用教程"/></a><div class="content"><a class="title" href="/2022/03/08/%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E5%B1%B1%E9%B8%A1/R-studio%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="R-studio数据恢复软件使用教程">R-studio数据恢复软件使用教程</a><time datetime="2022-03-08T02:18:17.000Z" title="发表于 2022-03-08 10:18:17">2022-03-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E5%B0%8F%E5%AE%A2%E6%9C%8D%E5%8A%9F%E8%83%BD/" title="hexo增加小客服功能"><img src="https://s4.ax1x.com/2022/01/02/Toe4Qx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo增加小客服功能"/></a><div class="content"><a class="title" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E5%B0%8F%E5%AE%A2%E6%9C%8D%E5%8A%9F%E8%83%BD/" title="hexo增加小客服功能">hexo增加小客服功能</a><time datetime="2022-03-07T07:38:42.000Z" title="发表于 2022-03-07 15:38:42">2022-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E6%A8%B1%E8%8A%B1%E9%A3%98%E8%90%BD%E8%83%8C%E6%99%AF/" title="hexo增加樱花飘落背景"><img src="https://s4.ax1x.com/2022/01/02/Toe4Qx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo增加樱花飘落背景"/></a><div class="content"><a class="title" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E6%A8%B1%E8%8A%B1%E9%A3%98%E8%90%BD%E8%83%8C%E6%99%AF/" title="hexo增加樱花飘落背景">hexo增加樱花飘落背景</a><time datetime="2022-03-07T07:32:46.000Z" title="发表于 2022-03-07 15:32:46">2022-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E9%A1%B5%E8%84%9A%E8%B7%B3%E5%8A%A8%E7%9A%84%E2%99%A5/" title="hexo增加页脚跳动的♥"><img src="https://s4.ax1x.com/2022/01/02/Toe4Qx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo增加页脚跳动的♥"/></a><div class="content"><a class="title" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E9%A1%B5%E8%84%9A%E8%B7%B3%E5%8A%A8%E7%9A%84%E2%99%A5/" title="hexo增加页脚跳动的♥">hexo增加页脚跳动的♥</a><time datetime="2022-03-07T07:07:44.000Z" title="发表于 2022-03-07 15:07:44">2022-03-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2016 - 2022 By 沅浅</div><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a><a style="margin-inline:5px" target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a><a style="margin-inline:5px" target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a><a style="margin-inline:5px" target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Github托管"></a><a style="margin-inline:5px" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

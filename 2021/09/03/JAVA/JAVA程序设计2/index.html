@@ -1,0 +1,541 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>JAVA程序设计2 | 沅浅</title><meta name="keywords" content="基础教程,JAVA程序设计"><meta name="author" content="沅浅"><meta name="copyright" content="沅浅"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、标识符与关键字1.Java中的标识符在编程过程中，经常需要在程序中定义一些符号来标记一些名称，如包名、类名、方法名、参数名、变量名等，这些符号被称为标识符。标识符可以由任意顺序的太小写字母、数字、下划线（）和美元符号（$）组成，但不能以数字开头，不能是Java中的关键字。 建议初学者在定义标识符时还应该遵循以下规则：  包名所有字母一律小写。例如：cn.itcast.test。 类名和接口名每">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA程序设计2">
+<meta property="og:url" content="http://yqloveljw.xyz/2021/09/03/JAVA/JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A12/index.html">
+<meta property="og:site_name" content="沅浅">
+<meta property="og:description" content="一、标识符与关键字1.Java中的标识符在编程过程中，经常需要在程序中定义一些符号来标记一些名称，如包名、类名、方法名、参数名、变量名等，这些符号被称为标识符。标识符可以由任意顺序的太小写字母、数字、下划线（）和美元符号（$）组成，但不能以数字开头，不能是Java中的关键字。 建议初学者在定义标识符时还应该遵循以下规则：  包名所有字母一律小写。例如：cn.itcast.test。 类名和接口名每">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2021-09-02T23:59:40.000Z">
+<meta property="article:modified_time" content="2022-03-31T11:33:25.383Z">
+<meta property="article:author" content="沅浅">
+<meta property="article:tag" content="基础教程">
+<meta property="article:tag" content="JAVA程序设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/yq.jpg"><link rel="canonical" href="http://yqloveljw.xyz/2021/09/03/JAVA/JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A12/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JAVA程序设计2',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-31 19:33:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="沅浅" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">沅浅</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JAVA程序设计2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-09-02T23:59:40.000Z" title="发表于 2021-09-03 07:59:40">2021-09-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-31T11:33:25.383Z" title="更新于 2022-03-31 19:33:25">2022-03-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">JAVA程序设计</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JAVA程序设计2"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一、标识符与关键字"><a href="#一、标识符与关键字" class="headerlink" title="一、标识符与关键字"></a>一、标识符与关键字</h1><h2 id="1-Java中的标识符"><a href="#1-Java中的标识符" class="headerlink" title="1.Java中的标识符"></a>1.Java中的标识符</h2><p>在编程过程中，经常需要在程序中定义一些符号来标记一些名称，如包名、类名、方法名、参数名、变量名等，这些符号被称为标识符。标识符可以由任意顺序的太小写字母、数字、下划线（）和美元符号（$）组成，但不能以数字开头，不能是Java中的关键字。</p>
+<p>建议初学者在定义标识符时还应该遵循以下规则：</p>
+<ol>
+<li>包名所有字母一律小写。例如：cn.itcast.test。</li>
+<li>类名和接口名每个单词的首字母都要大写。如：ArrayList、Iterator。</li>
+<li>常量名所有字母都大写，单词之间用下划线连接。例如：。<br>DAY_OF_MONTH。</li>
+<li>变量名和方法名的第一个单词首字母小写，从第二个单词开始每个单词首字母大写。例如：lineNumber、getLineNumber。</li>
+<li>在程序中，应该尽量使用有意义的英文单词来定义标识符，使得程序便于阅读。例如使用userName表示用户名，password表示密码</li>
+</ol>
+<h2 id="2-Java中的关键字"><a href="#2-Java中的关键字" class="headerlink" title="2.Java中的关键字"></a>2.Java中的关键字</h2><p>关键字是编程语言里事先定义好并赋予了特殊含义的单词，也称作保留字。程序员自己定义标识符时不能使用它们。</p>
+<table>
+<thead>
+<tr>
+<th>abstaract</th>
+<th>boolean</th>
+<th>break</th>
+<th>byte</th>
+<th>case</th>
+<th>catch</th>
+<th>char</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>const</td>
+<td>class</td>
+<td>continue</td>
+<td>default</td>
+<td>do</td>
+<td>double</td>
+<td>else</td>
+</tr>
+<tr>
+<td>extends</td>
+<td>false</td>
+<td>final</td>
+<td>finally</td>
+<td>float</td>
+<td>for</td>
+<td>goto</td>
+</tr>
+<tr>
+<td>if</td>
+<td>implements</td>
+<td>import</td>
+<td>instanceof</td>
+<td>int</td>
+<td>interface</td>
+<td>long</td>
+</tr>
+<tr>
+<td>native</td>
+<td>new</td>
+<td>null</td>
+<td>package</td>
+<td>private</td>
+<td>protected</td>
+<td>public</td>
+</tr>
+<tr>
+<td>return</td>
+<td>short</td>
+<td>static</td>
+<td>strictfp</td>
+<td>super</td>
+<td>switch</td>
+<td>this</td>
+</tr>
+<tr>
+<td>throw</td>
+<td>throws</td>
+<td>transient</td>
+<td>true</td>
+<td>try</td>
+<td>void</td>
+<td>volatile</td>
+</tr>
+<tr>
+<td>while</td>
+<td>synchronized</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="二、常量与变量"><a href="#二、常量与变量" class="headerlink" title="二、常量与变量"></a>二、常量与变量</h1><h2 id="1-Java中的常量"><a href="#1-Java中的常量" class="headerlink" title="1.Java中的常量"></a>1.Java中的常量</h2><p>常量就是在程序中固定不变的值，是不能改变的数据。在Java中，常量包括整型常量、浮点数常量、布尔常量、字符常量等。</p>
+<h3 id="1-整型常量"><a href="#1-整型常量" class="headerlink" title="1.整型常量"></a>1.整型常量</h3><p>整型常量是整数类型的数据，它的表现形式有四种，具体如下：<br>（1）二进制：由数字0和1组成的数字序列，如：00110101。<br>（2）八进制：以0开头并且其后由0<del>7范围（包括0和7）内的整数组成的数字序列，如：0342。<br>（3）+进制：由数字0r9范围（包括0和9）内的整数组成的数字序列。如：<br>198。整数以十进制表示时，第一位不能是0，0本身除外（4）十六进制：以0x或者0X开头并且其后由0～9、A</del>F（包括0和9、A和F）组成的数字序列，如0×25AF。</p>
+<h3 id="2-浮点数常量"><a href="#2-浮点数常量" class="headerlink" title="2.浮点数常量"></a>2.浮点数常量</h3><p>浮点数常量就是在数学中用到的小数，分为float单精度和double双精度两种类型。<br>单精度浮点数后面以F或f结尾，具体示例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2e3f of 5.022e+23f</span><br></pre></td></tr></table></figure>
+
+<p>双精度浮点数后面以D或d结尾，具体示例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3.6d   3.84d</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-字符常量"><a href="#3-字符常量" class="headerlink" title="3.字符常量"></a>3.字符常量</h3><p>字符常量用于表示一个字符，一个字符常量要用一对英文半角格式的单引号（’  ‘）引起来，它可以是英文字母、数字、标点符号、以及由转义序列来表示的特殊字符。且体示例加下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;a&#x27; &#x27;1&#x27; &#x27;&amp;&#x27; &#x27;\r&#x27; &#x27;\u0000&#x27;</span><br></pre></td></tr></table></figure>
+
+
+<p>上面的示例中，’\u0000’表示一个空白字符，即在单引号之间没有任何字符。之所以能这样表示是因为，Java采用的是Unicode字符集，Unicode字符以\u开头，空白字符在Unicode码表中对应的值为’\u0000’。</p>
+<h3 id="4-字符串常量"><a href="#4-字符串常量" class="headerlink" title="4.字符串常量"></a>4.字符串常量</h3><p>字符串常量用于表示一串连续的字符，一个字符串常量要用一对英文半角格式的双引号（””）引起来，具体示例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;HelloWorld&quot;  &quot;123&quot;  &quot;Welcome \n XXX&quot;  &quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>一个字符串可以包含一个字符或多个字符，也可以不包含任何字符，即长度为零。</p>
+<h3 id="5-布尔常量"><a href="#5-布尔常量" class="headerlink" title="5.布尔常量"></a>5.布尔常量</h3><p>布尔常量即布尔型的两个值true和false，该常量用于区分一个事物的真与假。</p>
+<h3 id="6-nu11常量"><a href="#6-nu11常量" class="headerlink" title="6.nu11常量"></a>6.nu11常量</h3><p>nul1常量只有一个值null，表示对象的引用为空。</p>
+<h3 id="7-常量的声明"><a href="#7-常量的声明" class="headerlink" title="7.常量的声明"></a>7.常量的声明</h3><p>所谓常量，就是值永远不允许被改变的量。如果要声明一个常量，就必须用关键字final修饰。<br>（1）声明常量的具体方式如下：<br>final 常量类型  常量标识符；</p>
+<p>例如：</p>
+<p>final int YOUTH_AGE；   //声明一个int型常量</p>
+<p>final float PIE；    //声明一个float型常量</p>
+<p>注意：按照Java命名规则，常量标识符所有的字符都要大写，各个单词之间用下划线_分隔</p>
+<p>（2）在声明常量时，通常情况下立即为其赋值，即立即对常量进行初始化，声明并初始化常量的具体方式如下：<br>final 常量类型常量标识符=常量值；</p>
+<p>例如：</p>
+<p>final float PIE=3.14F;        //声明foat型常量，初始化为3.14</p>
+<p>说明：为float型常量赋值时，需要在数值的后面加上一个字母“F”或“f”</p>
+<p>（3）声明多个同一类型的常量，可以采用下面的形式：<br>final 常量类型常量1=常量值1，常量2=常量值2..…；</p>
+<p>例如：<br>final int NUM1=14，NUM2=25，NUM3=36；</p>
+<p>注意：如果在声明常量时已经对其进行了初始化，则常量的值不允许再被修改。</p>
+<h2 id="2、JAVA中的变量"><a href="#2、JAVA中的变量" class="headerlink" title="2、JAVA中的变量"></a>2、JAVA中的变量</h2><h3 id="1-变量的定义"><a href="#1-变量的定义" class="headerlink" title="1.变量的定义"></a>1.变量的定义</h3><p>​     变量是内存中的一个存储区域，该区域有自己的名称（变量名）和类型（数据类型），Java中每个变量必须先声明，后使用， 该区域的数据可以在同一类型范围内不断变化。</p>
+<h3 id="2-变量的数据类型"><a href="#2-变量的数据类型" class="headerlink" title="2.变量的数据类型"></a>2.变量的数据类型</h3><p>Java语言中的数据类型划分为两大类，分别是基本数据类型和引用数据类型。</p>
+<blockquote>
+<p>数据类型</p>
+<blockquote>
+<p>基本数据类型</p>
+<blockquote>
+<p>数值型</p>
+<blockquote>
+<p>整数类型</p>
+</blockquote>
+<blockquote>
+<p>浮点类型</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>字符型</p>
+</blockquote>
+<blockquote>
+<p>布尔型</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>引用数据类型</p>
+<blockquote>
+<p>类</p>
+</blockquote>
+<blockquote>
+<p>接口</p>
+</blockquote>
+<blockquote>
+<p>数组</p>
+</blockquote>
+<blockquote>
+<p>枚举</p>
+</blockquote>
+<blockquote>
+<p>注解</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="4-整数类型变量"><a href="#4-整数类型变量" class="headerlink" title="4.整数类型变量"></a>4.整数类型变量</h3><p>（1）用来存储整数数值，即没有小数部分的值。<br>（2）整数类型分为4种类型：字节型（byte）、短整型（short）、整型（int）和长整型（long）。</p>
+<table>
+<thead>
+<tr>
+<th>类型名</th>
+<th>占用空间</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte</td>
+<td>8位（1个字节）</td>
+<td>-2^7 ~ 2^7-1</td>
+</tr>
+<tr>
+<td>short</td>
+<td>16位（2个字节）</td>
+<td>-2^15 ~ 2^15-1</td>
+</tr>
+<tr>
+<td>int</td>
+<td>32位（4个字节）</td>
+<td>-2^31 ~ 2^31-1</td>
+</tr>
+<tr>
+<td>long</td>
+<td>64位（8个字节）</td>
+<td>-2^63 ~ 2^63-1</td>
+</tr>
+</tbody></table>
+<h3 id="5-浮点数类型变量"><a href="#5-浮点数类型变量" class="headerlink" title="5.浮点数类型变量"></a>5.浮点数类型变量</h3><p>（1）浮点数类型变量用来存储小数数值。<br>（2）浮点数类型分为两种：单精度浮点数（float）、双精度浮点数（double），double型所）表示的浮点数比foat型更精确。</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型名</th>
+<th align="center">占用空间</th>
+<th align="left">取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">float</td>
+<td align="center">32位（4个字节）</td>
+<td align="left">1.4E-45 ~ 3.4E+38，-1.4E-45 ~ -3.4E+38</td>
+</tr>
+<tr>
+<td align="center">double</td>
+<td align="center">32位（4个字节）</td>
+<td align="left">4.9E-324 ~ 1.7E+308，-4.9E-324 ~ -1.7E+308</td>
+</tr>
+</tbody></table>
+<p>（3）在取值范围中，E表示以10为底的指数，E后面的“+”号和“-”号代表正指数和负指数，例如1.4E-45表示1.4*10-45。<br>（4）在为一个float类型的变量赋值时需要注意一点，所赋值的后面一定要加上字母“F”（或“f”），而为double类型的变量赋值时，可以在所赋值的后面加上字符“D”（或“d”），也可不加。<br>（5）在程序中也可以为一个浮点数类型变量赋予一个整数数值。</p>
+<h3 id="6-字符类型变量"><a href="#6-字符类型变量" class="headerlink" title="6.字符类型变量"></a>6.字符类型变量</h3><p>（1）用于存储一个单一字符，在Java中用char表示。<br>（2）每个char类型的字符变量都会占用2个字节。<br>（3）赋值时，要用英文半角格式的单引号（’’）把字符括起来，如 ‘a’ 。<br>（4）也可以赋值为0~65535范围内的整数，计算机会自动将这些整数转化为所对应的字符，如数值97对应的字符为 ‘a’ 。</p>
+<h3 id="7-布尔类型变量"><a href="#7-布尔类型变量" class="headerlink" title="7.布尔类型变量"></a>7.布尔类型变量</h3><p>布尔类型变量用来存储布尔值，在Java中用boolean表示，该类型的变量只有两个值，即true和false。</p>
+<h1 id="运算符与表达式"><a href="#运算符与表达式" class="headerlink" title="运算符与表达式"></a>运算符与表达式</h1><h2 id="1-算数运算符"><a href="#1-算数运算符" class="headerlink" title="1.算数运算符"></a>1.算数运算符</h2><p>算术运算符就是用来处理四则运算的符号，这是最简单、最常用的运算符号。</p>
+<table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">运算</th>
+<th align="center">范例</th>
+<th align="center">结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">+</td>
+<td align="center">正号</td>
+<td align="center">+3</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">负号</td>
+<td align="center">b=4；-b</td>
+<td align="center">-4</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="center">加</td>
+<td align="center">5+5</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">减</td>
+<td align="center">6-4</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">乘</td>
+<td align="center">3*4</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="center">/</td>
+<td align="center">除</td>
+<td align="center">5/5</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">%</td>
+<td align="center">取模（即算术中的求余数）</td>
+<td align="center">7%5</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">自增（前）</td>
+<td align="center">a=2;b=++a</td>
+<td align="center">a=3,b=3</td>
+</tr>
+<tr>
+<td align="center">++</td>
+<td align="center">自增（后）</td>
+<td align="center">a=2;b=a++</td>
+<td align="center">a=3,b=2</td>
+</tr>
+<tr>
+<td align="center">–</td>
+<td align="center">自减（前）</td>
+<td align="center">a=2,b=–a</td>
+<td align="center">a=1,b=1</td>
+</tr>
+<tr>
+<td align="center">–</td>
+<td align="center">自减（后）</td>
+<td align="center">a=2;b=a–</td>
+<td align="center">a=1,b=2</td>
+</tr>
+</tbody></table>
+<p>算术运算符看上去比较简单，也很容易理解，但在实际使用时有很多需要注意的问题，具体如下：</p>
+<p>1.在进行自增（++）和自减（–）的运算时，如果运算符（++或–）放在操作数的前面则是先进行自增或自减运算，再进行其它运算。反之，如果运算符放在操作数的后面则是先进行其它运算再进行自增或自减运算。</p>
+<p>2.在进行除法运算时，当除数和被除数都为整数时，得到的结果也是一个整数。如果除法运算有小数参与，得到的结果会是一个小数。</p>
+<p>3.在进行取模（%）运算时，运算结果的正负取决于被模数（%左边的数）的符号，与模数（%右边的数）的符号无关。</p>
+<h2 id="2-赋值运算符"><a href="#2-赋值运算符" class="headerlink" title="2.赋值运算符"></a>2.赋值运算符</h2><p>赋值运算符的作用就是将常量、变量或表达式的值赋给某一个变量</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>运算</th>
+<th>范例</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>=</td>
+<td>赋值</td>
+<td>a=3;b=2</td>
+<td>a=3;b=2</td>
+</tr>
+<tr>
+<td>+=</td>
+<td>加等于</td>
+<td>a=3;b=2;a+=b</td>
+<td>a=5;b=3</td>
+</tr>
+<tr>
+<td>-=</td>
+<td>减等于</td>
+<td>a=3;b=2;a-=b</td>
+<td>a=1;b=2</td>
+</tr>
+<tr>
+<td>*=</td>
+<td>乘等于</td>
+<td>a=3;b=2;a*=b</td>
+<td>a=6;b=2</td>
+</tr>
+<tr>
+<td>/=</td>
+<td>除等于</td>
+<td>a=3;b=2;a/=b</td>
+<td>a=1;b=2</td>
+</tr>
+<tr>
+<td>%=</td>
+<td>模等于</td>
+<td>a=3;b=2;a%=b</td>
+<td>a=1;b=2</td>
+</tr>
+</tbody></table>
+<p>在赋值运算符的使用中，需要注意以下几个问题：</p>
+<p>（1）在Java中可以通过一条赋值语句对多个变量进行赋值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">in×，Y，z；</span><br><span class="line">Px=y=z=5；        //为三个变里同时就值</span><br><span class="line">intx=y=z=5：      //这样写是错误的</span><br></pre></td></tr></table></figure>
+
+<p>（2）除了“=”，其它的都是特殊的赋值运算符，以“+=”为例，x+=3就相当于x=x+3，首先会进行加法运算x+3，再将运算结果赋值给变量x。-=、*=、/=、%=赋值运算符都可依此类推。</p>
+<p>（3）在为变量赋值时，当两种类型彼此不兼容，或者目标类型取值范围小于源类型时，需要进行强制类型转换。</p>
+<p>（4）然而在使用+=、-=、*=、/=、%=运算符进行赋值时，强制类型转换会自动完成，程序不需要做任何显式地声明。</p>
+<h2 id="3-比较运算符"><a href="#3-比较运算符" class="headerlink" title="3.比较运算符"></a>3.比较运算符</h2><p>比较运算符用于对两个数值或变量进行比较，其结果是一个布尔值，即true或false。</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>运算</th>
+<th>范例</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>==</td>
+<td>相等于</td>
+<td>4==3</td>
+<td>false</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不等于</td>
+<td>4!=3</td>
+<td>true</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+<td>4&lt;3</td>
+<td>false</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+<td>4&gt;3</td>
+<td>true</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小于等于</td>
+<td>4&lt;=3</td>
+<td>false</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大于等于</td>
+<td>4&gt;=3</td>
+<td>true</td>
+</tr>
+</tbody></table>
+<p>比较运算符在使用时需要注意一个问题，不能将比较运算符“==”误写成赋值运算符“=”。</p>
+<h2 id="4-逻辑运算符"><a href="#4-逻辑运算符" class="headerlink" title="4.逻辑运算符"></a>4.逻辑运算符</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://yqloveljw.xyz">沅浅</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yqloveljw.xyz/2021/09/03/JAVA/JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A12/">http://yqloveljw.xyz/2021/09/03/JAVA/JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A12/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yqloveljw.xyz" target="_blank">沅浅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">基础教程</a><a class="post-meta__tags" href="/tags/JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">JAVA程序设计</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/09/04/Android%E9%80%86%E5%90%91/2.Apk%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Apk的基本结构</div></div></a></div><div class="next-post pull-right"><a href="/2021/09/02/Python/Python%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB1/"><img class="next-cover" src="https://s4.ax1x.com/2022/02/15/H2OSYR.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Anaconda介绍、安装及使用教程</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/09/01/JAVA/JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" title="JAVA程序设计"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-01</div><div class="title">JAVA程序设计</div></div></a></div><div><a href="/2021/09/08/JAVA/JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A13/" title="JAVA程序设计3"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-08</div><div class="title">JAVA程序设计3</div></div></a></div><div><a href="/2021/09/04/Android%E9%80%86%E5%90%91/2.Apk%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/" title="Apk的基本结构"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-04</div><div class="title">Apk的基本结构</div></div></a></div><div><a href="/2021/08/28/Android%E9%80%86%E5%90%91/1.Android%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" title="Android体系结构"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-28</div><div class="title">Android体系结构</div></div></a></div><div><a href="/2021/09/01/Linux%E7%BD%91%E7%BB%9C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux%E7%BD%91%E7%BB%9C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F1/" title="Linux网络操作系统1"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-01</div><div class="title">Linux网络操作系统1</div></div></a></div><div><a href="/2021/09/08/Linux%E7%BD%91%E7%BB%9C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux%E7%BD%91%E7%BB%9C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F3/" title="Linux网络操作系统3"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-09-08</div><div class="title">Linux网络操作系统3</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">沅浅</div><div class="author-info__description">我想记下来很多东西，我太怕我会忘记</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A0%87%E8%AF%86%E7%AC%A6%E4%B8%8E%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.</span> <span class="toc-text">一、标识符与关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Java%E4%B8%AD%E7%9A%84%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-number">1.1.</span> <span class="toc-text">1.Java中的标识符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Java%E4%B8%AD%E7%9A%84%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.2.</span> <span class="toc-text">2.Java中的关键字</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E9%87%8F%E4%B8%8E%E5%8F%98%E9%87%8F"><span class="toc-number">2.</span> <span class="toc-text">二、常量与变量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Java%E4%B8%AD%E7%9A%84%E5%B8%B8%E9%87%8F"><span class="toc-number">2.1.</span> <span class="toc-text">1.Java中的常量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%95%B4%E5%9E%8B%E5%B8%B8%E9%87%8F"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.整型常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B5%AE%E7%82%B9%E6%95%B0%E5%B8%B8%E9%87%8F"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.浮点数常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AD%97%E7%AC%A6%E5%B8%B8%E9%87%8F"><span class="toc-number">2.1.3.</span> <span class="toc-text">3.字符常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E9%87%8F"><span class="toc-number">2.1.4.</span> <span class="toc-text">4.字符串常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%B8%83%E5%B0%94%E5%B8%B8%E9%87%8F"><span class="toc-number">2.1.5.</span> <span class="toc-text">5.布尔常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-nu11%E5%B8%B8%E9%87%8F"><span class="toc-number">2.1.6.</span> <span class="toc-text">6.nu11常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%B8%B8%E9%87%8F%E7%9A%84%E5%A3%B0%E6%98%8E"><span class="toc-number">2.1.7.</span> <span class="toc-text">7.常量的声明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81JAVA%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.</span> <span class="toc-text">2、JAVA中的变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">2.2.1.</span> <span class="toc-text">1.变量的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8F%98%E9%87%8F%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.变量的数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%95%B4%E6%95%B0%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.3.</span> <span class="toc-text">4.整数类型变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.4.</span> <span class="toc-text">5.浮点数类型变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.5.</span> <span class="toc-text">6.字符类型变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.6.</span> <span class="toc-text">7.布尔类型变量</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">运算符与表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%AE%97%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">3.1.</span> <span class="toc-text">1.算数运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">3.2.</span> <span class="toc-text">2.赋值运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">3.3.</span> <span class="toc-text">3.比较运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">3.4.</span> <span class="toc-text">4.逻辑运算符</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/13/hexo%E7%BE%8E%E5%8C%96/hexo%E6%B7%BB%E5%8A%A0%E5%BE%BD%E6%A0%87/" title="hexo添加徽标"><img src="https://s4.ax1x.com/2022/01/02/Toe4Qx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo添加徽标"/></a><div class="content"><a class="title" href="/2022/03/13/hexo%E7%BE%8E%E5%8C%96/hexo%E6%B7%BB%E5%8A%A0%E5%BE%BD%E6%A0%87/" title="hexo添加徽标">hexo添加徽标</a><time datetime="2022-03-13T08:58:50.000Z" title="发表于 2022-03-13 16:58:50">2022-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/08/%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E5%B1%B1%E9%B8%A1/R-studio%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="R-studio数据恢复软件使用教程"><img src="https://s1.ax1x.com/2022/03/08/bcnVfg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="R-studio数据恢复软件使用教程"/></a><div class="content"><a class="title" href="/2022/03/08/%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E5%B1%B1%E9%B8%A1/R-studio%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="R-studio数据恢复软件使用教程">R-studio数据恢复软件使用教程</a><time datetime="2022-03-08T02:18:17.000Z" title="发表于 2022-03-08 10:18:17">2022-03-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E5%B0%8F%E5%AE%A2%E6%9C%8D%E5%8A%9F%E8%83%BD/" title="hexo增加小客服功能"><img src="https://s4.ax1x.com/2022/01/02/Toe4Qx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo增加小客服功能"/></a><div class="content"><a class="title" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E5%B0%8F%E5%AE%A2%E6%9C%8D%E5%8A%9F%E8%83%BD/" title="hexo增加小客服功能">hexo增加小客服功能</a><time datetime="2022-03-07T07:38:42.000Z" title="发表于 2022-03-07 15:38:42">2022-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E6%A8%B1%E8%8A%B1%E9%A3%98%E8%90%BD%E8%83%8C%E6%99%AF/" title="hexo增加樱花飘落背景"><img src="https://s4.ax1x.com/2022/01/02/Toe4Qx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo增加樱花飘落背景"/></a><div class="content"><a class="title" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E6%A8%B1%E8%8A%B1%E9%A3%98%E8%90%BD%E8%83%8C%E6%99%AF/" title="hexo增加樱花飘落背景">hexo增加樱花飘落背景</a><time datetime="2022-03-07T07:32:46.000Z" title="发表于 2022-03-07 15:32:46">2022-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E9%A1%B5%E8%84%9A%E8%B7%B3%E5%8A%A8%E7%9A%84%E2%99%A5/" title="hexo增加页脚跳动的♥"><img src="https://s4.ax1x.com/2022/01/02/Toe4Qx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo增加页脚跳动的♥"/></a><div class="content"><a class="title" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E9%A1%B5%E8%84%9A%E8%B7%B3%E5%8A%A8%E7%9A%84%E2%99%A5/" title="hexo增加页脚跳动的♥">hexo增加页脚跳动的♥</a><time datetime="2022-03-07T07:07:44.000Z" title="发表于 2022-03-07 15:07:44">2022-03-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2016 - 2022 By 沅浅</div><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a><a style="margin-inline:5px" target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a><a style="margin-inline:5px" target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a><a style="margin-inline:5px" target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Github托管"></a><a style="margin-inline:5px" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

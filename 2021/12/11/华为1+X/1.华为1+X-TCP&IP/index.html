@@ -1,0 +1,898 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>1.华为1+X/TCP&amp;IP | 沅浅</title><meta name="keywords" content="基础教程,华为1+X"><meta name="author" content="沅浅"><meta name="copyright" content="沅浅"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="华为1+X&#x2F;TCP&amp;IP 通信与网络通信的基本概念什么是通信“通信”一词中，“通”的意思就是传递与交流；“信”的意思就是信息。所谓通信，就是指人与人、人与计算机、计算机与计算机之间通过某种媒介和行为进行的信息交换。通信技术的最终目的是为了帮助人们更好地沟通和资源共享。 通信系统的基本组成  tip： 信源：又称信息源，分为模拟信源和数字信源，信源就是信息的发送端，是发出待传送信息的人或设备">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.华为1+X&#x2F;TCP&amp;IP">
+<meta property="og:url" content="http://yqloveljw.xyz/2021/12/11/%E5%8D%8E%E4%B8%BA1+X/1.%E5%8D%8E%E4%B8%BA1+X-TCP&IP/index.html">
+<meta property="og:site_name" content="沅浅">
+<meta property="og:description" content="华为1+X&#x2F;TCP&amp;IP 通信与网络通信的基本概念什么是通信“通信”一词中，“通”的意思就是传递与交流；“信”的意思就是信息。所谓通信，就是指人与人、人与计算机、计算机与计算机之间通过某种媒介和行为进行的信息交换。通信技术的最终目的是为了帮助人们更好地沟通和资源共享。 通信系统的基本组成  tip： 信源：又称信息源，分为模拟信源和数字信源，信源就是信息的发送端，是发出待传送信息的人或设备">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg">
+<meta property="article:published_time" content="2021-12-11T09:15:43.000Z">
+<meta property="article:modified_time" content="2022-03-31T11:33:25.424Z">
+<meta property="article:author" content="沅浅">
+<meta property="article:tag" content="基础教程">
+<meta property="article:tag" content="华为1+X">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg"><link rel="shortcut icon" href="/img/yq.jpg"><link rel="canonical" href="http://yqloveljw.xyz/2021/12/11/%E5%8D%8E%E4%B8%BA1+X/1.%E5%8D%8E%E4%B8%BA1+X-TCP&amp;IP/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '1.华为1+X/TCP&IP',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-31 19:33:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="沅浅" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s4.ax1x.com/2021/12/23/TGe4nf.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">沅浅</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">1.华为1+X/TCP&amp;IP</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-11T09:15:43.000Z" title="发表于 2021-12-11 17:15:43">2021-12-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-31T11:33:25.424Z" title="更新于 2022-03-31 19:33:25">2022-03-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8D%8E%E4%B8%BA1-X/">华为1+X</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="1.华为1+X/TCP&amp;IP"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>华为1+X/TCP&amp;IP</p>
+<h1 id="通信与网络"><a href="#通信与网络" class="headerlink" title="通信与网络"></a>通信与网络</h1><h2 id="通信的基本概念"><a href="#通信的基本概念" class="headerlink" title="通信的基本概念"></a>通信的基本概念</h2><h3 id="什么是通信"><a href="#什么是通信" class="headerlink" title="什么是通信"></a>什么是通信</h3><p>“通信”一词中，“通”的意思就是传递与交流；“信”的意思就是信息。所谓通信，就是指人与人、人与计算机、计算机与计算机之间通过某种媒介和行为进行的信息交换。通信技术的最终目的是为了帮助人们更好地沟通和资源共享。</p>
+<h3 id="通信系统的基本组成"><a href="#通信系统的基本组成" class="headerlink" title="通信系统的基本组成"></a>通信系统的基本组成</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqwnBj"><img src="https://s4.ax1x.com/2021/12/12/oqwnBj.png" alt="通信系统的基本组成"></a></p>
+<hr>
+<p><strong>tip：</strong></p>
+<p>信源：又称信息源，分为模拟信源和数字信源，信源就是信息的发送端，是发出待传送信息的人或设备。在通信系统中信源即产生和发送信号的设备或计算机，如话筒。<br>发送设备：产生适合在信道中传输的信号。<br>信道：也称为信息传输的通道，分为有线和无线信道，也可分为模拟信道和数字信号。其中，传输模拟信号的物理信道叫做模拟信道，而传输数字信号的物理信道称为数字信道。是连接发送端和接收端设备的物理媒介。<br>噪声源：是分布在通信系统中的各种噪声。<br>接收设备：是从接收信号中恢复原始的电信号。<br>信宿：即信息的接收端，是接收所传送信息的人或设备。通信过程中接收和处理</p>
+<hr>
+<h2 id="数据通信网络典型组网模型"><a href="#数据通信网络典型组网模型" class="headerlink" title="数据通信网络典型组网模型"></a>数据通信网络典型组网模型</h2><h3 id="通信网络最常用的3种典型组网模型介绍"><a href="#通信网络最常用的3种典型组网模型介绍" class="headerlink" title="通信网络最常用的3种典型组网模型介绍"></a>通信网络最常用的3种典型组网模型介绍</h3><p><strong>两台主机之间的通信</strong><br>示例：两台计算机通过一根网线相连，便组成了一个最简单的网络。如果主机A想从主机B那里获得“B.MP4”这首歌曲，那该怎么办呢？很简单，让两台计算机运行相应的文件传输软件并点几下鼠标就实现了。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqwwU1"><img src="https://s4.ax1x.com/2021/12/12/oqwwU1.png" alt="两台主机之间的通信"></a></p>
+<p><strong>多台主机之间的通信</strong><br>示例：如图所示的网络模型稍微复杂些，它由一台路由器和多台计算机组成。在这样的网络模型中，通过借助路由器的转发作用，每两台计算机之间都可以自由地传递文件。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqw2bd"><img src="https://s4.ax1x.com/2021/12/12/oqw2bd.png" alt="多台主机之间的通信"></a></p>
+<p><strong>访问Internet的通信</strong><br>示例：当主机A希望从某个网址获取文件时，A必须先接入Internet，然后才能下载所需的文件。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqwqbj"><img src="https://s4.ax1x.com/2021/12/12/oqwqbj.png" alt="通过Internet的通信"></a></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>Internet 的中文译名有很多，如因特网、互联网、网际网等。Internet是目前世界上规模最大的计算机网络，其前身是诞生于1969年的ARPAnet（Advanced Research Projects Agency Network）。Internet 的广泛普及和应用是当今信息时代的标志性内容之一。</p>
+<hr>
+<h2 id="网络通信常见术语"><a href="#网络通信常见术语" class="headerlink" title="网络通信常见术语"></a>网络通信常见术语</h2><table>
+<thead>
+<tr>
+<th>术语</th>
+<th>解释和说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据载荷</td>
+<td>根据快递服务的比喻，我们将数据载荷理解为最终想要传递的信息。而实际上在具有层次化结构的网络通信过程中，上一层协议传递给下一层协议的数据单元（报文）都可以称之为下一层协议的数据载荷</td>
+</tr>
+<tr>
+<td>报文</td>
+<td>报文是网络中交换与传输的数据单元，它具有一定的内在格式，并通常都具有头部+数据载荷+尾部的基本结构。在传输过程中，报文的格式和内容可能会发生改变</td>
+</tr>
+<tr>
+<td>头部</td>
+<td>为了更好地传递信息，在组装报文时，在数据载荷的前面添加的信息段统称为报文的头部</td>
+</tr>
+<tr>
+<td>尾部</td>
+<td>为了更好地传递信息，在组装报文时，在数据载荷的后面添加的信息段统称为报文的尾部。注意，很多报文是没有尾部的</td>
+</tr>
+<tr>
+<td>封装</td>
+<td>对数据载荷添加头部和尾部，从而形成新的报文的过程</td>
+</tr>
+<tr>
+<td>解封装</td>
+<td>解封装是封装的逆过程，也就是去掉报文的头部和尾部，获取数据载荷的过程</td>
+</tr>
+<tr>
+<td>网关</td>
+<td>网关是在采用不同体系结构或协议的网络之间进行互通时，用于提供协议转换、路由选择、数据交换等功能的网络设备。网关是一种根据其部署位置和功能而命名的术语，而不是一种特定的设备类型</td>
+</tr>
+<tr>
+<td>路由器</td>
+<td>路由器是连接不同网络的主要节点设备，通过路由功能为报文选择传递路径，能够识别不同的网络协议，在网络中通常起网关的作用。</td>
+</tr>
+</tbody></table>
+<h1 id="OSI与TCP-IP参考模型"><a href="#OSI与TCP-IP参考模型" class="headerlink" title="OSI与TCP/IP参考模型"></a>OSI与TCP/IP参考模型</h1><h2 id="网络通信协议和标准机构"><a href="#网络通信协议和标准机构" class="headerlink" title="网络通信协议和标准机构"></a>网络通信协议和标准机构</h2><h3 id="网络通信协议的基本特性"><a href="#网络通信协议的基本特性" class="headerlink" title="网络通信协议的基本特性"></a>网络通信协议的基本特性</h3><p><strong>什么是协议？</strong><br>在网络通信中，所谓协议，就是指诸如计算机、交换机、路由器等网络设备为了实现通信而必须遵从的、事先定义好的一系列规则和约定。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqL0o9"><img src="https://s4.ax1x.com/2021/12/12/oqL0o9.png"></a></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>OSI参考模型和TCP/IP参考模型是计算机网络通信领域中使用频率最高的两个参考模型，特别是TCP/IP，在计算机网络通信中的地位至关重要。熟悉OSI模型和TCP/IP参考模型的相关概念和简单应用，对于我们接下来具体而深入地学习各种网络通信知识，具有非常重要的指导作用。</p>
+<hr>
+<p><strong>协议的三要素</strong><br>语义：需要发出何种控制信息，完成何种动作以及做出何种应答；<br>语法：数据与控制信息的格式、数据编码等；<br>时序：时间先后顺序和速度匹配。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqL7SP"><img src="https://s4.ax1x.com/2021/12/12/oqL7SP.png" alt="协议三要素"></a></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>以打电话为例来说明“语义”“语法”“时序”。假设甲要打电话给乙，首先甲拨通乙的电话号码，双方电话振铃，乙拿起电话，然后甲乙开始通话，通话完毕后，双方挂断电话。在此过程中，双方都遵守了打电话的协议。其中，甲拨通乙的电话后，乙的电话振铃，振铃是一个信号，表示有电话打进，乙选择接电话，讲话，这一系列动作包括了控制信号、响应动作、讲话内容等，就是“语义”；电话号码就是“语法”；“时序”的概念更好理解，甲拨打了电话，乙的电话才会响，乙听到铃声后才会考虑要不要接，这一系列时间的因果关系十分明确，不可能没人拨电话，乙的电话会响。</p>
+<hr>
+<p><strong>协议标准机构</strong></p>
+<table>
+<thead>
+<tr>
+<th>标准机构</th>
+<th>简要介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>国际标准化组织（International Organization for Standardization，ISO）</td>
+<td>IS0是世界上最大的非政府性标准化专门机构，是国际标准化领域中一个十分重要的组织,ISO的任务是促进全球范围内的标准化及相关活动，以利于国际间产品与服务的交流，以及在知识、科学技术和经济活动发展国际间的相互合作</td>
+</tr>
+<tr>
+<td>电气与电子工程师协会（Institute of Electrical and Electronics Engineers，IEEE）</td>
+<td>IEEE是一个电子技术与信息科学工程师的协会，是世界上最大的专业技术组织之一，IEEE成立的目的在于为电气电子方面的科学家,工程师,制造商提供国际联络交流的场合，并为他们提供专业教育、提高专业能力服务，著名的以太网标准就是来自IEEE</td>
+</tr>
+<tr>
+<td>国际互联网工程任务组(Internet Engineering Task Force，IETF)</td>
+<td>IETF是全球互联网最具权或的技术标准化组织。其主要任务是负责互联网相关技术规范的研发和制定,目前,绝大多数的互联网技术标准都是来自IETF，如著名的RFC（Request For Comments）标准</td>
+</tr>
+<tr>
+<td>电子工业联盟（Electronics Industry Alliance，EIA）</td>
+<td>EIA 是美国电子行业标准制定者之一,常见RS-232 串口标准便是EIA制定的</td>
+</tr>
+<tr>
+<td>国际电信联盟（International Telecommunication Union，ITU）</td>
+<td>ITU简称为“国际电联”，其组织结构主要分为电信标准化部门（ITU-T）、无线电通信部门（ITU-R）和电信发展部门（ITU-D），是主管信息通信技术事务的联合国机构</td>
+</tr>
+<tr>
+<td>国际电工委员会（International Electrotechnical Commission，IEC）</td>
+<td>IEC是世界上成立最早的国际性电工标准化机构，负责有关电气工程和电子工程领域中的国际标准化工作，与ISO和IEEE等合作紧密</td>
+</tr>
+</tbody></table>
+<hr>
+<p><strong>tip:</strong></p>
+<p>协议可以分为私有协议和开放性的公有协议。而专门整理、研究、制定和发布开放性标准协议的组织称为标准机构。</p>
+<hr>
+<p><strong>协议分层模型的优势</strong><br>实现协议标准化：每一层有特定的功能，各层自主管理，更容易制定出相应的协议或标准；<br>降低关联性，某一层协议的增减或更新,都不影响其他层协议的运行，实现各层协议的独立性；<br>边界清晰，易理解：协议分层模型让整个计算机网络的层次性更加清晰，容易掌握。</p>
+<h2 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h2><p>不同节点的同等层具有相同的功能；<br>同节点内相邻层之间通过接口通信；<br>使用下层提供的服务，为上层提供服务；<br>仅在最低层进行直接数据传送。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqOiOU"><img src="https://s4.ax1x.com/2021/12/12/oqOiOU.png" alt="OSI参考模型"></a></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>OSI的网络体系结构如图所示。当发送方主机A的应用进程数据到达OSI参考模型的应用层时，网络中的数据将沿着垂直方向往下层传输，即由应用层向下经表示层、会话层一直到达物理层。到达物理层后，再经传输介质传到接收端（主机B），由接收端物理层接收，向上经数据链路层等到达应用层，再由接收端获取。数据在由发送进程交给应用层时，由应用层加上该层有关控制和识别信息，再向下传送，这一过程一直重复到物理层。在接收端信息向上传递时，各层的有关控制和识别信息被逐层剥去，最后数据送到接收进程。</p>
+<hr>
+<p><strong>OSI参考模型各层的功能及关系</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">OSI参考模型</th>
+<th align="center">主要功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">物理层</td>
+<td align="center">提供适合于传输介质承载的物理信号的转换，实现物理信号的发送，接受，以及在物理传输介质上的数据比特流传输</td>
+</tr>
+<tr>
+<td align="center">数据链路层</td>
+<td align="center">在物理链路连接的相邻节点间建立逻辑通路,实现数据帧的点到点、点到多点方式的直接通信，能够进行编码和差错控制</td>
+</tr>
+<tr>
+<td align="center">网络层</td>
+<td align="center">将数据分为一定长度的分组，根据数据报文中的地址信息，在通信子网中选择传输路径，将数据从一个节点发送到另一个节点</td>
+</tr>
+<tr>
+<td align="center">传输层</td>
+<td align="center">建立、维护和终止端到端的数据传输过程，能提供控制传输速率，调整数据的传输顺序等功能</td>
+</tr>
+<tr>
+<td align="center">会话层</td>
+<td align="center">在通信双方的进程间建立、维持、协调和终止会话，确定双方是否开始一方发起的通信</td>
+</tr>
+<tr>
+<td align="center">表示层</td>
+<td align="center">数据转换、加密、压缩等，确保一个系统生成的应用层数据能够被另外一个系统的应用层所识别和理解</td>
+</tr>
+<tr>
+<td align="center">应用层</td>
+<td align="center">为用户应用程序提供丰富的系统接口</td>
+</tr>
+</tbody></table>
+<hr>
+<p><strong>tip:</strong></p>
+<p><strong>物理层（Physical Layer）</strong>提供建立、维护和拆除物理链路所需的机械、电气、功能和规程的特性；提供有关在传输介质上传输非结构的位流及物理链路故障检测指示。在这一层，数据还没有被组织，仅作为原始的位流或电气电压处理，单位是比特。</p>
+<p><strong>数据链路层（Data Link Layer）</strong>负责在两个相邻结点间建立数据链路连接，实现无差错地传送以帧为单位的数据，并进行流量控制。数据链路层要负责建立、维持和释放数据链路的连接，在传送数据时，如果接收点检测到所传数据中有差错，会通知发送方重新发送。</p>
+<p><strong>网络层（Network Layer）</strong>主要为数据在节点之间传输创建逻辑链路，通过路由选择算法为数据包选择最佳路径，从而实现拥塞控制、网络互联等功能。</p>
+<p>网络层提供的服务有面向联接和面向无联接的服务两种。面向联接的服务是可靠的联接服务，是数据在交换之前必须先建立联接，然后传输数据，结束后终止之前建立联接的服务。网络层以虚电路服务的方式实现面向联接的服务。面向无联接的服务是一种不可靠的服务，不能防止报文的丢失、重发或失序。面向无联接的服务优点在于其服务方式灵活方便，并且非常迅速。网络层以数据报服务的方式实现面向无联接的服务。</p>
+<p><strong>传输层（Transport Layer）</strong>主要为用户提供端到端服务，处理数据报错误、数据包次序等传输问题。传输层是计算机通信体系结构中关键一层，它向高层屏蔽了下层数据的通信细节，使用户完全不用考虑物理层、数据链路层和网络层工作的详细情况。</p>
+<p><strong>会话层（Session Layer）</strong>为表示层提供建立、维护和拆除会话连接的功能，提供会话管理服务。它可以通过对话控制来决定使用何种通信方式，如全双工通信或半双工通信。</p>
+<p>由于不同厂家的计算机产品常使用不同的信息表示标准，例如在字符编码、数值表示等方面存在着差异。如果不解决信息表示上的差异，通信的用户之间就不能互相识别。因此，<strong>表示层（Presentation Layer）</strong>要完成信息表示格式转换。转换可以在发送前，也可以在接收后，也可以要求双方都转换为某个特定标准的数据表示格式。</p>
+<p>表示层为应用层提供能解释所交换信息含义的一组服务，主要功能是完成传输数据的解释工作，包括数据转换、数据加解密和数据压缩等。</p>
+<p><strong>应用层（Application Layer）</strong>是用户应用程序与网络的接口，应用层和应用程序协同工作，直接向用户提供服务，完成用户希望在网络上完成的各种工作，如DNS、FTP、HTTP等服务。</p>
+<hr>
+<h2 id="TCP-IP参考模型"><a href="#TCP-IP参考模型" class="headerlink" title="TCP/IP参考模型"></a>TCP/IP参考模型</h2><p><strong>TCP/IP的四层结构</strong></p>
+<p>TCP/IP四层与OSI七层的对比</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqOJkd"><img src="https://s4.ax1x.com/2021/12/12/oqOJkd.png" alt="TCP/IP四层与OSI七层的对比"></a></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>在计算机网络通信中，OSI参考模型只是作为理论研究的模型，并没有实际应用。而实际上应用最为广泛的是TCP/IP（Transmission Control Protocol/Internet Protocol）参考模型。TCP/IP是网络互联的标准协议，连入Internet的计算机进行的信息交换和传输都需要采用该协议。</p>
+<hr>
+<p><strong>TCP/IP各层的功能及关系</strong></p>
+<table>
+<thead>
+<tr>
+<th>TCP/IP参考模型</th>
+<th>主要功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>网络接口层</td>
+<td>定义了TCP/IP与各种通信子网之间的网络接口。网络接口层的功能是传输经网络层处理过的消息。</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>将数据分为一定长度的分组，根据数据报文中的地址信息，在通信子网中选择传输路径，将数据从一个节点发送到另一个节点</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>建立、维护和终止端到端的数据传输过程，能提供控制传输速率，调整数据的传输顺序等功能</td>
+</tr>
+<tr>
+<td>应用层</td>
+<td>TCP/IP的应用层直接为用户提供各类服务。TCP/IP将所有与应用相关的工作都归为这一层。如远程登录、文件传输、电子邮件、Web服务器等。</td>
+</tr>
+</tbody></table>
+<h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1><p>数据链路层功能：<br>负责建立和管理节点间的链路；<br>通过各种控制协议，将有差错的物理信道变为无差错的、能可靠传输数据帧的数据链路。 </p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqOBnS"><img src="https://s4.ax1x.com/2021/12/12/oqOBnS.png"></a></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>在网络中由于各种干扰的存在，物理链路是不可靠的。因此，数据链路层将在物理层提供的比特流的基础上，通过差错控制、流量控制方法，使有差错的物理线路变为无差错的数据链路，即提供可靠的通过物理介质传输数据的方法。</p>
+<hr>
+<h2 id="LLC与MAC"><a href="#LLC与MAC" class="headerlink" title="LLC与MAC"></a>LLC与MAC</h2><p><strong>逻辑链路控制子层LLC</strong><br>定义：LLC是Logic Link Control的缩写，是数据链路层的上层部分。</p>
+<p>功能：LLC可为网络用户提供两种服务：无确认无连接服务和面向连接的服务。</p>
+<p>无确认无连接服务：它提供无需建立数据链路级连接而网络层实体能交换链路服务数据单元的手段。数据传送方式可以是点到点、点到多点式，也可以是广播式。这是一种数据报服务。</p>
+<p>面向连接的服务：在这种服务方式下，必须先建立链路连接，才能进行帧的传送。它提供了建立、维持、复位和终止数据链路层连接的手段。还提供了数据链路层的定序、流控和错误恢复，这是一种虚电路服务。</p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>LLC屏蔽了各种MAC的差别并向其上层提供统一的数据链路服务，实现了两个站点之间帧的交换，完成端到端无差错的帧传输和应答功能和流量控制功能。</p>
+<hr>
+<p><strong>介质访问控制子层MAC</strong><br>定义：MAC是Medium Access Control的缩写，是数据链路层的下层部分。</p>
+<p>功能：控制和协调所有站点对共享介质的访问，以避免或减少冲突。</p>
+<p>类型：</p>
+<p>争用型介质访问控制，又称随机型的介质访问控制协议，如CSMA/CD方式；<br>确定型介质访问控制，又称有序的访问控制协议，如Token(令牌)方式。</p>
+<p>CSMA/CD工作原理<br>① 侦听信道上是否有信号在传输。如果有的话，表明信道处于忙状态，就继续帧听，直到信道空闲为止。<br>② 若没有侦听到任何信号，就传输数据。<br>③ 传输的时候继续侦听，如发现冲突则执行退避算法，随机等待一段时间后，重新执行步骤①。<br>④ 若未发现冲突则发送成功，计算机会返回到侦听信道状态。</p>
+<h2 id="以太网概述"><a href="#以太网概述" class="headerlink" title="以太网概述"></a>以太网概述</h2><p><strong>什么是以太网</strong><br>以太网是当前应用最普遍的局域网技术。它很大程度上取代了其他局域网标准，如令牌环、FDDI和ARCNET。历经100M以太网在上世纪末的飞速发展后，目前千兆以太网甚至10G以太网正在国际组织和领导企业的推动下不断拓展应用范围。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqX9Nd"><img src="https://s4.ax1x.com/2021/12/12/oqX9Nd.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqXJDU"><img src="https://s4.ax1x.com/2021/12/12/oqXJDU.png"></a></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>以太网是应用最为广泛的局域网，包括标准的以太网(10Mbit/s)、快速以太网(100Mbit/s)和10G(10Gbit/s)以太网，采用的是CSMA/CD协议，它们都符合IEEE802.3。</p>
+<hr>
+<p><strong>标准以太网的相关标准</strong><br>10Base-5 使用直径为0.4英寸、阻抗为50Ω粗同轴电缆，也称粗缆以太网，最大网段长度为500m，基带传输方法，拓扑结构为总线型；</p>
+<p>10Base-2 使用直径为0.2英寸、阻抗为50Ω细同轴电缆，也称细缆以太网，最大网段长度为185m，基带传输方法，拓扑结构为总线型；</p>
+<p>10Base-T 使用3类以上双绞线电缆，最大网段长度为100m，拓扑结构为星型；　　</p>
+<p>10Base-F 使用光纤传输介质，传输速率为10Mbit/s，拓扑结构为星型。</p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>标准以太网只有10Mbit/s的吞吐量，使用(CSMA/CD协议。以太网可以使用粗同轴电缆、细同轴电缆、非屏蔽双绞线、屏蔽双绞线和光纤等多种传输介质进行连接，并且在IEEE 802.3标准中，为不同的传输介质制定了不同的物理层标准，在这些标准中前面的数字表示传输速度，单位是“Mbit/s”，最后的一个数字表示单段传输介质的长度（基准单位是100M），Base表示“基带”的意思。</p>
+<hr>
+<p><strong>快速以太网的相关标准</strong><br>100BASE-TX 是一种使用5类以上双绞线的快速以太网技术。它使用两对双绞线，一对用于发送，一对用于接收数据，支持全双工的数据传输，信号频率为125MHz。它的最大网段长度为100米，拓扑结构为星型。</p>
+<p>100BASE-FX 是一种使用光缆的快速以太网技术，可使用单模和多模光纤（62.5和125um）。多模光纤连接的最大距离为550米，单模光纤连接的最大距离为3000米，它支持全双工的数据传输，拓扑结构为星型。100BASE－FX特别适合于有电气干扰的环境、较大距离连接、或高保密环境等情况下的适用。</p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>随着网络的发展，传统标准的以太网技术已难以满足日益增长的网络数据流量速度需求。1993年10月，Grand Junction公司推出了世界上第一台快速以太网集线器Fastch10／100和网络接口卡FastNIC100，快速以太网技术正式得以应用。1995年3月IEEE宣布了IEEE802.3u 100BASE-T快速以太网标准（Fast Ethernet）。快速以太网技术可以有效的保障用户在布线基础实施上的投资，它支持3、4、5类双绞线以及光纤的连接，能有效的利用现有的设施。</p>
+<hr>
+<p><strong>千兆以太网的相关标准</strong><br>1000Base-SX 传输介质为直径62.5um或50um的多模光纤，传输距离为220-550m。</p>
+<p>1000Base-LX 传输介质为直径9um或10um的单模光纤，传输距离为5000m。</p>
+<p>1000Base-CX 传输介质为150欧屏蔽双绞线（STP），传输距离为25m。</p>
+<p>1000Base-TX 传输介质为6类以上双绞线，用两对线发送，两对线接收，每对线支持500Mbit/s的单向数据速率，速率为1Gbit/s，最大电缆长度为100米。</p>
+<p>1000BASE-T 传输介质为5类以上双绞线，用两对线发送，两对线接收，每对线支持250Mbit/s的双向数据速率（半双工），速率为1Gbit/s，最大电缆长度为100米。</p>
+<p><strong>万兆以太网</strong><br>定义：万兆以太网是一种数据传输高达10Gbit/s、通信距离可延伸到40km的以太网。</p>
+<p>应用范围：可以应用于局域网、城域网和广域网。</p>
+<p>特点：<br>保留802.3以太网的帧格式。<br>保留802.3以太网的最大帧长和最小帧长。<br>只使用全双工工作方式，完全改变了传统以太网的半双工的广播工作方式。<br>只使用光纤作为传输媒体而不使用铜线。<br>使用点对点链路，支持星形结构的局域网。<br>10G以太网数据率非。常高，不直接和端用户相连。<br>创造了新的光物理媒体相关(PMD)子层。</p>
+<p><strong>以太网数据帧封装格式</strong><br>以太网技术所使用的帧称为以太网帧，或简称以太帧。主要有Ethernet II和IEEE802.3两种标准帧格式。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqXgVe"><img src="https://s4.ax1x.com/2021/12/12/oqXgVe.png" alt="以太网数据帧封装格式"></a></p>
+<p>Type取值0X0800的帧代表IPV4协议帧</p>
+<p>Type取值0X0806的帧代表ARP协议帧</p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>（1）<strong>DMAC</strong>（Destination MAC）：表示以太网目标MAC地址，长度为6个字节。<br>（2）<strong>SMAC</strong>（Source MAC）：表示以太网源MAC地址，长度为6个字节。<br>（3）<strong>Length</strong>：指长度，定义了Data字段包含的字节数。<br>（4）<strong>LLC</strong> （Logical Link Control）：表示逻辑链路控制，由目的服务访问点（Destination Service Access Point，DSAP）、源服务访问点（Source Service Access Point，SSAP）和Control字段组成。<br>（5）<strong>SNAP</strong>（Sub-network Access Protocol）：表示子网访问协议，由机构代码（Org Code）和类型（Type）字段组成，Org code三个字节都为0。Type字段用于标识Data字段中包含的不同协议，Type取值为0x0800的帧代表IP协议帧，取值为0x0806的帧代表ARP协议帧。<br>（6）<strong>Data</strong>:表示数据字段，最小长度必须为38字节以保证帧长至少为64字节，最大长度为1492字节。<br>（7）<strong>FCS</strong>: 表示帧校验序列，是循环冗余校验生成的值，为以太帧提供差错检测机制。</p>
+<hr>
+<p><strong>MAC地址简介</strong><br>MAC地址，即网卡的物理地址，是在IEEE802标准中定义并规范的。<br>MAC地址由48位二进制数组成，通常分成6段，用十六进制表示，如00E0-FCA1-562B。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqXxx0"><img src="https://s4.ax1x.com/2021/12/12/oqXxx0.png" alt="mac地址简介"></a></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>形象的说，MAC地址就如同我们身份证上的身份证号码，具有全球唯一性。</p>
+<hr>
+<h1 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h1><h2 id="IP地址与子网划分"><a href="#IP地址与子网划分" class="headerlink" title="IP地址与子网划分"></a>IP地址与子网划分</h2><p><strong>二进制与十进制</strong></p>
+<p>二进制的特点：用0和1两个数码来表示的数。它的基数为2，进位规则是“逢二进一”，借位规则是“借一当二”；</p>
+<p>十进制是人类最方便的进制表示，也是日常生活中最常用的数制，包含数字0、1、2、3、4、5、6、7、8、9 ，但用计算机处理十进制数必须先转换成二进制数。</p>
+<table>
+<thead>
+<tr>
+<th>十进制</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>二进制</td>
+<td>0</td>
+<td>01</td>
+<td>10</td>
+<td>11</td>
+<td>100</td>
+<td>101</td>
+<td>110</td>
+<td>111</td>
+<td>1000</td>
+<td>1001</td>
+<td>1010</td>
+</tr>
+</tbody></table>
+<p><strong>二进制转换成十进制</strong><br>计算方法</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqjAi9"><img src="https://s4.ax1x.com/2021/12/12/oqjAi9.png" alt="计算方法"></a></p>
+<p><strong>十进制转换成二进制</strong><br>计算方法：将十进制数125表示成二进制为1111101。计算方法为除2取余，再逆序排列，如图所示。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqjmM6"><img src="https://s4.ax1x.com/2021/12/12/oqjmM6.png" alt="十进制转换成二进制"></a></p>
+<p><strong>有类编址</strong><br>IPv4地址：是32位的二进制数，一般用点分十进制数表示，由网络号和主机号两部分组成</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqjby6"><img src="https://s4.ax1x.com/2021/12/12/oqjby6.png"></a></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>在因特网上，所有的主机资源都通过IP地址来定位。IP地址是由ICANN(Internet Corporation for Assigned Names and Number)分配和管理的，IP地址的分配有一套严格机制和程序，这种机制和程序保证IP地址在Internet上的唯一性。IP地址的格式是由IP规定的，本书所讲的IP地址除特殊说明外均指IPv4地址。</p>
+<hr>
+<p>IP地址分类：根据网络号和主机号位数的不同，有类编址将IP地址分为A类、B类、C类、D类和E类五类。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqjjTe"><img src="https://s4.ax1x.com/2021/12/12/oqjjTe.png" alt="IP地址分类"></a></p>
+<p>私有地址：私有地址不用于Internet，主要用于局域网中，私有IP地址是一段保留的IP地址。<br>A类、B类和C类的私有IP地址范围：<br>A类私有IP地址范围：10.0.0.0<del>10.255.255.255。<br>B类私有IP地址范围：172.16.0.0</del>172.31.255.255。<br>C类私有IP地址范围：192.168.0.0~192.168.255.255。</p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>A类地址中网络地址为1个字节，主机地址占用3个字节，其范围为0.0.0.0<del>127.255.255.255。<br>B类地址中网络地址为2个字节，主机地址占用2个字节，其范围为128.0.0.0</del>191.255.255.255。<br>C类地址中网络地址为3个字节，主机地址占用1个字节，其范围为192.0.0.0<del>223.255.255.255。<br>D类地址为组播地址，其范围为224.0.0.0</del>239.255.255.255。<br>E类地址保留，其范围为240.0.0.0~255.255.255.255。</p>
+<hr>
+<p><strong>无类编址</strong><br>作用：解决“有类编址”进行地址划分的颗粒度太大的问题。避免大量IP地址资源的浪费。<br>特点：无类编址（Classless Addressing)不限定网络号和主机号的位数，使得IP地址的分配更加灵活，IP地址的利用率也得到了提高。<br>无类编址举例：IP地址为60.1.7.1，它可能是60.1.0.0网络中的一个主机地址，也可能是60.1.7.0网络中的一个主机地址。</p>
+<table>
+<thead>
+<tr>
+<th><strong>网络号</strong></th>
+<th><strong>主机号</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>60.1.7.0</strong></td>
+<td><strong>.1</strong></td>
+</tr>
+<tr>
+<td><strong>60.1.0.0</strong></td>
+<td><strong>.7.1</strong></td>
+</tr>
+<tr>
+<td><strong>60.0.0.0</strong></td>
+<td><strong>.1.7.1</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<p><strong>tip:</strong></p>
+<p>在网络通信发展的初期，网络中的计算机数量很少，需要使用的IP地址也很少。所以，将IP地址划分为5类的做法基本没有问题。然而，随着通信网络的飞速发展，这种“有类编址（Classful Addressing）”的地址划分方法暴露了明显的问题。譬如，一个集团公司大约需要十万个IP地址，如果用A类地址进行分配，那么将会有大量的IP地址被浪费。</p>
+<hr>
+<p><strong>子网掩码</strong><br>定义：子网掩码(Subnet Mask)由32个比特位组成，也可看作是由4个字节，并且也通常以点分十进制数来表示。</p>
+<table>
+<thead>
+<tr>
+<th align="center">示例</th>
+<th align="center">是否为子网掩码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">11111100  00000000  00000000  00000000  （252.0.0.0）</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td align="center">11111111  11000000  00000000  00000000  （252.192.0.0）</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td align="center">11111111  11111111  11111111  11110000  （255.255.255.240）</td>
+<td align="center">是</td>
+</tr>
+<tr>
+<td align="center">11111111  11111111  11111111  11111111  （255.255.255.255）<br/> 00000000  00000000  00000000  00000000（0.0.0.0）</td>
+<td align="center">是<br/>是</td>
+</tr>
+<tr>
+<td align="center">11011000  00000000  00000000  00000000  （216.0.0.0）</td>
+<td align="center">否</td>
+</tr>
+<tr>
+<td align="center">00000000   11111111  11111111  11111111  （0.255.255.255）</td>
+<td align="center">否</td>
+</tr>
+</tbody></table>
+<hr>
+<p><strong>tip:</strong></p>
+<p>子网掩码本身并不是一个IP地址，并且子网掩码必须由若千个连续的1后接若干个连续的0组成。</p>
+<hr>
+<p>子网掩码长度：将子网掩码中1的个数称为这个子网掩码的长度。</p>
+<p>子网掩码的作用：</p>
+<p>主机的子网掩码：255.0.0.0</p>
+<table>
+<thead>
+<tr>
+<th>网络号</th>
+<th>A的主机号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>60.0.0.0·</td>
+<td>.50.20.2</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqvETg"><img src="https://s4.ax1x.com/2021/12/12/oqvETg.png"></a></p>
+<p>网络号相同，所有主机都可以通信</p>
+<hr>
+<p>主机的子网掩码：255.255.0.0</p>
+<table>
+<thead>
+<tr>
+<th>网络号</th>
+<th>A的主机号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>60.50.0.0</td>
+<td>.20.2.</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqvQXV"><img src="https://s4.ax1x.com/2021/12/12/oqvQXV.png"></a></p>
+<p>主机C与A的网络号不同，不能通信</p>
+<hr>
+<p>主机的子网掩码：255.255.255.0</p>
+<table>
+<thead>
+<tr>
+<th>网络号</th>
+<th>A的主机号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>60.50.20.0</td>
+<td>.2</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqvYtJ"><img src="https://s4.ax1x.com/2021/12/12/oqvYtJ.png"></a></p>
+<p>主机C、D与A的网络号不同，不能通信</p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>例如，子网掩码0.0.0.0的长度为0，子网掩码252.0.0.0的长度为6，子网掩码255.192.0.0的长度为10，子网掩码255.255.255.255的长度为32。<br>通常，子网掩码与IP地址结合使用。子网掩码中1的个数(也就是子网掩码的长度)就表示这个IP地址的网络号的位数，而0的个数就表示这个IP地址的主机号的位数。</p>
+<hr>
+<p><strong>子网掩码与IP地址的运算</strong><br>如果将一个子网掩码与一个IP地址进行逐位的“与”运算，所得的结果便是该IP地址所在网络的网络地址。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqva11"><img src="https://s4.ax1x.com/2021/12/12/oqva11.png"></a></p>
+<p>广播地址应用于主机同网络内所有其他主机的通信，它是主机号为全“1”的地址（子网掩码的反码），即：广播地址=网络地址+子网掩码的反码。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqvD0O"><img src="https://s4.ax1x.com/2021/12/12/oqvD0O.png"></a></p>
+<p><strong>子网划分</strong><br>作用：可以将一个大的网络划分为多个小的网络，提高IP地址的使用效率。<br>子网划分的过程</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqvWct"><img src="https://s4.ax1x.com/2021/12/12/oqvWct.png" alt="子网划分"></a></p>
+<p><strong>子网划分举例</strong>：将192.168.3.0/24划分4个网段<br>方法：网络号向主机号借位，借位使得IP地址的结构分为三个部分：网络位、子网位和主机位。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqvvuV"><img src="https://s4.ax1x.com/2021/12/12/oqvvuV.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqxZDK"><img src="https://s4.ax1x.com/2021/12/12/oqxZDK.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqxYb8"><img src="https://s4.ax1x.com/2021/12/12/oqxYb8.png"></a></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>从主机最高位开始借位变为新的子网位，剩余部分仍为主机位，是本来属于主机号的部分变为子网位和主机位，这样就实现了将大的网络划分为多个小的网络，满足了不同网络对IP地址的个性化需求，实现网络的层次性。<br>一个/24的网段借2位可以分成4个网段，子网号分别为00，01，10，11；借3位可以分成8个网段，子网号分别为000、001、010、011、100、101、110、111。</p>
+<hr>
+<p><strong>子网划分原理</strong><br>子网号借用的主机号位数越多，子网的数目也就越多，但每个子网的可用主机数就越少，根据子网号借用主机号的位数，可以分别计算出子网数、子网掩码和每个子网的可用主机数。</p>
+<table>
+<thead>
+<tr>
+<th>借位数</th>
+<th>掩码长度</th>
+<th>子网掩码</th>
+<th>子网</th>
+<th>主机数</th>
+<th>可用主机数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1</strong></td>
+<td>/25</td>
+<td>255.255.255.128</td>
+<td>2</td>
+<td>128</td>
+<td>126</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>/26</td>
+<td>255.255.255.192</td>
+<td>4</td>
+<td>64</td>
+<td>62</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>/27</td>
+<td>255.255.255.224</td>
+<td>8</td>
+<td>32</td>
+<td>30</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>/28</td>
+<td>255.255.255.240</td>
+<td>16</td>
+<td>16</td>
+<td>14</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>/29</td>
+<td>255.255.255.248</td>
+<td>32</td>
+<td>8</td>
+<td>6</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>/30</td>
+<td>255.255.255.252</td>
+<td>64</td>
+<td>4</td>
+<td>2</td>
+</tr>
+</tbody></table>
+<p><strong>可变长子网掩码VLSM</strong><br>VLSM允许在同一个网络地址空间中使用多个子网掩码。VLSM使得IP地址的使用更加有效，减少IP地址的浪费，并且VLSM允许已经划分过子网的网络继续划分子网。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oqxsK0"><img src="https://s4.ax1x.com/2021/12/12/oqxsK0.png"></a></p>
+<hr>
+<p><strong>tip:</strong><br>图中，网络172.22.0.0/16被划分成“/24”的子网，其中子网172.22.1.0/24又被继续划分成“/27”的子网。这个“/27”子网的网络范围是172.22.1.0/27~172.22.1.224/27（从实际应用角度）。可以看出，又将172.22.1.224/27的网络划分成“/30”的子网。这个“/30”的子网，网络中可用的主机数为2个，这两个IP正好给两台路由器连接的接口使用。<br>由此也可以看出，VLSM加强了IP地址的层次化结构设计，使路由表的路由汇总更加有效。</p>
+<hr>
+<p><strong>规划IP地址</strong></p>
+<p>作用</p>
+<p>IP地址的合理规划是网络设计的重要环节，大型计算机网络必须对IP地址进行统一规划并得到有效实施。IP地址规划的好坏，影响到网络路由协议算法的效率，影响到网络的性能，影响到网络的扩展，影响到网络的管理，也必将直接影响到网络应用的进一步发展。</p>
+<p>规划原则</p>
+<p>IP地址空间的分配，要与网络拓扑层次结构相适应，既要有效地利用地址空间，又要体现出网络的可扩展性、灵活性和层次性，同时能满足路由协议的要求，以便于网络中的路由聚类，减少路由器中路由表的长度，减少对路由器CPU、内存的消耗，提高路由算法的效率，加快路由变化的收敛速度，同时还有考虑到网络地址的唯一性、连续性、实意性和可管理性。</p>
+<p><strong>规划网络地址案例</strong></p>
+<p>案例需求：假设某企业拥有一个C类地址192.168.1.0/24，企业希望每个部门都工作于相对独立的局域网。</p>
+<table>
+<thead>
+<tr>
+<th align="center">部门名称</th>
+<th align="center">IP地址需求数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">行政部</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">业务部</td>
+<td align="center">40</td>
+</tr>
+<tr>
+<td align="center">研发部</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">生产部</td>
+<td align="center">100</td>
+</tr>
+</tbody></table>
+<p>解决方案<br>① 根据最大IP地址数要求划分子网，把其中一个子网网段用于满足该部门主机IP需求；<br>② 选择剩余子网网段中的一个，按次大IP地址数要求划分子网，把其中一个用于满足该部门主机IP需求；<br>③ 重复上述步骤，直到满足所有部门主机IP需求，并将剩余的网络地址登记为备用网络，以备网络扩展升级使用。</p>
+<p>解决过程<br>① 当IP地址数需求为100时，主机地址位至少要7位，因此该C类地址可以分为两个子网，如表所示。将192.168.1.0/25分配给生产部使用。</p>
+<table>
+<thead>
+<tr>
+<th>网络地址</th>
+<th>主机地址（7位）</th>
+<th>子网网络地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>192.168.1.0/24</td>
+<td>0      000 0000</td>
+<td>192.168.1.0/25</td>
+</tr>
+<tr>
+<td>192.168.1.0/24</td>
+<td>1      000 0000</td>
+<td>192.168.1.128/25</td>
+</tr>
+</tbody></table>
+<p>② 当IP地址数需求为40时，主机位至少要6位，将192.168.1.128/25继续划分子网，如表所示。我们将192.168.1.128/26分配给业务部使用。</p>
+<table>
+<thead>
+<tr>
+<th>网络地址</th>
+<th>主机地址（7位）</th>
+<th>子网网络地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>192.168.1.128/25</td>
+<td>0      000 0000</td>
+<td>192.168.1.128/26</td>
+</tr>
+<tr>
+<td>192.168.1.128/25</td>
+<td>1      000 0000</td>
+<td>192.168.1.192/26</td>
+</tr>
+</tbody></table>
+<p>③ 生成IP规划总表。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oLSSfJ"><img src="https://s4.ax1x.com/2021/12/12/oLSSfJ.png"></a></p>
+<h2 id="ARP与IPv4通信"><a href="#ARP与IPv4通信" class="headerlink" title="ARP与IPv4通信"></a>ARP与IPv4通信</h2><p><strong>ARP</strong><br>定义：ARP（Address Resolution Protocol）协议是网络层的协议，用于将IP地址解析为的MAC地址。<br>工作原理<br>每个主机都会在自己的 ARP 缓冲区中建立一个 ARP 列表，以记录IP 地址和 MAC 地址之间的对应关系；<br>主机（网络接口）新加入网络时（也可能只是MAC地址发生变化，接口重启等），会发送ARP报文把自己IP地址与MAC地址的映射关系广播给其他主机。</p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>IP数据包通过以太网发送，但以太网设备并不能识别IP地址，它们是以MAC地址传输的。因此，必须把IP目的地址转换成MAC目的地址。在以太网中，一个主机要和另一个主机进行直接通信，必须要知道目标主机的MAC地址。</p>
+<hr>
+<p>ARP的报头结构</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oLSM6I"><img src="https://s4.ax1x.com/2021/12/12/oLSM6I.png" alt="ARP的报头结构"></a></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>硬件类型字段：指明了发送方想知道的硬件接口类型，以太网的值为1。<br>协议类型字段：指明了发送方提供的高层协议类型，IP为0800（16进制）。<br>硬件地址长度和协议长度：指明了硬件地址和高层协议地址的长度，这样ARP报文就可以在任意硬件和任意协议的网络中使用。<br>操作字段：用来表示这个报文的类型，ARP请求为1，ARP响应为2，RARP请求为3，RARP响应为4。<br>发送方的硬件地址（0-3字节）：源主机硬件地址的前3个字节。<br>发送方的硬件地址（4-5字节）：源主机硬件地址的后3个字节。<br>发送方IP（0-1字节）：源主机硬件地址的前2个字节。<br>发送方IP（2-3字节）：源主机硬件地址的后2个字节。<br>目的硬件地址（0-1字节）：目的主机硬件地址的前2个字节。<br>目的硬件地址（2-5字节）：目的主机硬件地址的后4个字节。<br>目的IP（0-3字节）：目的主机的IP地址。</p>
+<hr>
+<p><strong>ICMP与连通性测试</strong></p>
+<p>什么是ICMP协议<br>因特网控制报文协议(Internet Control Message Protocol，ICMP)工作在网络层。ICMP的消息可以分为两类：一类是差错报文，即通知出错原因的错误消息（如traceroute），另一类是查询报文，即用于诊断的查询消息（如ping）。</p>
+<p>ICMP的功能<br>ICMP的功能是确认IP包是否成功到达目标地址和通知在发送过程中IP包被丢弃的原因。</p>
+<p>连通性测试<br>① 案例背景：某公司业务部拥有3台计算机，该公司的业务员将这3台计算机接入到一台普通交换机，并为每台计算机配置了IP地址，实现了业务部的3台计算机的互联互通。拓扑图如图所示。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oLSa1s"><img src="https://s4.ax1x.com/2021/12/12/oLSa1s.png"></a></p>
+<p>② 测试思路：安装好TCP/IP，配置3台计算机的IP地址，在3台机器中分别运行【ping IP】命令，测试本机能否访问另外两台计算机。<br>③ 测试结果：结果显示PC2发送了4个ICMP数据包给PC1，并成功接收了4个返回包。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oLp2a8"><img src="https://s4.ax1x.com/2021/12/12/oLp2a8.png"></a></p>
+<h1 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h1><h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p><strong>什么是TCP协议</strong><br>传输控制协议(Transmission Control Protocol，TCP)是一种基于字节流的传输层通信协议，由IETF的RFC793定义。</p>
+<p><strong>什么是TCP封装</strong><br>TCP是基于两个网络主机之间的端对端通信。TCP从高层协议接收需要传送的字节流，将字节流分成段，然后TCP对段编号和排序以便传递；<br>TCP在IP数据报文中的封装主要包括TCP报头和TCP数据。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oLp5xs"><img src="https://s4.ax1x.com/2021/12/12/oLp5xs.png"></a></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>TCP头部：记录源端与目标端口相关应用程序所用的连接端口号，以及相关的序列号、确认号、窗口大小等。</p>
+<p>TCP数据：转发应用层协议所交付的相关信息，形成TCP数据，值得注意的是，TCP报文段中的数据部分并不是必须的，当一个连接被建立和终止时，交换的报文段只包含了TCP头部而没有数据。</p>
+<hr>
+<p><strong>TCP数据报的头部格式。</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oL9nsI"><img src="https://s4.ax1x.com/2021/12/12/oL9nsI.png"></a></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>源端口号是指发送TCP进程对应的端口号，目标端口号是指目标端接收进程的端口号。</p>
+<p>32位序列号为数据段标记，用于在目的端对到达包的重组，32位确认号对发送端的确认信息，用于告诉发送端这个序号之前的数据段都收到了。</p>
+<p>URG是紧急指针有效位，与16位紧急指针配合使用。</p>
+<p>ACK是确认序列号有效位，表明该数据包包含确认信息。</p>
+<p>PSH通知接收端立即将数据提交给用户进程，不在缓存中停留，等待更多的数据。</p>
+<p>RST为1时，请求重新建立TCP连接，SYN为1时，请求建立连接，FIN为1时，数据发送完毕，请求断开连接。</p>
+<p>滑动窗口的大小，指明本地可接收数据的字节数。</p>
+<hr>
+<p><strong>TCP建立连接的3次握手过程</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oL9lo8"><img src="https://s4.ax1x.com/2021/12/12/oL9lo8.png"></a></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>第1次握手：HostA发送1个SYN信息包给HostB，SYN包含双方的连接端口号、序号、响应序号、SYN Flag和窗口尺寸。</p>
+<p>第2次握手：HostB收到HostA的SYN信息后，向HostA回复一个SYN-ACK信息包，该信息包中包含序号、响应序号、SYN-ACL Flag和窗口尺寸。</p>
+<p>第3次握手：HostA收到HostB的SYN-ACK信息包后，再向HostB发送一个ACK信息包，ACK信息包中包含了序号、响应序号、ACK Flag和窗口尺寸。</p>
+<p>注：SYN:同步序列号请求（当SYN置1时，则表示建立连接）；seq：序列号（发送请求的次数）；ack：确认（TCP协议规定，ack为1时有效；ack=seq+1 ）；FIN：请求断开连接；ctl: 当前发送的状态。</p>
+<hr>
+<p><strong>TCP断开连接的4个过程</strong></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oL9ULq"><img src="https://s4.ax1x.com/2021/12/12/oL9ULq.png"></a></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>步骤1：HostA发送第1个FIN-ACK信息包给HostB，FIN-ACK包含序号、响应序号、SYN-ACK  Flag和窗口尺寸。</p>
+<p>步骤2：HostB发送ACK信息包给HostA，ACK中包含序号、响应序号和ACK Flag。</p>
+<p>步骤3：当HostB完成到HostA的传输后，HostB发送FIN-ACK信息包给HostA，FIN-ACK包含序号、响应序号和FIN-ACK Flag。</p>
+<p>步骤4：HostA再发送ACK信息包给HostB。</p>
+<hr>
+<p><strong>基于TCP的应用层协议</strong></p>
+<table>
+<thead>
+<tr>
+<th>端口号</th>
+<th>协议</th>
+<th>简要说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>25</td>
+<td>SMTP</td>
+<td>简单邮件传输协议，用于发送邮件</td>
+</tr>
+<tr>
+<td>23</td>
+<td>TELNET</td>
+<td>选程登录协议，用于远程登录，通过连接目标终端，得到验证后选程控制管理目标终端</td>
+</tr>
+<tr>
+<td>80</td>
+<td>HTTP</td>
+<td>超文本传输协议，用于超文本的传输</td>
+</tr>
+<tr>
+<td>21</td>
+<td>FTP</td>
+<td>文件传输协议，用于文件的上传和下载</td>
+</tr>
+<tr>
+<td>53</td>
+<td>DNS</td>
+<td>域名服务，DNS在区域传输的时候使用其他时候使用UDP协议</td>
+</tr>
+<tr>
+<td>443</td>
+<td>HTTPS</td>
+<td>HTTPS是以安全为目标的HTTP通道，简单讲是HTTP的安全版</td>
+</tr>
+<tr>
+<td>110</td>
+<td>POP3</td>
+<td>用于支持使用客户端远程管理在服务器上的电子邮件</td>
+</tr>
+<tr>
+<td>123</td>
+<td>NTP</td>
+<td>用来同步网络中各个计算机时间的协议</td>
+</tr>
+<tr>
+<td>22</td>
+<td>SSH</td>
+<td>SSH为建立在应用层和传输层基础上的安全协议</td>
+</tr>
+</tbody></table>
+<h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p><strong>什么是UDP</strong><br>用户数据报协议（User Datagram Protocol，UDP）是一种无连接的传输层协议，提供面向事务的简单不可靠信息传送服务。</p>
+<p><strong>UDP的特性</strong><br>UDP是面向非连接的传输，UDP报文中包含源端口和目标端口，从而确保UDP报文能够正确地传输到目的地。</p>
+<p><strong>应用场景</strong><br>UDP用于传输效率要求不高的应用，如：DNS服务、TFTP服务等；<br>UDP适用传输方式为一对多的广播传输；<br>UDP用于传输非关键数据或本身具有完整性检查机制的应用程序。</p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>UDP与网络层的IP一样都是以非连接的方式传输信息，因此，UDP的传输过程比较简单，传输效率较高，但可靠性较低，如果传输发生问题，UDP无法确认、重传及流量控制，必须通过应用层的相关协议进行处理。</p>
+<hr>
+<p><strong>UDP封装</strong><br>源端口号；<br>目标端口号；<br>报文长度；<br>校验和字段。</p>
+<p><img src="C:\Users\沅浅\AppData\Roaming\Typora\typora-user-images\image-20211212230240165.png"></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>（1）UDP源端口号<br>UDP源端口号用来记录源端应用程序所用的连接端口号。如果目的端的应用程序收到报文后必须回复时，由UDP源端口号标识应用程序的连接端口号。<br>（2）UDP目标端口号<br>目标端口号是UDP报文中最重要的信息，用来标识目标端应用程序的连接端口号。<br>（3）UDP报文长度<br>报文长度表示数据报头以及数据的总长度。UDP数据报头长度的最小值是8字节，<br>（4）UDP校验和<br>UDP校验和用于差错控制，检测UDP数据报文在传输过程中是否有错，错误就丢弃。</p>
+<hr>
+<p><strong>基于UDP的应用层协议</strong></p>
+<table>
+<thead>
+<tr>
+<th>端口号</th>
+<th>协议</th>
+<th>简要说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>69</td>
+<td>TFTP</td>
+<td>简单文件传输协议，是在UDP之上上建立一个类似于FIP的仅支持文件上传和下功能的传输协议，所以它不包含FTP中的目录操作和用户权限等内容</td>
+</tr>
+<tr>
+<td>67</td>
+<td>DHCP</td>
+<td>动态主机配置协议，为内部网络或网络服务供应商自动分配IP地址</td>
+</tr>
+<tr>
+<td>161</td>
+<td>SNMP</td>
+<td>是用来管理网络设备的。由于网络设备很多，无连接的服务就体现出其优势</td>
+</tr>
+<tr>
+<td>53</td>
+<td>DNS</td>
+<td>域名服务，DINS在区域传输的时候使用TCP，其他时候使用UDP</td>
+</tr>
+</tbody></table>
+<h1 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h1><p><strong>远程访问应用 - TelNet远程登录</strong><br>定义：TelNet（Telecommunications Network）是用来进行远程访问的重要工具；</p>
+<p>功能：TelNet应用程序的主要功能是远程登录，实现用户与远程计算机进行动态交互；</p>
+<p>通信过程：<br>建立与服务器的TCP连接；<br>从键盘上接收用户输入的字符；<br>把用户输入的字符串变成标准格式并发送给服务器；<br>从远程服务器接收输出的信息；<br>把该信息显示在用户的屏幕上。</p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>功能举例：用自己的键盘、鼠标等输入设备操纵远程计算机或路由器等网络设备，运行远程计算机上的软件，能远程了解计算机或设备的运行情况，并查看运行结果。<br>TelNet的通信过程，用文本方式远程管理计算机或路由器等网络设备用户的终端实际上与本地的TELNET客户机进行通信，远程主机与远程TelNet服务器进行通信，然后通过TCP进行连接，客户机与服务器之间采用NVT标准进行通信</p>
+<hr>
+<p><strong>网络管理应用 - SNMP</strong><br>定义：SNMP (Simple Network Management Protocol)称为简单网络管理协议；<br>功能：SNMP是用于网络管理的协议，主要对网络中支持SNMP的设备进行管理。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/oLiEJU"><img src="https://s4.ax1x.com/2021/12/12/oLiEJU.png" alt=" "></a></p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>SNMP不受设备类型和厂商的限制，只要支持SNMP的设备都提供SNMP统一界面，管理员可以使用统一的操作进行管理。</p>
+<hr>
+<p><strong>Web应用 - HTTP</strong><br>定义：HTTP（HyperText Transfer Protocol）也称为超文本传输协议。</p>
+<p>工作过程：HTTP是一种用于超媒体信息系统的应用层协议，典型的HTTP事务处理有如下过程。<br>客户与服务器建立连接；<br>客户向服务器提出请求；<br>服务器接受请求，并根据请求返回相应的文件作为应答；<br>客户与服务器关闭连接。</p>
+<p><strong>电子邮件应用 - SMTP</strong><br>定义：在互联网中，电子邮件的传送是依靠SMTP进行的。SMTP包括两个标准子集：一个标准定义电子邮件信息的格式，另一个是传输邮件的标准。</p>
+<p>功能：SMTP的主要任务是负责服务器之间的邮件传送，它规定了电子邮件如何在互联网中通过TCP在发送方和接收方之间进行传送。</p>
+<p><strong>局域网IP管理应用 - DHCP</strong><br>定义：DHCP（Dynamic Host Configuration Protocol ）也称为动态主机配置协议；</p>
+<p>功能：在局域网环境集中管理和分配IP地址，使客户机能动态的获得IP地址、Gateway地址、DNS服务器地址等信息，提高IP地址的利用率；</p>
+<p>优势<br>在大型企业网络中，会有大量的主机或设备需要配置IP地址等网络参数。如果采用手工配置，工作量大且不好管理，如果有用户擅自修改网络参数，还有可能会造成IP地址冲突等问题。使用动态主机配置协议DHCP来分配IP地址等网络参数，可以减少管理员的工作量，避免用户手工配置网络参数时造成的地址冲突。</p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>简单来说，DHCP就是一个不需要账号密码登录的、自动给内网机器分配IP地址等信息的协议。</p>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://yqloveljw.xyz">沅浅</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yqloveljw.xyz/2021/12/11/%E5%8D%8E%E4%B8%BA1+X/1.%E5%8D%8E%E4%B8%BA1+X-TCP&amp;IP/">http://yqloveljw.xyz/2021/12/11/%E5%8D%8E%E4%B8%BA1+X/1.%E5%8D%8E%E4%B8%BA1+X-TCP&amp;IP/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yqloveljw.xyz" target="_blank">沅浅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">基础教程</a><a class="post-meta__tags" href="/tags/%E5%8D%8E%E4%B8%BA1-X/">华为1+X</a></div><div class="post_share"><div class="social-share" data-image="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/13/%E5%8D%8E%E4%B8%BA1+X/2.%E5%8D%8E%E4%B8%BA1+X-%E7%BD%91%E7%BB%9C%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/"><img class="prev-cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">2.华为1+X/网络交换技术</div></div></a></div><div class="next-post pull-right"><a href="/2021/09/18/Python/Python%E7%88%AC%E8%99%AB/%E7%88%AC%E8%99%AB5/"><img class="next-cover" src="https://s4.ax1x.com/2022/02/15/H2OSYR.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">爬取网页数据</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/12/13/%E5%8D%8E%E4%B8%BA1+X/2.%E5%8D%8E%E4%B8%BA1+X-%E7%BD%91%E7%BB%9C%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/" title="2.华为1+X&#x2F;网络交换技术"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-13</div><div class="title">2.华为1+X&#x2F;网络交换技术</div></div></a></div><div><a href="/2021/12/14/%E5%8D%8E%E4%B8%BA1+X/3.%E5%8D%8E%E4%B8%BA1+X-%E8%B7%AF%E7%94%B1%E6%8A%80%E6%9C%AF/" title="3.华为1+X-路由技术"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-14</div><div class="title">3.华为1+X-路由技术</div></div></a></div><div><a href="/2021/12/15/%E5%8D%8E%E4%B8%BA1+X/4.%E5%8D%8E%E4%B8%BA1+X-%E7%BD%91%E7%BB%9C%E5%8F%AF%E9%9D%A0%E6%80%A7/" title="4.华为1+X-网络可靠性"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-15</div><div class="title">4.华为1+X-网络可靠性</div></div></a></div><div><a href="/2021/12/16/%E5%8D%8E%E4%B8%BA1+X/5.%E5%8D%8E%E4%B8%BA1+X-%E5%B9%BF%E5%9F%9F%E7%BD%91%E6%8A%80%E6%9C%AF/" title="5.华为1+X-广域网技术"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-16</div><div class="title">5.华为1+X-广域网技术</div></div></a></div><div><a href="/2021/12/17/%E5%8D%8E%E4%B8%BA1+X/6.%E5%8D%8E%E4%B8%BA1+X-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/" title="6.华为1+X-网络安全技术"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-17</div><div class="title">6.华为1+X-网络安全技术</div></div></a></div><div><a href="/2021/12/18/%E5%8D%8E%E4%B8%BA1+X/7.%E5%8D%8E%E4%B8%BA1+X-IPV6%E5%8D%8F%E8%AE%AE/" title="7.华为1+X-IPV6协议"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-18</div><div class="title">7.华为1+X-IPV6协议</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">沅浅</div><div class="author-info__description">我想记下来很多东西，我太怕我会忘记</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E4%B8%8E%E7%BD%91%E7%BB%9C"><span class="toc-number">1.</span> <span class="toc-text">通信与网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">通信的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%80%9A%E4%BF%A1"><span class="toc-number">1.1.1.</span> <span class="toc-text">什么是通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90"><span class="toc-number">1.1.2.</span> <span class="toc-text">通信系统的基本组成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C%E5%85%B8%E5%9E%8B%E7%BB%84%E7%BD%91%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text">数据通信网络典型组网模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%843%E7%A7%8D%E5%85%B8%E5%9E%8B%E7%BB%84%E7%BD%91%E6%A8%A1%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.2.1.</span> <span class="toc-text">通信网络最常用的3种典型组网模型介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%B8%B8%E8%A7%81%E6%9C%AF%E8%AF%AD"><span class="toc-number">1.3.</span> <span class="toc-text">网络通信常见术语</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OSI%E4%B8%8ETCP-IP%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">OSI与TCP&#x2F;IP参考模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE%E5%92%8C%E6%A0%87%E5%87%86%E6%9C%BA%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">网络通信协议和标准机构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7"><span class="toc-number">2.1.1.</span> <span class="toc-text">网络通信协议的基本特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OSI%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text">OSI参考模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text">TCP&#x2F;IP参考模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="toc-number">3.</span> <span class="toc-text">数据链路层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LLC%E4%B8%8EMAC"><span class="toc-number">3.1.</span> <span class="toc-text">LLC与MAC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E6%A6%82%E8%BF%B0"><span class="toc-number">3.2.</span> <span class="toc-text">以太网概述</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="toc-number">4.</span> <span class="toc-text">网络层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IP%E5%9C%B0%E5%9D%80%E4%B8%8E%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86"><span class="toc-number">4.1.</span> <span class="toc-text">IP地址与子网划分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ARP%E4%B8%8EIPv4%E9%80%9A%E4%BF%A1"><span class="toc-number">4.2.</span> <span class="toc-text">ARP与IPv4通信</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="toc-number">5.</span> <span class="toc-text">传输层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP"><span class="toc-number">5.1.</span> <span class="toc-text">TCP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP"><span class="toc-number">5.2.</span> <span class="toc-text">UDP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-number">6.</span> <span class="toc-text">应用层</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/13/hexo%E7%BE%8E%E5%8C%96/hexo%E6%B7%BB%E5%8A%A0%E5%BE%BD%E6%A0%87/" title="hexo添加徽标"><img src="https://s4.ax1x.com/2022/01/02/Toe4Qx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo添加徽标"/></a><div class="content"><a class="title" href="/2022/03/13/hexo%E7%BE%8E%E5%8C%96/hexo%E6%B7%BB%E5%8A%A0%E5%BE%BD%E6%A0%87/" title="hexo添加徽标">hexo添加徽标</a><time datetime="2022-03-13T08:58:50.000Z" title="发表于 2022-03-13 16:58:50">2022-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/08/%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E5%B1%B1%E9%B8%A1/R-studio%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="R-studio数据恢复软件使用教程"><img src="https://s1.ax1x.com/2022/03/08/bcnVfg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="R-studio数据恢复软件使用教程"/></a><div class="content"><a class="title" href="/2022/03/08/%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E5%B1%B1%E9%B8%A1/R-studio%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="R-studio数据恢复软件使用教程">R-studio数据恢复软件使用教程</a><time datetime="2022-03-08T02:18:17.000Z" title="发表于 2022-03-08 10:18:17">2022-03-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E5%B0%8F%E5%AE%A2%E6%9C%8D%E5%8A%9F%E8%83%BD/" title="hexo增加小客服功能"><img src="https://s4.ax1x.com/2022/01/02/Toe4Qx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo增加小客服功能"/></a><div class="content"><a class="title" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E5%B0%8F%E5%AE%A2%E6%9C%8D%E5%8A%9F%E8%83%BD/" title="hexo增加小客服功能">hexo增加小客服功能</a><time datetime="2022-03-07T07:38:42.000Z" title="发表于 2022-03-07 15:38:42">2022-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E6%A8%B1%E8%8A%B1%E9%A3%98%E8%90%BD%E8%83%8C%E6%99%AF/" title="hexo增加樱花飘落背景"><img src="https://s4.ax1x.com/2022/01/02/Toe4Qx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo增加樱花飘落背景"/></a><div class="content"><a class="title" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E6%A8%B1%E8%8A%B1%E9%A3%98%E8%90%BD%E8%83%8C%E6%99%AF/" title="hexo增加樱花飘落背景">hexo增加樱花飘落背景</a><time datetime="2022-03-07T07:32:46.000Z" title="发表于 2022-03-07 15:32:46">2022-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E9%A1%B5%E8%84%9A%E8%B7%B3%E5%8A%A8%E7%9A%84%E2%99%A5/" title="hexo增加页脚跳动的♥"><img src="https://s4.ax1x.com/2022/01/02/Toe4Qx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo增加页脚跳动的♥"/></a><div class="content"><a class="title" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E9%A1%B5%E8%84%9A%E8%B7%B3%E5%8A%A8%E7%9A%84%E2%99%A5/" title="hexo增加页脚跳动的♥">hexo增加页脚跳动的♥</a><time datetime="2022-03-07T07:07:44.000Z" title="发表于 2022-03-07 15:07:44">2022-03-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2016 - 2022 By 沅浅</div><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a><a style="margin-inline:5px" target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a><a style="margin-inline:5px" target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a><a style="margin-inline:5px" target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Github托管"></a><a style="margin-inline:5px" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

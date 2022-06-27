@@ -1,0 +1,387 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>6.华为1+X-网络安全技术 | 沅浅</title><meta name="keywords" content="基础教程,华为1+X"><meta name="author" content="沅浅"><meta name="copyright" content="沅浅"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="华为1+X-网络安全技术 访问控制列表ACL的基本原理1、ACL的基本概念         访问控制列表ACL（Access Control List）是由一系列规则组成的集合，ACL通过这些规则对报文进行分类，从而使设备可以对不同类报文进行不同的处理。         一个ACL通常由若干条“deny｜permit”语句组成，每条语句就是该ACL的一条规则，每条语句中的“deny｜permit”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6.华为1+X-网络安全技术">
+<meta property="og:url" content="http://yqloveljw.xyz/2021/12/17/%E5%8D%8E%E4%B8%BA1+X/6.%E5%8D%8E%E4%B8%BA1+X-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/index.html">
+<meta property="og:site_name" content="沅浅">
+<meta property="og:description" content="华为1+X-网络安全技术 访问控制列表ACL的基本原理1、ACL的基本概念         访问控制列表ACL（Access Control List）是由一系列规则组成的集合，ACL通过这些规则对报文进行分类，从而使设备可以对不同类报文进行不同的处理。         一个ACL通常由若干条“deny｜permit”语句组成，每条语句就是该ACL的一条规则，每条语句中的“deny｜permit”">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg">
+<meta property="article:published_time" content="2021-12-17T09:32:54.000Z">
+<meta property="article:modified_time" content="2022-03-31T11:33:25.433Z">
+<meta property="article:author" content="沅浅">
+<meta property="article:tag" content="基础教程">
+<meta property="article:tag" content="华为1+X">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg"><link rel="shortcut icon" href="/img/yq.jpg"><link rel="canonical" href="http://yqloveljw.xyz/2021/12/17/%E5%8D%8E%E4%B8%BA1+X/6.%E5%8D%8E%E4%B8%BA1+X-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '6.华为1+X-网络安全技术',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-31 19:33:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="沅浅" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s4.ax1x.com/2021/12/23/TGe4nf.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">沅浅</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">6.华为1+X-网络安全技术</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-17T09:32:54.000Z" title="发表于 2021-12-17 17:32:54">2021-12-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-31T11:33:25.433Z" title="更新于 2022-03-31 19:33:25">2022-03-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8D%8E%E4%B8%BA1-X/">华为1+X</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="6.华为1+X-网络安全技术"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>华为1+X-网络安全技术</p>
+<h1 id="访问控制列表"><a href="#访问控制列表" class="headerlink" title="访问控制列表"></a>访问控制列表</h1><h2 id="ACL的基本原理"><a href="#ACL的基本原理" class="headerlink" title="ACL的基本原理"></a>ACL的基本原理</h2><p><strong>1、ACL的基本概念</strong><br>         访问控制列表ACL（Access Control List）是由一系列规则组成的集合，ACL通过这些规则对报文进行分类，从而使设备可以对不同类报文进行不同的处理。<br>         一个ACL通常由若干条“deny｜permit”语句组成，每条语句就是该ACL的一条规则，每条语句中的“deny｜permit”就是与这条规则相对应的处理动作。处理动作“permit”的含义是“允许”，处理动作“deny”的含义是“拒绝”。<br>          ACL是一种应用非常广泛的网络安全技术，配置了ACL的网络设备的工作过程可以分为以下两个步骤。<br>（1）根据事先设定好的报文匹配规则对经过该设备的报文进行匹配；<br>（2）对匹配的报文执行事先设定好的处理动作。</p>
+<p>特别需要说明的是，ACL技术总是与其他技术结合在一起使用的，因此，所结合的技术不同，“允许（ permit）”及“拒绝（deny）”的内涵及作用也会不同。例如，当ACL技术与流量过滤技术结合使用时，“permit”就是“允许通行”的意思，“deny”就是“拒绝通行”的意思。</p>
+<p><strong>2、ACL的规则</strong><br>         ACL负责管理用户配置的所有规则，并提供报文匹配规则的算法。ACL的规则管理的基本思想如下：<br>①每个ACL作为一个规则组，一般可以包含多个规则。<br>②ACL中的每一条规则通过规则ID（rule-id）来标识，规则ID可以自行设置，也可以由系统根据步长自动生成，即设备会在创建ACL的过程中自动为每一条规则分配一个ID。<br>③默认情况下，ACL中的所有规则均按照规则ID从小到大的顺序与规则进行匹配。<br>④规则ID之间会留下一定的间隔。如果不指定规则ID时，具体间隔大小由“ACL的步长”来设定。</p>
+<p>（④规则ID之间会留下一定的间隔。例如，将规则编号的步长设定为10（注：规则编号的步长的默认值为5），则规则编号将按照10、20、30、40 …这样的规律自动进行分配。如果将规则编号的步长设定为2，则规则编号将按照2、4、6、8 …这样的规律自动进行分配。步长的大小反映了相邻规则编号之间的间隔大小。间隔的存在，实际上是为了方便在两个相邻的规则之间插入新的规则。）</p>
+<p>3、ACL的规则匹配<br>           配置了ACL的设备在接收到一个报文之后，会将该报文与ACL中的规则逐条进行匹配。如果不能匹配上当前这条规则，则会继续尝试去匹配下一条规则。一旦报文匹配上了某条规则，则设备会对该报文执行这条规则中定义的处理动作（permit或deny），并且不再继续尝试与后续规则进行匹配。如果报文不能匹配上ACL的任何一条规则，则设备会对该报文执行“permit”这个处理动作。</p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>在将一个数据包和访问控制列表的规则进行匹配的时候，由规则的匹配顺序决定规则的优先级。华为设备支持以下两种匹配顺序。<br>（1）匹配顺序按照用户配置ACL规则的先后序列进行匹配，先配置的规则先匹配。根据ACL中语句的顺序，把数据包和判断条件进行比较。一旦匹配，就采用语句中的动作并结束比较过程，不再检查以后的其他条件判断语句。如果没有任何语句匹配，数据包将被放行。<br>（2）自动排序（auto）使用“深度优先”的原则进行匹配。“深度优先”根据ACL规则的精确度排序，如果匹配条件（如协议类型、源和目的IP地址范围等）限制越严格，规则就越先匹配。基本IPv4的ACL的“深度优先”顺序判断原则及步骤如下：<br>①判断规则中是否带VPN实例，带VPN实例的规则优先。<br>②比较源IP地址范围，源IP地址范围小（即通配符掩码中“0”位的数量多）的规则优先。例如，“1.1.1.1 0.0.0.0”指定了一个IP地址1.1.1.1，而“1.1.1.0 0.0.0.255”指定了一个网段1.1.1.1~1.1.1.255。因前者指定的地址范围比后者小，所以在规则中优先。<br>③如果源IP地址范围相同，则规则ID(rule-id)小的规则优先。</p>
+<hr>
+<p>4、ACL分类<br>        根据ACL所具备的特性不同，我们可以将ACL分成不同的类型。分别是基本ACL、高级ACL、二层ACL、用户自定义ACL，其中应用最为广泛的是基本ACL和高级ACL。各种类型ACL的区别，如表所示。</p>
+<table>
+<thead>
+<tr>
+<th>ACL类型</th>
+<th>编号范围</th>
+<th>规则制订的主要依据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基本ACL</td>
+<td>2000～2999</td>
+<td>报文的源IP地址等信息。</td>
+</tr>
+<tr>
+<td>高级ACL</td>
+<td>3000～3999</td>
+<td>报文的源IP地址、目的IP地址、报文优先级、IP承载的协议类型及特性等三、四层信息。</td>
+</tr>
+<tr>
+<td>二层ACL</td>
+<td>4000～4999</td>
+<td>报文的源MAC地址、目的MAC地址、802.1p优先级、链路层协议类型等二层信息</td>
+</tr>
+<tr>
+<td>用户自定义ACL</td>
+<td>5000～5999</td>
+<td>用户自定义报文的偏移位置和偏移量、从报文中提取出相关内容等信息</td>
+</tr>
+</tbody></table>
+<h2 id="基本ACL和高级ACL"><a href="#基本ACL和高级ACL" class="headerlink" title="基本ACL和高级ACL"></a>基本ACL和高级ACL</h2><p>1、基本ACL的命令格式<br>基本ACL只能基于IP报文的源IP地址、报文分片标记和时间段信息来定义规则。配置基本ACL规则的命令具有如下结构：<br>rule[rule-id]{permit|deny}[source{source-address source-wildcard｜any}|fragment|logging|time-range time-name]</p>
+<p>对命令中各个组成项的解释如下。<br>rule表示这是一条规则。<br>rule-id表示这条规则的编号。<br>permit|deny是一个“二选一”选项，表示与这条规则相关联的处理动作。用deny命令表示“拒绝”；用permit命令表示“允许”。<br>source表示源IP地址信息。<br>source-address表示具体的源IP地址。<br>source- wildcard表示与source-address相对应的通配符。source-wildcard和source-address结合使用，可以确定出一个IP地址的集合。特殊情况下，该集合中可以只包含一个IP地址。<br>any表示源IP地址可以是任何地址。<br>fragment表示该规则只对非首片分片报文有效。<br>logging表示需要将匹配上该规则的IP报文进行日志记录。<br>time-range time-name表示该规则的生效时间段为time-name，具体的使用方法在这里不做描述。  这部分内容是不是需要调整位置？</p>
+<p>2、案例6-1 基本ACL的配置<br>（1）案例背景与要求：某公司网络包含了外来人员办公区、项目部办工区和财务部办公区域。在外来人员办公区中，有一台专门供外来人员使用的计算机PC2，IP地址为192.168.2.1/24，出于网络安全方面的考虑，我们需要禁止财务部办公区接收外来人员发送的IP报文。为了满足这样的网络需求，我们可以在路由器R1上配置基本ACL。基本ACL可以根据源IP地址信息识别出外来办公人员发出的IP报文，然后在GE0/0/3接口的出方向（Outbound方向）上拒绝放行这样的IP报文。</p>
+<p>​        基本ACL的配置示意图如下。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TicI6x"><img src="https://s4.ax1x.com/2021/12/17/TicI6x.png" alt="TicI6x.png"></a></p>
+<p>（2）案例配置过程<br>①配置路由器R1。首先，我们在路由器R1的系统视图下，创建一个编号为2000的基本ACL。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[R1]acl 2000</span><br><span class="line">[R1-acl-basic-2000]</span><br></pre></td></tr></table></figure>
+
+<p>②然后，在ACL 2000的视图下创建如下的规则。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[R1-acl-basic-2000]rule deny source 192.168.2.1 0.0.0.0</span><br><span class="line">[R1-acl-basic-2000]</span><br></pre></td></tr></table></figure>
+
+<p>这条规则的含义是拒绝源IP地址为192.168.2.1的IP报文。</p>
+<p>③最后，使用报文过滤技术中的traffic-filter命令将ACL 2000应用在路由器R1的GE0/0/3接口的出方向上。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[R1-acl-basic-2000]quit</span><br><span class="line">[R1]interface gigabitethernet 0/0/3</span><br><span class="line">[R1-GigabitEthernet0/0/3]traffic-filter outbound acl 2000</span><br><span class="line">[R1-GigabitEthernet0/0/3]</span><br></pre></td></tr></table></figure>
+
+<p>通过上面的配置，源IP地址为192.168.2.1的IP报文将无法在出方向上通过路由器R1的GE0/0/3接口，这样就实现了安全策略的要求。</p>
+<p>3、高级ACL的命令格式<br>高级ACL可以根据IP报文的源IP地址、IP报文的目的IP地址、IP报文的协议字段的值、IP报文的优先级的值、IP报文的长度值、TCP报文的源端口号、TCP报文的目的端口号、UDP报文的源端口号、UDP报文的目的端口号等信息来定义规则。基本ACL的功能只是高级ACL的功能的一个子集，高级ACL可以比基本ACL定义出更精准、更复杂、更灵活的规则。<br>下面是针对所有IP报文的一种简化了的配置命令格式。<br>rule[rule-id]{permit|deny}ip[destination{destination-address destination-wildcard|any}][source{source-address source-wildcard|any}]</p>
+<p>高级ACL中规则的配置比基本ACL中规则的配置要复杂得多，且配置命令的格式也会因IP报文的载荷数据的类型不同而不同。例如，针对ICMP报文、TCP报文、UDP报文等不同类型的报文，其相应的配置命令的格式也是不同的。</p>
+<p>命令相关解释如下：<br>destination表示目的IP地址信息。<br>destination-address表示具体的目的IP地址。<br>destination-wildcard表示与destination-address相对应的通配符。<br>destination-wildcard表示与destination-address结合使用，可以确定出一个IP地址的集合。特殊情况下，该集合中可以只包含一个IP地址。<br>与基本ACL命令格式相同部分的使用方法在这里不做描述。</p>
+<p>4、案例6-2 高级ACL的配置<br>（1）案例背景与要求：本配置示例的网络结构与基本ACL的网络结构基本一样，所不同的是，我们要求外来人员无法接收到来自财务部办公区的IP报文B。在这种情况下，我们可以在路由器R1上配置高级ACL。高级ACL可以根据目的IP地址信息识别去往目的地为外来人员办公区的IP报文，然后在GE0/0/3接口的入方向（Inbound方向）上拒绝放行这样的IP报文。</p>
+<p>高级ACL的配置示意图如下。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TigPHS"><img src="https://s4.ax1x.com/2021/12/17/TigPHS.png" alt="TigPHS.png"></a></p>
+<p>（2）案例配置过程<br>①置路由器R1。首先，我们在路由器R1的系统视图下创建一个编号为3000的ACL。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[R1]acl 3000</span><br><span class="line">[R1-acl-adv-3000]</span><br></pre></td></tr></table></figure>
+
+<p>（2）案例配置过程<br>②然后，在ACL3000的视图下创建如下的规则。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[R1-acl-adv-3000]rule deny ip destination 192.168.2.1 0.0.0.0</span><br><span class="line">[R1-acl-adv-3000]</span><br></pre></td></tr></table></figure>
+
+<p>这条规则的含义是拒绝目的IP地址为192.168.2.1的IP报文。</p>
+<p>（2）案例配置过程<br>③最后，使用报文过滤技术中的 traffic-filter命令将ACL 3000应用在路由器R1的GE0/0/3接口的入方向上。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[R1-acl-adv-3000]quit</span><br><span class="line">[R1]interface gigabitethernet 0/0/3</span><br><span class="line">[R1-GigabitEthernet0/0/3]traffic-filter inbound acl 3000</span><br><span class="line">[R1-GigabitEthernet0/0/3]</span><br></pre></td></tr></table></figure>
+
+<p>通过上面的配置，目的IP地址为192.168.2.1的IP报文将无法在入方向上通过路由器R1的GE0/0/3接口，这样就实现了安全策略的要求。</p>
+<h2 id="ACL的典型应用"><a href="#ACL的典型应用" class="headerlink" title="ACL的典型应用"></a>ACL的典型应用</h2><p>1、案例6-3 基本ACL配置实例<br>（1）案例背景与要求：Jan16公司有网管办公区、市场部办公区、项目部办公区、财务部办公区和服务器区。出于网络安全方面的考虑，我们希望只有网管办公区的PC1才能通过Telnet方式登录到路由器R1上，其他区域的PC都不能通过Telnet方式登录到路由器R1。公司基础网络拓扑如图所示。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Tigmj0"><img src="https://s4.ax1x.com/2021/12/17/Tigmj0.png" alt="Tigmj0.png"></a></p>
+<p>（2）案例配置思路<br>①在路由器R1上创建基本ACL。<br>②在制定基本ACL规则。<br>③在路由器的VTY（Virtual Type Terminal）上应用所配置的基本ACL。</p>
+<p>（3）案例配置过程<br>①在路由器R1上创建ACL。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Router&gt;system-view</span><br><span class="line">[R1] acl 2000</span><br><span class="line">[R1-acl-basic-2000]</span><br></pre></td></tr></table></figure>
+
+<p>要在路由器R1上创建ACL，必须首先进入系统视图，然后执行命令acl acl-number。对于基本ACL，acl-number的值必须在2000~2999的范围内，这里确定为2000。</p>
+<p>创建了基本ACL 2000后，我们便可以使用rule命令来制定相应的规则。首先，我们制定一条规则：允许源IP地址为192.168.4.1的PC1的IP报文；然后，我们再制定一条规则：拒绝（deny）源IP地址为任意地址的IP报文。</p>
+<p>②配置路由器R1的允许规则和拒绝规则。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[R1-acl-basic-2000]rule permit source 192.168.4.1 0</span><br><span class="line">[R1-acl-basic-2000]rule deny source any</span><br></pre></td></tr></table></figure>
+
+<p>③制定完路由器R1的允许规则和拒绝规则之后，我们可以使用 display acl 2000命令来查看ACL 2000的配置信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[R1-acl-basic- 2000]quit</span><br><span class="line">[R1] quit</span><br><span class="line">&lt;R1&gt; display acl 2000</span><br><span class="line">Basic ACL 2000, 2 rules</span><br><span class="line">ACL&#x27;s step is 5</span><br><span class="line">rule 5 permit source 192.168.4.1 0 (0 times matched)</span><br><span class="line">rule 10 deny (0 times matched)</span><br></pre></td></tr></table></figure>
+
+<p>从回显信息中我们可以看到，基本ACL 2000中已经存在两条规则，路由器R1为这两条规则自动分配的规则编号分别是5和10。另外，回显信息中的“ACL’s step is 5”表示该ACL的规则编号的步长为5，两个“0 times matched”表示该ACL的两条规则的匹配次数都为0（这是因为我们还没有把这个ACL应用到路由器上）。</p>
+<p>④在路由器R1的VTY上应用ACL。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt;system-view</span><br><span class="line">[R1]user-interface vty 0 4</span><br><span class="line">[R1-ui-vty0-4]acl 2000 inbound</span><br></pre></td></tr></table></figure>
+
+<p>（4）案例验证<br>①在PC1上验证Telnet功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;PC&gt; telnet 192.168.4.254</span><br><span class="line">Trying 192.168.4.254 . . .</span><br><span class="line">Press CTRL+K to abort</span><br><span class="line">Connected to 192.168.4.254 . . .</span><br><span class="line">Info：The max number of VTY users is 10, and the number of current VTY users on line is 1</span><br><span class="line">The current login time is 2020-01-22 09: 08: 00</span><br></pre></td></tr></table></figure>
+
+<p>主要从匹配规则和不匹配规则的两个方面进行验证，我们先在网管办公区的PC1上使用 Telnet方式登录路由器，发现可以正常登录。</p>
+<p>②在路由器上重新查看ACL 2000的配置信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; display acl 2000</span><br><span class="line">Basic ACL 2000，2 rules</span><br><span class="line">ACL&#x27;s step is 5</span><br><span class="line">rule 5 permit source 192.168.4.1 0(1 times matched)</span><br><span class="line">rule 10 deny(0 times matched)</span><br></pre></td></tr></table></figure>
+
+<p>从回显信息中我们可以看到，第一条规则的匹配次数为1，这说明网管办公区的PC1所发出的IP报文已经匹配上了这条规则。</p>
+<p>③在市场部PC上验证Telnet功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;PC&gt; telnet 192.168.2.254</span><br><span class="line">Trying 192.168.2.254 . . .</span><br><span class="line">Press CTRL+K to abort</span><br><span class="line">Error: Failed to connect to the remote host.</span><br></pre></td></tr></table></figure>
+
+<p>④再次在路由器R1上查看ACL 2000的配置信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt;display acl 2000</span><br><span class="line">Basic ACL 2000, 2 rules</span><br><span class="line">ACL&#x27;s step is 5</span><br><span class="line">rule 5 permit source 192.168.4.1 0(1 times matched)</span><br><span class="line">rule 10 deny(1 times matched)</span><br></pre></td></tr></table></figure>
+
+<p>从回显信息中我们可以看到，第二条规则的匹配次数也变为了1，这说明刚才尝试 Telnet登录的PC2所发出的IP报文匹配上了第二条规则，但该报文被直接丢弃了。</p>
+<p>2、案例6-4 高级ACL配置示例<br>（1）案例背景与要求：如图所示网络拓扑，在路由器R1和R2上配置OSPF协议实现网络通信。在路由器R2上配置高级ACL，要求如下：<br>①允许主机PC1访问路由器R2的TELNET服务。<br>②允许主机PC2访问路由器R2的的FTP服务。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Ti2kqK"><img src="https://s4.ax1x.com/2021/12/17/Ti2kqK.png" alt="Ti2kqK.png"></a></p>
+<p>①配置路由器R1和R2的接口IP、OSPF协议等，实现全网通信。<br>②在路由器R2上创建高级ACL服务。<br>③在路由器R2的GE0/0/0接口的入方向和VTY（Virtual Type Terminal）上应用所配置的高级ACL服务。</p>
+<p>（3）案例配置过程<br>①配置路由器R2的高级ACL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;R2&gt; system-view</span><br><span class="line">[R2] acl 3000</span><br><span class="line">[R2-acl-adv-3000] rule 5 permit tcp source 192.168.1.1 0.0.0.0 destination 10.10.1.2 0.0.0.0 destination-port eq 23</span><br><span class="line">[R2-acl-adv-3000]rule 10 permit tcp source 192.168.2.1 0.0.0.0 destination 10.10.2.253 0.0.0.0 destination-port range 20 21</span><br><span class="line">[R2-acl-adv-3000]rule 15 deny ip</span><br></pre></td></tr></table></figure>
+
+<p>要在路由器R2上创建高级ACL，必须首先进入系统视图，然后执行【acl acl-number】命令。对于高级ACL，acl-number的值必须在3000~3999的范围内，我们这里确定为3000。创建了高级ACL 3000后，我们便可以使用rule命令来制定相应的规则。</p>
+<p>②在路由器R2的GE0/0/0接口应用ACL 3000</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[R2]interface GigabitEthernet0/0/0</span><br><span class="line">[R2-GigabitEthernet0/0/0]traffic-filter inbound acl 3000</span><br></pre></td></tr></table></figure>
+
+<p>③在路由器R2的VTY上应用ACL 3000</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;R2&gt;system-view</span><br><span class="line">[R2]user-interface vty 0 4</span><br><span class="line">[R2-ui-vty0-4]acl 3000 inbound    </span><br></pre></td></tr></table></figure>
+
+<p>（4）案例验证<br>①在路由器上使用 display acl 3000命令来查看ACL 3000的配置信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[R2-acl-adv-3000]display acl 3000</span><br><span class="line">Advanced ACL 3000, 3 rules</span><br><span class="line">Acl&#x27;s step is 5</span><br><span class="line"> rule 5 permit tcp source 192.168.1.1 0.0.0.0 destination 10.10.1.0 0.0.0.0 </span><br><span class="line">destination-port eq telnet </span><br><span class="line"> rule 10 permit tcp source 192.168.2.1 0.0.0.0 destination 10.10.2.253 0.0.0.0</span><br><span class="line"> destination-port range ftp-data ftp </span><br><span class="line"> rule 15 deny ip</span><br></pre></td></tr></table></figure>
+
+<p>从回显信息中我们可以看到，高级ACL 3000中已经存在3条规则，路由器Router为这两条规则自动分配的规则编号分别是5、10和15。另外，回显信息中的“ACL’s step is 5”表示该ACL的规则编号的步长为5。</p>
+<p>（4）案例验证<br>②我们在主机PC1上使用Telnet方式登录路由器，发现可以正常登录。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;PC&gt; telnet 10.10.1.2</span><br><span class="line">Trying 10.10.1.2. . .</span><br><span class="line">Press CTRL+K to abort</span><br><span class="line">Connected to 10.10.1.2 . . .</span><br><span class="line">Info：The max number of VTY users is 10, and the number of current VTY users on line is I</span><br><span class="line">The current login time is 2019-12-09 03: 09: 00</span><br></pre></td></tr></table></figure>
+
+<p>③我们在主机PC2上登录Server1的FTP，发现可以正常登录。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;PC&gt; ftp 10.10.2.253   </span><br><span class="line">Trying 10.10.2.253 ...</span><br><span class="line">Press CTRL+K to abort</span><br><span class="line">Connected to 10.10.2.253.</span><br><span class="line">220 FTP service ready.</span><br><span class="line">User(10.10.2.253:(none)):huawei</span><br><span class="line">331 Password required for huawei.</span><br><span class="line">Enter password:</span><br><span class="line">230 User logged in.</span><br></pre></td></tr></table></figure>
+
+<p>④我们在主机PC2上使用 Telnet方式登录路由器，发现无法正常登录。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;PC&gt; telnet 10.10.1.2</span><br><span class="line">Press CTRL_] to quit telnet mode</span><br><span class="line">Trying 10.10.1.2 ...</span><br><span class="line">Error: Can&#x27;t connect to the remote host</span><br></pre></td></tr></table></figure>
+
+<h1 id="网络地址转换NAT"><a href="#网络地址转换NAT" class="headerlink" title="网络地址转换NAT"></a>网络地址转换NAT</h1><h2 id="NAT的工作原理"><a href="#NAT的工作原理" class="headerlink" title="NAT的工作原理"></a>NAT的工作原理</h2><p>1、NAT的基本概念<br>（1）NAT的概念<br>         NAT的英文全称是“Network Address Translation”，即“网络地址转换”，它是一个IETF(Internet Engineering Task Force, Internet工程任务组)标准，NAT是一种把内部私有网络地址转换成合法的外部公有网络地址的技术。<br>由于当前TCP/IP协议版本是IPv4，它具有天生的缺陷，就是IP地址数量不够多，难以满足目前爆炸性增长的IP需求。<br>          如果专用网络的计算机要访问Internet，则组织机构在连接Internet的设备上至少需要一个公有的IP地址，然后采用NAT技术，将内部专用网络的计算机专用私有IP地址转换为公有的IP地址，从而让使用专用IP地址的计算机能够和Internet的计算机进行通信。</p>
+<hr>
+<p><strong>tip:</strong></p>
+<p>当今的Internet使用TCP/IP实现了全世界的计算机互联互通，每一台连入Internet的计算机要和别的计算机通信，都必需拥有一个唯一的、合法的IP地址，此IP地址由Internet管理机构NIC统一进行管理和分配。而NIC分配的IP地址称为公有的、合法的IP地址，这些IP地址具有唯一性，连入Internet的计算机只要拥有NIC分配的IP地址就可以和其他计算机通信。<br>但是，由于当前TCP/IP协议版本是IPv4，它具有天生的缺陷，就是IP地址数量不够多，难以满足目前爆炸性增长的IP需求。所以，不是每一台计算机都能申请并获得NIC分配的IP地址。一般而言，需要连上Internet的个人或家庭用户，通过Internet的服务提供商ISP间接获得合法的公有IP地址（例如，用户通过ADSL线路拨号，从电信获得临时租用的公有IP地址）；对于大型机构而言，它们可能直接向Internet管理机构申请并使用永久的公有IP地址，也可能是通过ISP间接获得永久或临时的公有IP地址。<br>由于无论是通过哪种方式获得公有的IP地址，实际上当前的可用IP地址数量依然不足。IP 地址作为有限的资源，NIC要为网络中数以亿计的计算机都分配公有的IP 地址是不可能的。同时，为了使计算机能够具有IP地址并在专用网络（内部网络）中通信，Internet管理机构NIC定义了供专用网络内的计算机使用的专用IP地址。这些IP地址地址是在局部使用的（非全局的、不具有唯一性）、非公有的（私有的）IP地址，这些IP地址的地址范围具体如下：<br>A类地址：10.0.0.0～10.255.255.255<br>B类地址：172.16.0.0～172.31.255.255<br>C类地址：192.168.0.0～192.168.255.255<br>组织机构可根据自身园区网的大小以及计算机数量的多少来采用不同类型的专用地址范围或者它们的组合。但是，这些IP地址不可能出现在Internet上，也就是说源地址或目的地址为这些专有IP地址的数据包不可能在Internet上被传输，这样的数据包只能在内部专用网络中被传输。</p>
+<hr>
+<p>（2）NAT地址转换示意图<br>通过NAT设备，能够将专用网络内的专用IP地址和公有IP地址互相转换，从而实现专用网络内使用专用地址的计算机能够和Internet的计算机通信。NAT地址转换示意图如下：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TiWPHK"><img src="https://s4.ax1x.com/2021/12/17/TiWPHK.png" alt="TiWPHK.png"></a></p>
+<p>2、NAT的类型<br>（1）静态NAT</p>
+<p>（1）静态NAT：静态NAT是指在路由器中，将内网IP地址固定的转换为外网IP地址，通常应用在允许外网用户访问内网服务器的场景。静态NAT的工作过程如图所示。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TiW34g"><img src="https://s4.ax1x.com/2021/12/17/TiW34g.png" alt="TiW34g.png"></a></p>
+<p>第①步：计算机C发送数据包给计算机A，数据包的源IP地址(Source Address，SA)为8.8.8.8，目标IP地址（Destination Address，DA）为8.8.8.3（在外网，计算机A的IP为8.8.8.3）。<br>第②步：数据包到达路由器时，路由器将查询本地的NAT映射表，找到映射条目后将数据包的目的地址（8.8.8.3）转换为内网IP地址（192.168.1.1），源地址保持不变。NAT路由器上有一个公有的IP地址池，在本次通信前，网络管理员已经在NAT路由器上做静态NAT地址映射关系，指定192.168.1.1与8.8.8.3映射。<br>第③步：转换后的数据包经在内网中传输，最终将被计算机A接收。<br>第④步：计算机A收到数据包后，将响应内容封装在目的地址为8.8.8.8的数据包中，然后将该数据包发送出去。<br>第⑤步：目的地址为8.8.8.8数据包到达路由器后，路由器将对照自身的NAT映射表，找出对应关系，将源地址192.168.1.1转换为8.8.8.3，然后将该数据包发送到外部网络中。<br>第⑥步：目的地址为8.8.8.8的数据包在外部网络中传送，最终到达计算机C。计算机C通过数据包的源地址（8.8.8.3）只知道此数据包路由器发送过来的，实际上，该数据包是计算机A发送的。</p>
+<p>（2）动态NAT</p>
+<p>（2）动态NAT：动态NAT，是将一个内部IP地址转换为一组外部IP地址池中的一个IP地址（公有地址）。动态NAT和静态NAT的在地址转换上很相似，只是可用的公有IP地址不是被某个专用网络的计算机所永久独自占有。动态NAT的工作过程如图所示。 </p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TiWsC4"><img src="https://s4.ax1x.com/2021/12/17/TiWsC4.png" alt="TiWsC4.png"></a></p>
+<p>动态NAT的工作过程如图所示。与静态NAT类似，路由器上有一个公有IP地址池，地址池中有四个公有IP地址，它们是8.8.8.2/24-8.8.88.8.8.5/24。假设专用网络的计算机A需要和互联网的计算机C通信，其通信过程如下。<br>第①步：计算机A发送源IP地址(Source Address，SA)为192.168.1.1的数据包给计算机C。<br>第②步：数据包经过路由器的时候，路由器采用NAT技术，将数据包的源地址（192.168.1.1）转换为公有IP地址（8.8.8.2）。为什么会转换为8.8.8.2？由于路由器上的地址池有多个公有IP地址，当需要进行地址转换时，路由器会在地址池中选择一个未被占用的地址来进行转换。这里假设四个地址都未被占用，路由器挑选了第一个未被占用的地址而已。如果紧接着计算机A要发送数据包到Internet，则路由器会挑选第二个未被占用的IP地址，也就是8.8.8.3来进行转换。地址池中的公有IP地址的数量决定了可以同时访问Internet的内网计算机的数量，如果地址池中的IP地址都被使用了，那么内网的其他计算机就不能够和Internet的计算机通信了。当内网计算机和外网计算机的通信连接结束后，路由器将释放被占用的公有IP地址，这样，被释放的IP地址则又可以为其他内网计算机提供公网接入服务了。<br>第③步：源地址为8.8.8.2的数据包在Internet上转发，最终被计算机C接收。<br>第④步：计算机C收到源地址为8.8.8.2的数据包后转发，将响应内容封装在目的地址（Destination Address，DA）为8.8.8.2的数据包中，然后将该数据包发送出去。<br>第⑤步：目的地址为8.8.8.2数据包最终经过路由转发，到达连接专用网络的路由器上，路由器对照自身的NAT映射表，找出对应关系，将目的地址为8.8.8.2的数据包转换为目的地址为192.168.1.1的数据包，然后发送到内部专用网络中。<br>第⑥步：目的地址为192.168.1.1的数据包在专用网络中传送，最终到达计算机A。计算机A通过数据包的源地址（8.8.8.8）知道此数据包是Internet上的计算机C发送过来的。</p>
+<p>（3）动态NAPT</p>
+<p>（3）动态NAPT：动态NAPT，是以IP地址及端口号（TCP或UDP）为转换条件，将专用网络的内部私有IP地址及端口号转换成外部公有IP地址及端口号。在静态NAT和动态NAT中，都是“IP地址”到“IP地址”的转换关系，而动态NAPT，则是“IP地址+端口”到“IP地址+端口”的转换关系。动态NAPT的工作过程如图所示。 </p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TiWRDx"><img src="https://s4.ax1x.com/2021/12/17/TiWRDx.png" alt="TiWRDx.png"></a></p>
+<p>“IP地址”到“IP地址”的转换关系局限性很大，因为公网IP地址一旦被占用，内网的其他计算机就不能再使用被占用的公网IP地址访问外网。对于“IP地址+端口”的转换关系则非常灵活，一个IP地址可以和多个端口进行组合（自由使用的端口号有几万个：1024-65535），所以，路由器上可用的网络地址映射关系条目数量就很多，完全可以满足大量的内网计算机访问外网需求。<br>动态NAPT的工作过程如图6-8所示。假设专用网络的计算机A要访问外网的服务器B的Web站点，其通信过程如下。<br>第①步：计算机A发送数据包给计算机B。数据包的源IP地址为192.168.1.1，源端口号为2000（2000为一个计算机A随机分配的端口号）；数据包的目的地址为8.8.8.8，目的端口号为80（Web服务器默认端口号是80）。<br>第②步：数据包经过路由器的时候，路由器采用了动态NAPT技术，以“IP+端口”形式进行转换。数据包的源地址及源端口号将从192.168.1.1:2000转化为8.8.8.1:3000（300为路由器随机分配的端口号），目的地址及端口号不变，仍然指向计算机B的Web服务。转换后的源IP地址为路由器在外网的接口IP地址，源端口为路由器上未被使用的可分配端口号，这里假设为3000。<br>第③步：转换后的数据包在Internet上转发，最终被计算机B接收。<br>第④步：计算机B收到数据包后，将响应内容封装在目的地址为8.8.8.1，目的端口号为3000的数据包中（源地址及端口为8.8.8.8:80），然后将数据包发送出去。<br>第⑤步：响应的数据包最终经过路由转发，到达连接专用网络的路由器上，路由器对照NAPT映射表，找出对应关系，将目的地址及端口号为8.8.8.1:3000的数据包转换为目的地址及端口号为192.168.1.1:2000的数据包，然后发送到内部专用网络中。<br>第⑥步：目的地址及端口号为192.168.1.1:2000的数据包在专用网络中传送，最终到达计算机A。计算机A通过数据包的源地址及端口号（8.8.8.8:80）知道此数据包是外网的计算机B发送过来的。<br>动态NAPT的内外网“IP+端口号”映射关系是临时性的，因此，它主要应用在为内网计算机提供外网访问服务的场景。典型的应用有：家庭的宽带路由器拥有动态NAPT功能，它可以满足家庭电子设备访问Internet；网吧的出口网关也拥有动态NAPT功能，它可以满足网吧电脑访问Internet。</p>
+<p>（4）静态NAPT</p>
+<p>（4）静态NAPT：静态NAPT，是指在路由器中以 “IP+端口”形式，将内网IP及端口固定的转换为外网IP及端口，应用在允许外网用户访问内网计算机特定服务的场景。静态NAPT的工作工程如图所示。 </p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TiWT8H"><img src="https://s4.ax1x.com/2021/12/17/TiWT8H.png" alt="TiWT8H.png"></a></p>
+<p>静态NAPT的工作工程如图所示。假设外网的计算机B需要访问服务器A的Web站点，其通信过程如下：<br>第①步：计算机B发送数据包给服务器A。数据包的源IP地址为8.8.8.8，源端口号为2000；数据包的目的地址为8.8.8.1，目的端口号为80（Web服务器默认端口号是80）。<br>第②步：数据包经过路由器的时候，路由器查询NAPT地址映射表，找到对应的映射条目后，数据包的目的地址及目的端口号将从8.8.8.1:80转化为192.168.1.1:80，源地址及目的端口号不变。这里转换后的目的IP地址为内网服务器A的IP地址，目的端口为服务器A的web服务端口号。<br>第③步：转换后的数据包在专用网络上转发，最终被服务器A接收。<br>第④步：服务器A收到数据包后，将响应内容封装在目的地址为8.8.8.8，目的端口号为2000的数据包中，然后将数据包发送出去。<br>第⑤步：响应数据包经过路由转发，将到达路由器上，路由器对照静态NAPT映射表，找出对应关系，将源地址及端口号为192.168.1.1:80的数据包转换为源地址及端口号为8.8.8.1:80的数据包，然后发送到Internet中。<br>第⑥步：目的地址及端口号为8.8.8.8:2000的数据包在Internet中传送，最终到达计算机B。计算机B通过数据包的源地址及端口号(8.8.8.1:80)知道这是它访问Web服务的响应数据包。但是，计算机B并不知道Web服务其实是由专用网络内的服务器A所提供的，它只知道这个Web服务是由Internet上的IP地址为8.8.8.1的机器提供的。<br>静态NAPT的内外网“IP+端口”映射关系是永久性的，因此，它主要应用在为内网服务器的指定服务（如Web、FTP等）向外网提供服务的场景。典型的应用为，公司将内部网络的门户网站映射到公网IP的80端口上，满足互联网用户访问公司门户网站需求。</p>
+<p>（5）Easy IP</p>
+<p>（5）Easy IP：Easy IP技术，是NAPT的一种简化情况。Easy IP无需建立公有IP地址资源池，因为Easy IP只会用到一个公有IP地址，该IP地址就是路由器R连接公网的出口IP地址。Easy IP也会建立并维护一张动态地址及端口映射表，并且，Easy IP会将这张表中的公有IP地址绑定成路由器R的公网的出口IP地址。路由器RTA的出口IP地址如果发生了变化，那么，这张表中的公有IP地址也会自动跟着变化。路由器RTA的出口IP地址可以是手工配置的，也可以是动态分配的。下图所示的网络是一个典型的小型公司Easy IP拓扑。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TifFrq"><img src="https://s4.ax1x.com/2021/12/17/TifFrq.png" alt="TifFrq.png"></a></p>
+<p>Easy IP适用于小规模局域网中的主机访问Internet的场景。小规模局域网通常部署在小型的网吧或者办公室中，这些地方内部主机不多，出接口可以通过拨号方式获取一个临时公网IP地址。Easy IP可以实现内部主机使用这个临时公网IP地址访问Internet。<br>Easy IP的工作过程与NAPT完全一样的。</p>
+<h2 id="NAT的配置"><a href="#NAT的配置" class="headerlink" title="NAT的配置"></a>NAT的配置</h2><p>1、案例6-5 静态NAT配置示例<br>（1）案例背景与要求：如图所示，Jan16公司通过路由器R1接入到Internet，网络拓扑如图6-11所示，项目背景和需求如下。<br>①公司向Internet申请了2个公网IP：200.10.1.2和200.10.1.3。<br>②公司的Web服务器需要以静态NAT的方式对外提供服务，映射IP为200.10.1.3。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TifnG4"><img src="https://s4.ax1x.com/2021/12/17/TifnG4.png" alt="TifnG4.png"></a></p>
+<p>（2）案例配置思路<br>①为各设备接口配置IP地址。<br>②在路由器R1配置NAT，将Web服务器映射到200.10.1.3。<br>③案例测试。</p>
+<p>（3）案例配置过程<br>①路由器R1的配置。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[R1]interface g0/0/0</span><br><span class="line">[R1-GigabitEthernet0/0/0]ip add 192.168.0.254 24</span><br><span class="line">[R1-GigabitEthernet0/0/0]quit</span><br><span class="line">[R1]interface g0/0/1</span><br><span class="line">[R1-GigabitEthernet0/0/1]ip add 200.10.1.2 24</span><br><span class="line">[R1-GigabitEthernet0/0/1]nat static global 200.10.1.3 inside 192.168.0.2</span><br><span class="line">[R1-GigabitEthernet0/0/1]quit</span><br></pre></td></tr></table></figure>
+
+<p>②其他设备的IP配置（省略）。</p>
+<p>备注：【nat static global global-address inside host-address】命令，该命令的作用是将公网IP地址 global-ades映射到私网IP地址 host-addres。</p>
+<p>（4）案例验证<br>①在路由器R1上执行【display nat static】命令，查看公有IP地址与私有IP地址的映射关系。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt;display nat static </span><br><span class="line">  Static Nat Information:</span><br><span class="line">  Interface  : GigabitEthernet0/0/1</span><br><span class="line">    Global IP/Port     : 200.10.1.3/---- </span><br><span class="line">    Inside IP/Port     : 192.168.0.2/----</span><br><span class="line">    Protocol : ----     </span><br><span class="line">    VPN instance-name  : ----                            </span><br><span class="line">    Acl number         : ----</span><br><span class="line">    Netmask  : 255.255.255.255 </span><br><span class="line">Description : ----</span><br><span class="line">  Total :    1</span><br></pre></td></tr></table></figure>
+
+<p>②在公网主机PC1中，执行【ping 200.10.1.3】命令，测试与内网WEB服务器的连通性，结果显示可以成功连接Web服务器。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">PC&gt;ping 200.10.1.3</span><br><span class="line">Ping 200.10.1.3: 32 data bytes, Press Ctrl_C to break</span><br><span class="line">From 200.10.1.3: bytes=32 seq=1 ttl=127 time=47 ms</span><br><span class="line">From 200.10.1.3: bytes=32 seq=2 ttl=127 time=47 ms</span><br><span class="line">From 200.10.1.3: bytes=32 seq=3 ttl=127 time=47 ms</span><br><span class="line">From 200.10.1.3: bytes=32 seq=4 ttl=127 time=31 ms</span><br><span class="line">From 200.10.1.3: bytes=32 seq=5 ttl=127 time=63 ms</span><br><span class="line"> </span><br><span class="line">--- 200.10.1.3 ping statistics ---</span><br><span class="line">  5 packet(s) transmitted</span><br><span class="line">  5 packet(s) received</span><br><span class="line">  0.00% packet loss</span><br><span class="line">  round-trip min/avg/max = 31/47/63 ms</span><br></pre></td></tr></table></figure>
+
+<p>以上测试结果可以看出，成功在路由器R1上配置静态NAT，实现Web服务器的私网地址192.168.0.2与公网地址202.10.1.3的映射。</p>
+<p>2、案例6-6 动态NAT配置示例<br>（1）案例背景与要求：Jan16公司通过路由器R1接入到Internet，网络拓扑如图6-12所示，案例背景和需求如下。<br>①公司向Internet申请了1批公网IP：200.10.1.1~200.10.1.20。<br>②公司的内网计算机（192.168.1.0/24）可通过路由器R1随机映射到公网，实现内外网互访。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TifbYF"><img src="https://s4.ax1x.com/2021/12/17/TifbYF.png" alt="TifbYF.png"></a></p>
+<p>（2）案例配置思路<br>①为各设备接口配置IP地址。<br>②在路由器R1配置公网IP地址池。<br>③在路由器R1配置ACL规则，该规则定义了可用于映射公网的主机。<br>④在路由器R1配置动态NAT，将符合ACL规则的主机自动映射到公网地址池IP中。<br>⑤案例测试。</p>
+<p>（3）案例配置过程<br>①路由器R1的主要配置。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[R1]interface g0/0/0</span><br><span class="line">[R1-GigabitEthernet0/0/0]ip add 192.168.1.254 24</span><br><span class="line">[R1-GigabitEthernet0/0/0]quit</span><br><span class="line">[R1]interface g0/0/1</span><br><span class="line">[R1-GigabitEthernet0/0/1]ip add 200.10.1.1 24</span><br><span class="line">[R1]nat address-group 1 200.10.10.2 200.10.10.20 </span><br><span class="line">[R1]acl 2000</span><br><span class="line">[R1-acl-basic-2000]rule 5 permit source 192.168.1.0 0.0.0.255</span><br><span class="line">[R1-acl-basic-2000]quit</span><br><span class="line">[R1]interface g0/0/1</span><br><span class="line">[R1-GigabitEthernet0/0/1]nat outbound 2000 address-group 1 no-pat</span><br></pre></td></tr></table></figure>
+
+<p>备注：<br>【nat address-group】命令用来配置NAT地址池（申请到的公网IP不能全部纳入地址池，必须至少保留1个用于路由器与公网通信），【nat outbound】命令用来将一个访问控制列表ACL和一个地址池关联起来，其表示ACL中规定的地址可以使用地址池进行NAT转换。参数no-pat表示只转换数据报文的IP地址而不转换端口信息。</p>
+<p>（4）案例验证<br>在路由器R1上执行【display nat address-group group-index】命令，查看NAT地址池配置信息或执行【display nat outbound】命令，查看动态NAT配置信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[R1]display nat address-group 1</span><br><span class="line">NAT Address-Group Information:</span><br><span class="line">--------------------------------------</span><br><span class="line">Index   Start-address      End-address</span><br><span class="line">1       200.10.1.2        200.10.1.20</span><br><span class="line">[R1]display nat outbound </span><br><span class="line">NAT Outbound Information:</span><br><span class="line"> ----------------------------------------------------------------</span><br><span class="line">Interface              Acl       Address-group/IP/Interface     Type</span><br><span class="line">----------------------------------------------------------------</span><br><span class="line">GigabitEthernet0/0/1   2000                        1             no-pat</span><br><span class="line">----------------------------------------------------------------</span><br><span class="line">Total : 1</span><br></pre></td></tr></table></figure>
+
+<p>测试结果显示动态NAT配置成功。</p>
+<p>3、案例6-7 NAPT配置示例<br>（1）案例背景与要求：Jan16公司通过动态NAT实现了内网主机和公网之间的通信，但随着人员的增加，有限的公网IP地址已不能满足所有员工上网的需求，公司希望采用NAPT来解决更多员工的外网接入需求。公司拓扑图如图所示。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Tihife"><img src="https://s4.ax1x.com/2021/12/17/Tihife.png" alt="Tihife.png"></a></p>
+<p>（2）案例配置思路<br>①为各设备接口配置IP地址。<br>②在路由器R1配置公网IP地址池。<br>③在路由器R1配置ACL规则，该规则定义了可用于映射公网的主机。<br>④在路由器R1配置NAPT，将符合ACL规则的主机自动映射到公网地址池IP中。<br>⑤案例测试。</p>
+<p>（3）案例配置过程<br>①路由器R1的主要配置。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[R1]interface g0/0/0</span><br><span class="line">[R1-GigabitEthernet0/0/0]ip add 192.168.1.254 24</span><br><span class="line">[R1-GigabitEthernet0/0/0]quit</span><br><span class="line">[R1]interface g0/0/1</span><br><span class="line">[R1-GigabitEthernet0/0/1]ip add 200.10.1.1 24</span><br><span class="line">[R1]nat address-group 1 200.10.1.2 200.10.1.20 </span><br><span class="line">[R1]acl 2000</span><br><span class="line">[R1-acl-basic-2000]rule 5 permit source 192.168.1.0 0.0.0.255</span><br><span class="line">[R1-acl-basic-2000]quit</span><br><span class="line">[R1]interface g0/0/1</span><br><span class="line">[R1-GigabitEthernet0/0/1]nat outbound 2000 address-group 1 </span><br></pre></td></tr></table></figure>
+
+<p>备注：<br>【nat outbound】命令同样也可用来配置NAPT，命令中没有no-pat参数表示NAPT。</p>
+<p>（4）案例验证<br>①私网主机PC1和PC2中，执行【ping 200.10.1.201】命令，测试内网主机与外网的连通性，结果显示可以成功连接外网。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">PC&gt;ping 200.10.1.201</span><br><span class="line"></span><br><span class="line">Ping 200.10.1.201: 32 data bytes, Press Ctrl_C to break</span><br><span class="line">From 200.10.1.201: bytes=32 seq=1 ttl=127 time=15 ms</span><br><span class="line">From 200.10.1.201: bytes=32 seq=2 ttl=127 time=15 ms</span><br><span class="line">From 200.10.1.201: bytes=32 seq=3 ttl=127 time=32 ms</span><br><span class="line">From 200.10.1.201: bytes=32 seq=4 ttl=127 time=31 ms</span><br><span class="line">From 200.10.1.201: bytes=32 seq=5 ttl=127 time=16 ms</span><br><span class="line"></span><br><span class="line">--- 200.10.1.201 ping statistics ---</span><br><span class="line">  5 packet(s) transmitted</span><br><span class="line">  5 packet(s) received</span><br><span class="line">  0.00% packet loss</span><br><span class="line">  round-trip min/avg/max = 15/21/32 ms</span><br></pre></td></tr></table></figure>
+
+<p>②在路由器R1上执行【display nat session all】命令，查看NAPT会话信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> [R1]disp nat session all</span><br><span class="line">  NAT Session Table Information:</span><br><span class="line">     Protocol          : ICMP(1)</span><br><span class="line">     SrcAddr   Vpn     : 192.168.1.1                                    </span><br><span class="line">     DestAddr  Vpn     : 200.10.1.201                                      </span><br><span class="line">     Type Code IcmpId  : 0   8   16411</span><br><span class="line">     NAT-Info</span><br><span class="line">       New SrcAddr     : 200.10.1.2   </span><br><span class="line">       New DestAddr    : ----</span><br><span class="line">       New IcmpId      : 10263</span><br><span class="line">     Protocol          : ICMP(1)</span><br><span class="line">     SrcAddr   Vpn     : 192.168.1.2                                    </span><br><span class="line">     DestAddr  Vpn     : 200.10.1.201                                      </span><br><span class="line">     Type Code IcmpId  : 0   8   16416</span><br><span class="line">     NAT-Info</span><br><span class="line">       New SrcAddr     : 200.10.1.15    </span><br><span class="line">       New DestAddr    : ----</span><br><span class="line">       New IcmpId      : 10265</span><br><span class="line">……（省略部分）</span><br><span class="line">Total : 9</span><br></pre></td></tr></table></figure>
+
+<p> 从以上信息可以看出，PC1和PC2的两个私网IP地址同时映射同一个公网IP地址，只是映射了不同的端口号。从测试结果得知，一个公网IP地址可以为多个私网IP提供NAPT服务，解决了更多内网终端连接外网的问题。</p>
+<p>4、案例6-8 Easy IP配置示例<br>（1）案例背景与要求：Jan16公司通过路由器R1接入到Internet，网络拓扑如图6-13所示，项目案例背景和需求如下。<br>①公司通过拨号接入Internet，并申请到一个固定公网IP：200.10.1.1。<br>②公司要求使用Easy IP技术实现全部内网计算机快速访问Internet。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TihdtU"><img src="https://s4.ax1x.com/2021/12/17/TihdtU.png" alt="TihdtU.png"></a></p>
+<p>（2）案例配置思路<br>①为各设备接口配置IP地址。<br>②在路由器R1配置公网IP地址池。<br>③在路由器R1配置ACL规则，该规则定义了可用于映射公网的主机。<br>④在路由器R1配置Easy IP，将符合ACL规则的主机允许访问外网。<br>⑤案例测试。</p>
+<p>（3）案例配置过程<br>路由器R1的主要配置如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[R1]interface g0/0/0</span><br><span class="line">[R1-GigabitEthernet0/0/0]ip add 192.168.1.254 24</span><br><span class="line">[R1-GigabitEthernet0/0/0]quit</span><br><span class="line">[R1]interface g0/0/1</span><br><span class="line">[R1-GigabitEthernet0/0/1]ip add 200.10.1.1 24</span><br><span class="line">[R1]acl 2000</span><br><span class="line">[R1-acl-basic-2000]rule 5 permit source 192.168.1.0 0.0.0.255</span><br><span class="line">[R1-acl-basic-2000]quit</span><br><span class="line">[R1]interface GigabitEthernet0/0/1</span><br><span class="line">[R1-GigabitEthernet0/0/1]nat outbound 2000</span><br></pre></td></tr></table></figure>
+
+<p>备注：<br>Easy IP技术是对NAPT技术的简化，因为Easy IP只会用到一个公有IP地址，所以它无需建立公有IP地址地址池，用于转换的公网IP就是该路由器接口的IP地址。<br>在本示例中，【nat outbound 2000】命令表示对ACL 2000定义的地址段进行地址转换，并且直接使用g0/0/1接口的IP地址作为Easy IP转换后的地址。<br>【nat outbound acl-number】命令用于配置Easy IP地址转换。Easy IP的配置与动态NAT的配置类似，需要定义ACL和执行【nat outbound】命令，主要区别是Easy IP不需要配置地址池，所以【nat outbound】命令中不需要配置参数【address-group】。</p>
+<p>（4）案例验证<br>在路由器R1上执行【display nat outbound】命令，查看【nat outbound】命令的配置结果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[R1]display nat outbound </span><br><span class="line"> NAT Outbound Information:</span><br><span class="line"> ---------------------------------------------------------------------</span><br><span class="line"> Interface                 Acl     Address-group/IP/Interface      Type</span><br><span class="line"> ---------------------------------------------------------------------</span><br><span class="line"> GigabitEthernet0/0/1       2000      200.10.1.1                  easyip  </span><br><span class="line"> ---------------------------------------------------------------------</span><br><span class="line"> Total : 1</span><br></pre></td></tr></table></figure>
+
+<p>【Address-group/IP/Interface】表项表明接口和ACL 2000允许的私网网段192.168.1.0/24已经关联成功，【Type】表项表明Easy IP已经配置成功。</p>
+<h1 id="AAA认证"><a href="#AAA认证" class="headerlink" title="AAA认证"></a>AAA认证</h1><h2 id="AAA认证的基本概念"><a href="#AAA认证的基本概念" class="headerlink" title="AAA认证的基本概念"></a>AAA认证的基本概念</h2><p>1、AAA认证的基本概念：<br>         AAA是Authentication（认证）、Authorization（授权）和Accounting（计费）的简称，它提供了认证、授权、计费三种安全功能。<br>（1）认证：验证用户的身份和可使用的网络服务。<br>（2）授权：依据认证结果开放网络服务给用户。<br>（3）计费：记录用户对各种网络服务的用量，并提供给计费系统。</p>
+<p>AAA可以通过多种协议来实现，目前华为大部分设备支持基于远程认证拨号用户服务（Remote Authentication Dial-In User Service，RADIUS）协议或华为终端访问控制器控制系统（Huawei Terminal Access Controller Access Control System，HWTACACS）协议来实现AAA。</p>
+<p>2、AAA认证的基本模型<br>（1）认证：<br>1）AAA支持的认证方式有：不认证，本地认证，远端认证。<br>①不认证：完全信任用户，不对用户身份进行合法性检查。鉴于安全考虑，这种认证方式很少被采用。<br>②本地认证：将用户信息（包括用户名、密码等属性）配置在本地的接入服务器上。本地认证的优点是处理速度快、运营成本低；缺点是存储信息量受设备硬件条件限制。在华为解决方案中，通常使用路由器作为接入服务器。<br>③远端认证：将用户信息配置在认证服务器上。AAA支持通过RADIUS协议或HWTACACS协议进行远端认证。</p>
+<p>（1）认证<br>2）认证模型1：大规模公司的认证模型如图所示，总公司部署了AAA服务器，用户将通过AAA服务器进行身份认证；分公司的接入路由器作为AAA Client，负责将用户的认证、授权和计费信息发给AAA Server，能加快验证用户，提高AAA认证的效率；出差的员工则通过远程方式连接到总公司AAA服务器进行身份认证。用户通过身份认证后，就能访问公司网络的相关服务。 </p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/TihRAK"><img src="https://s4.ax1x.com/2021/12/17/TihRAK.png" alt="TihRAK.png"></a></p>
+<p>（1）认证<br>3）认证模型2：小公司的认证模型如图6-15所示，公司在路由器上部署了AAA服务器，用户通过身份认证后，就能访问公司网络的相关服务。需要注意的是，在路由器上部署AAA服务只能实现简单的认证和授权业务，不具备计费功能。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Tih51H"><img src="https://s4.ax1x.com/2021/12/17/Tih51H.png" alt="Tih51H.png"></a></p>
+<p>（2）授权<br>         AAA支持的授权方式有不授权，本地授权，远端授权。<br>①不授权：不对用户进行授权处理。<br>②本地授权：根据接入服务器上配置的本地用户账号的相关属性进行授权。<br>③远端授权：由HWTACACS或RADIUS授权。其中，RADIUS协议的认证和授权是绑定在一起的，不能单独使用RADIUS进行授权。<br>如果在一个授权方案中使用多种授权方式，这些授权方式按照配置顺序生效，不授权方式最后生效。</p>
+<p> （3）计费<br>        计费功能用于监控授权用户的网络行为和网络资源的使用情况。AAA支持以下两种计费方式。<br>①　不计费：为用户提供免费上网服务，不产生相关活动日志。<br>②　计费：通过RADIUS服务器或HWTACACS服务器进行计费。</p>
+<p>3、路由器AAA认证服务的配置<br>（1）当采用本地方式进行认证和授权时，需要在设备上配置用户的认证和授权信息，如用户名、密码、优先级等。<br>（2）下面的一段配置用于在路由器（AAA认证服务器）创建用户，配置密码和优先级，演示了在路由器创建本地用户jan16，设置密码为huawei@123，权限等级为15即最高权限。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[Huawei]aaa</span><br><span class="line">[Huawei-aaa]local-user jan16 password cipher huawei@123</span><br><span class="line">Info: Add a new user.</span><br><span class="line">[Huawei-aaa]local-user jan16 privilege level 15</span><br></pre></td></tr></table></figure>
+
+<p>（3）下面端配置用于设置用户的服务类型，演示了在路由器中进一步配置了用户jan16服务于telnet协议，即终端采用telnet协议远程登录到该路由器时，可以使用jan16作为身份认证信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Huawei-aaa]local-user jan16 service-type telnet</span><br></pre></td></tr></table></figure>
+
+<h2 id="认证服务器的配置"><a href="#认证服务器的配置" class="headerlink" title="认证服务器的配置"></a>认证服务器的配置</h2><p>1、案例6-9 AAA认证服务器的配置<br>（1）案例背景与要求：以Jan16公司为例，公司出口路由器采用企业级路由器，为方便远程管理，计划创建admin和public两个远程账号，admin账号作为管理员账号，拥有最高权限可以配置路由器，public账号作为普通用户账号，仅可以查看路由器当前状态信息。案例拓扑如图所示。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Ti4kNT"><img src="https://s4.ax1x.com/2021/12/17/Ti4kNT.png" alt="Ti4kNT.png"></a></p>
+<p>（2）案例配置思路<br>①配置设备的接口IP。<br>②在路由器R1配置本地用户admin和public的账户、密码和权限。<br>③配置路由器的远程登录认证方式为aaa。</p>
+<p>（3）案例配置过程<br>①在路由器R1的接口上配置IP地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Huawei&gt;sys</span><br><span class="line">[Huawei]sysname R1</span><br><span class="line">[R1]interface GigabitEthernet 0/0/0</span><br><span class="line">[R1-GigabitEthernet0/0/0]ip address 192.168.10.254 24</span><br></pre></td></tr></table></figure>
+
+<p>②创建本地用户admin和public，配置用户的权限等级。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[R1]aaa</span><br><span class="line">[R1-aaa]local-user admin password cipher admin@123</span><br><span class="line">[R1-aaa]local-user admin privilege level 15</span><br><span class="line">[R1-aaa]local-user admin service-type telnet </span><br><span class="line">[R1-aaa]local-user public password cipher 123456@p</span><br><span class="line">[R1-aaa]local-user public privilege level 2</span><br><span class="line">[R1-aaa]local-user public service-type telnet</span><br></pre></td></tr></table></figure>
+
+<p>③配置路由器启用telnet服务，认证方式为aaa认证。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[R1]user-interface vty 0 4</span><br><span class="line">[R1-ui-vty0-4]protocol inbound telnet </span><br><span class="line">[R1-ui-vty0-4]authentication-mode aaa</span><br></pre></td></tr></table></figure>
+
+<p>（4）案例验证<br>在路由器上使用【display local-user】命令查看创建的用户信息，结果如下所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[R1]dis local-user </span><br><span class="line">  ---------------------------------------------------------------------------</span><br><span class="line">  User-name                      State  AuthMask  AdminLevel  </span><br><span class="line">  ---------------------------------------------------------------------------</span><br><span class="line">  admin                          A      T         15         </span><br><span class="line">  public                         A      T         2          </span><br><span class="line">  ---------------------------------------------------------------------------</span><br><span class="line">  Total 2 user(s)</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://yqloveljw.xyz">沅浅</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yqloveljw.xyz/2021/12/17/%E5%8D%8E%E4%B8%BA1+X/6.%E5%8D%8E%E4%B8%BA1+X-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/">http://yqloveljw.xyz/2021/12/17/%E5%8D%8E%E4%B8%BA1+X/6.%E5%8D%8E%E4%B8%BA1+X-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yqloveljw.xyz" target="_blank">沅浅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">基础教程</a><a class="post-meta__tags" href="/tags/%E5%8D%8E%E4%B8%BA1-X/">华为1+X</a></div><div class="post_share"><div class="social-share" data-image="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/18/%E5%8D%8E%E4%B8%BA1+X/7.%E5%8D%8E%E4%B8%BA1+X-IPV6%E5%8D%8F%E8%AE%AE/"><img class="prev-cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">7.华为1+X-IPV6协议</div></div></a></div><div class="next-post pull-right"><a href="/2021/12/16/%E5%8D%8E%E4%B8%BA1+X/5.%E5%8D%8E%E4%B8%BA1+X-%E5%B9%BF%E5%9F%9F%E7%BD%91%E6%8A%80%E6%9C%AF/"><img class="next-cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">5.华为1+X-广域网技术</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/12/11/%E5%8D%8E%E4%B8%BA1+X/1.%E5%8D%8E%E4%B8%BA1+X-TCP&IP/" title="1.华为1+X&#x2F;TCP&amp;IP"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-11</div><div class="title">1.华为1+X&#x2F;TCP&amp;IP</div></div></a></div><div><a href="/2021/12/13/%E5%8D%8E%E4%B8%BA1+X/2.%E5%8D%8E%E4%B8%BA1+X-%E7%BD%91%E7%BB%9C%E4%BA%A4%E6%8D%A2%E6%8A%80%E6%9C%AF/" title="2.华为1+X&#x2F;网络交换技术"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-13</div><div class="title">2.华为1+X&#x2F;网络交换技术</div></div></a></div><div><a href="/2021/12/14/%E5%8D%8E%E4%B8%BA1+X/3.%E5%8D%8E%E4%B8%BA1+X-%E8%B7%AF%E7%94%B1%E6%8A%80%E6%9C%AF/" title="3.华为1+X-路由技术"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-14</div><div class="title">3.华为1+X-路由技术</div></div></a></div><div><a href="/2021/12/15/%E5%8D%8E%E4%B8%BA1+X/4.%E5%8D%8E%E4%B8%BA1+X-%E7%BD%91%E7%BB%9C%E5%8F%AF%E9%9D%A0%E6%80%A7/" title="4.华为1+X-网络可靠性"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-15</div><div class="title">4.华为1+X-网络可靠性</div></div></a></div><div><a href="/2021/12/16/%E5%8D%8E%E4%B8%BA1+X/5.%E5%8D%8E%E4%B8%BA1+X-%E5%B9%BF%E5%9F%9F%E7%BD%91%E6%8A%80%E6%9C%AF/" title="5.华为1+X-广域网技术"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-16</div><div class="title">5.华为1+X-广域网技术</div></div></a></div><div><a href="/2021/12/18/%E5%8D%8E%E4%B8%BA1+X/7.%E5%8D%8E%E4%B8%BA1+X-IPV6%E5%8D%8F%E8%AE%AE/" title="7.华为1+X-IPV6协议"><img class="cover" src="https://s4.ax1x.com/2021/12/23/TGEiOU.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-18</div><div class="title">7.华为1+X-IPV6协议</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">沅浅</div><div class="author-info__description">我想记下来很多东西，我太怕我会忘记</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">访问控制列表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ACL%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">ACL的基本原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%ACACL%E5%92%8C%E9%AB%98%E7%BA%A7ACL"><span class="toc-number">1.2.</span> <span class="toc-text">基本ACL和高级ACL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ACL%E7%9A%84%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">ACL的典型应用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2NAT"><span class="toc-number">2.</span> <span class="toc-text">网络地址转换NAT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#NAT%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">NAT的工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NAT%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">NAT的配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AAA%E8%AE%A4%E8%AF%81"><span class="toc-number">3.</span> <span class="toc-text">AAA认证</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AAA%E8%AE%A4%E8%AF%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">3.1.</span> <span class="toc-text">AAA认证的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">3.2.</span> <span class="toc-text">认证服务器的配置</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/13/hexo%E7%BE%8E%E5%8C%96/hexo%E6%B7%BB%E5%8A%A0%E5%BE%BD%E6%A0%87/" title="hexo添加徽标"><img src="https://s4.ax1x.com/2022/01/02/Toe4Qx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo添加徽标"/></a><div class="content"><a class="title" href="/2022/03/13/hexo%E7%BE%8E%E5%8C%96/hexo%E6%B7%BB%E5%8A%A0%E5%BE%BD%E6%A0%87/" title="hexo添加徽标">hexo添加徽标</a><time datetime="2022-03-13T08:58:50.000Z" title="发表于 2022-03-13 16:58:50">2022-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/08/%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E5%B1%B1%E9%B8%A1/R-studio%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="R-studio数据恢复软件使用教程"><img src="https://s1.ax1x.com/2022/03/08/bcnVfg.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="R-studio数据恢复软件使用教程"/></a><div class="content"><a class="title" href="/2022/03/08/%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E5%B1%B1%E9%B8%A1/R-studio%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="R-studio数据恢复软件使用教程">R-studio数据恢复软件使用教程</a><time datetime="2022-03-08T02:18:17.000Z" title="发表于 2022-03-08 10:18:17">2022-03-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E5%B0%8F%E5%AE%A2%E6%9C%8D%E5%8A%9F%E8%83%BD/" title="hexo增加小客服功能"><img src="https://s4.ax1x.com/2022/01/02/Toe4Qx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo增加小客服功能"/></a><div class="content"><a class="title" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E5%B0%8F%E5%AE%A2%E6%9C%8D%E5%8A%9F%E8%83%BD/" title="hexo增加小客服功能">hexo增加小客服功能</a><time datetime="2022-03-07T07:38:42.000Z" title="发表于 2022-03-07 15:38:42">2022-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E6%A8%B1%E8%8A%B1%E9%A3%98%E8%90%BD%E8%83%8C%E6%99%AF/" title="hexo增加樱花飘落背景"><img src="https://s4.ax1x.com/2022/01/02/Toe4Qx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo增加樱花飘落背景"/></a><div class="content"><a class="title" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E6%A8%B1%E8%8A%B1%E9%A3%98%E8%90%BD%E8%83%8C%E6%99%AF/" title="hexo增加樱花飘落背景">hexo增加樱花飘落背景</a><time datetime="2022-03-07T07:32:46.000Z" title="发表于 2022-03-07 15:32:46">2022-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E9%A1%B5%E8%84%9A%E8%B7%B3%E5%8A%A8%E7%9A%84%E2%99%A5/" title="hexo增加页脚跳动的♥"><img src="https://s4.ax1x.com/2022/01/02/Toe4Qx.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo增加页脚跳动的♥"/></a><div class="content"><a class="title" href="/2022/03/07/hexo%E7%BE%8E%E5%8C%96/hexo%E5%A2%9E%E5%8A%A0%E9%A1%B5%E8%84%9A%E8%B7%B3%E5%8A%A8%E7%9A%84%E2%99%A5/" title="hexo增加页脚跳动的♥">hexo增加页脚跳动的♥</a><time datetime="2022-03-07T07:07:44.000Z" title="发表于 2022-03-07 15:07:44">2022-03-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2016 - 2022 By 沅浅</div><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a><a style="margin-inline:5px" target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a><a style="margin-inline:5px" target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a><a style="margin-inline:5px" target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a><a style="margin-inline:5px" target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Github托管"></a><a style="margin-inline:5px" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
