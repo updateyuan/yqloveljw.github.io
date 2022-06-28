@@ -599,13 +599,6 @@
   </url>
   
   <url>
-    <loc>http://yqloveljw.xyz/tags/JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</loc>
-    <lastmod>2022-06-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://yqloveljw.xyz/tags/Linux/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
@@ -613,14 +606,7 @@
   </url>
   
   <url>
-    <loc>http://yqloveljw.xyz/tags/SQL/</loc>
-    <lastmod>2022-06-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yqloveljw.xyz/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <loc>http://yqloveljw.xyz/tags/JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -641,21 +627,14 @@
   </url>
   
   <url>
-    <loc>http://yqloveljw.xyz/tags/%E5%8D%8E%E4%B8%BA1-X/</loc>
+    <loc>http://yqloveljw.xyz/tags/SQL/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yqloveljw.xyz/tags/%E5%8A%9E%E5%85%AC%E8%87%AA%E5%8A%A8%E5%8C%96/</loc>
-    <lastmod>2022-06-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yqloveljw.xyz/tags/%E5%B1%80%E5%9F%9F%E7%BD%91%E7%BB%84%E5%BB%BA%E4%B8%8E%E7%BB%B4%E6%8A%A4/</loc>
+    <loc>http://yqloveljw.xyz/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -683,6 +662,20 @@
   </url>
   
   <url>
+    <loc>http://yqloveljw.xyz/tags/%E5%8D%8E%E4%B8%BA1-X/</loc>
+    <lastmod>2022-06-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yqloveljw.xyz/tags/%E5%8A%9E%E5%85%AC%E8%87%AA%E5%8A%A8%E5%8C%96/</loc>
+    <lastmod>2022-06-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yqloveljw.xyz/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
@@ -698,6 +691,13 @@
   
   <url>
     <loc>http://yqloveljw.xyz/tags/%E5%BA%94%E7%94%A8%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2022-06-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yqloveljw.xyz/tags/%E5%B1%80%E5%9F%9F%E7%BD%91%E7%BB%84%E5%BB%BA%E4%B8%8E%E7%BB%B4%E6%8A%A4/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -725,6 +725,13 @@
   </url>
   
   <url>
+    <loc>http://yqloveljw.xyz/tags/%E6%9D%82%E8%AE%B0/</loc>
+    <lastmod>2022-06-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yqloveljw.xyz/tags/Winhex/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
@@ -746,7 +753,7 @@
   </url>
   
   <url>
-    <loc>http://yqloveljw.xyz/tags/%E6%9D%82%E8%AE%B0/</loc>
+    <loc>http://yqloveljw.xyz/tags/Python/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -768,13 +775,6 @@
   
   <url>
     <loc>http://yqloveljw.xyz/tags/Anaconda/</loc>
-    <lastmod>2022-06-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yqloveljw.xyz/tags/Python/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -811,6 +811,13 @@
   </url>
   
   <url>
+    <loc>http://yqloveljw.xyz/categories/Linux/</loc>
+    <lastmod>2022-06-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yqloveljw.xyz/categories/JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
@@ -818,7 +825,7 @@
   </url>
   
   <url>
-    <loc>http://yqloveljw.xyz/categories/Linux/</loc>
+    <loc>http://yqloveljw.xyz/categories/VMware-Workstation/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -832,7 +839,7 @@
   </url>
   
   <url>
-    <loc>http://yqloveljw.xyz/categories/VMware-Workstation/</loc>
+    <loc>http://yqloveljw.xyz/categories/hexo%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -853,20 +860,6 @@
   </url>
   
   <url>
-    <loc>http://yqloveljw.xyz/categories/%E5%B1%80%E5%9F%9F%E7%BD%91/</loc>
-    <lastmod>2022-06-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yqloveljw.xyz/categories/hexo%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</loc>
-    <lastmod>2022-06-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://yqloveljw.xyz/categories/%E7%BD%91%E9%BC%8E%E6%9D%AF/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
@@ -875,6 +868,13 @@
   
   <url>
     <loc>http://yqloveljw.xyz/categories/%E5%BA%94%E7%94%A8%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2022-06-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://yqloveljw.xyz/categories/%E5%B1%80%E5%9F%9F%E7%BD%91/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -895,6 +895,13 @@
   </url>
   
   <url>
+    <loc>http://yqloveljw.xyz/categories/%E6%9D%82%E8%AE%B0/</loc>
+    <lastmod>2022-06-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yqloveljw.xyz/categories/%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
@@ -909,7 +916,7 @@
   </url>
   
   <url>
-    <loc>http://yqloveljw.xyz/categories/%E6%9D%82%E8%AE%B0/</loc>
+    <loc>http://yqloveljw.xyz/categories/Python/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -917,13 +924,6 @@
   
   <url>
     <loc>http://yqloveljw.xyz/categories/python%E7%88%AC%E8%99%AB%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2022-06-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yqloveljw.xyz/categories/Python/</loc>
     <lastmod>2022-06-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
